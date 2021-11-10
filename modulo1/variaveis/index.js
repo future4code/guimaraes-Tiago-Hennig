@@ -1,3 +1,14 @@
+// 1->  10
+//      10  5
+
+// 2->  10 10 10
+
+// 3->  let horasTrabalhadas = prompt("Quantas horas você trabalha por dia?")
+//      let proventoDiario = prompt("Quanto você recebe por dia?")
+//      alert("Voce recebe ${proventoDiario/horasTrabalhadas} por hora")
+
+//
+
 let nome
 let idade
 
