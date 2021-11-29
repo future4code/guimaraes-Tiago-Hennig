@@ -94,3 +94,192 @@ if ((generoFilme = "fantasia") && (ingressoFilme < 15)) {
     console.log("Escolha outro filme :(")
 }
 
+// 2
+
+let nome = prompt("Digite seu nome completo:")
+let tipoDeJogo = prompt("Digite o tipo de jogo: IN para Internacional e DO para nacional")
+let etapaDoJogo = prompt("Digite a etapa do jogo: SF para semi-final / DT para Terceiro Lugar / FI para final")
+let categoria = prompt("Escolha uma categoria: 1, 2, 3 ou 4")
+let quantidade = Number(prompt("Digite a quantidade de ingressos:"))
+const sf1 = 1320
+const sf2 = 880
+const sf3 = 550
+const sf4 = 220
+const dt1 = 660
+const dt2 = 440
+const dt3 = 330
+const dt4 = 170
+const fi1 = 1980
+const fi2 = 1320
+const fi3 = 880
+const fi4 = 330
+const dolar = 4.1
+
+console.log("---Dados da Compra---")
+console.log("Nome do cliente:", nome)
+if (tipoDeJogo == "DO") {
+    console.log("Tipo do jogo: Nacional")
+}
+if (tipoDeJogo == "IN") {
+    console.log("Tipo do jogo: Internacional")
+}
+if (etapaDoJogo == "SF") {
+    console.log("Etapa do jogo: Semi-final")
+}
+if (etapaDoJogo == "DT") {
+    console.log("Etapa do jogo: Decisão de terceiro lugar")
+}
+if (etapaDoJogo == "FI") {
+    console.log("Etapa do jogo: Final")
+}
+console.log("Categoria:", categoria)
+console.log("Quantidade de Ingressos: " +quantidade+ " ingressos")
+console.log("---Valores---")
+if (tipoDeJogo == "DO") {
+    if (etapaDoJogo == "SF") {
+        if (categoria == "1") {
+        console.log("Valor do ingresso: R$ ", sf1)
+        console.log("Valor total: R$ ", (quantidade * sf1))
+        }
+    }
+    if (etapaDoJogo == "SF") {
+        if (categoria == "2") {
+        console.log("Valor do ingresso: R$ ", sf2)
+        console.log("Valor total: R$ ", (quantidade * sf2))
+        }
+    }
+    if (etapaDoJogo == "SF") {
+        if (categoria == "3") {
+        console.log("Valor do ingresso: R$ ", sf3)
+        console.log("Valor total: R$ ", (quantidade * sf3))
+        }
+    }
+    if (etapaDoJogo == "SF") {
+        if (categoria == "4") {
+        console.log("Valor do ingresso: R$ ", sf4)
+        console.log("Valor total: R$ ", (quantidade * sf4))
+        }
+    }
+    if (etapaDoJogo == "DT") {
+        if (categoria == "1") {
+        console.log("Valor do ingresso: R$ ", dt1)
+        console.log("Valor total: R$ ", (quantidade * dt1))
+        }
+    }
+    if (etapaDoJogo == "DT") {
+        if (categoria == "2") {
+        console.log("Valor do ingresso: R$ ", dt2)
+        console.log("Valor total: R$ ", (quantidade * dt2))
+        }
+    }
+    if (etapaDoJogo == "DT") {
+        if (categoria == "3") {
+        console.log("Valor do ingresso: R$ ", dt3)
+        console.log("Valor total: R$ ", (quantidade * dt3))
+        }
+    }
+    if (etapaDoJogo == "DT") {
+        if (categoria == "4") {
+        console.log("Valor do ingresso: R$ ", dt4)
+        console.log("Valor total: R$ ", (quantidade * dt4))
+        }
+    }
+    if (etapaDoJogo == "FI") {
+        if (categoria == "1") {
+        console.log("Valor do ingresso: R$ ", fi1)
+        console.log("Valor total: R$ ", (quantidade * fi1))
+        }
+    }
+    if (etapaDoJogo == "FI") {
+        if (categoria == "2") {
+        console.log("Valor do ingresso: R$ ", fi2)
+        console.log("Valor total: R$ ", (quantidade * fi2))
+        }
+    }
+    if (etapaDoJogo == "FI") {
+        if (categoria == "3") {
+        console.log("Valor do ingresso: R$ ", fi3)
+        console.log("Valor total: R$ ", (quantidade * fi3))
+        }
+    }
+    if (etapaDoJogo == "FI") {
+        if (categoria == "4") {
+        console.log("Valor do ingresso: R$ ", fi4)
+        console.log("Valor total: R$ ", (quantidade * fi4))
+        }
+    }
+}
+if (tipoDeJogo == "IN") {
+    if (etapaDoJogo == "SF") {
+        if (categoria == "1") {
+        console.log("Valor do ingresso: US$ ", (sf1 / dolar))
+        console.log("Valor total: US$ ", (quantidade * sf1 / dolar))
+        }
+    }
+    if (etapaDoJogo == "SF") {
+        if (categoria == "2") {
+        console.log("Valor do ingresso: US$ ", (sf2 / dolar))
+        console.log("Valor total: US$ ", (quantidade * sf2 / dolar))
+        }
+    }
+    if (etapaDoJogo == "SF") {
+        if (categoria == "3") {
+        console.log("Valor do ingresso: US$ ", (sf3 / dolar))
+        console.log("Valor total: US$ ", (quantidade * sf3 / dolar))
+        }
+    }
+    if (etapaDoJogo == "SF") {
+        if (categoria == "4") {
+        console.log("Valor do ingresso: US$ ", (sf4 / dolar))
+        console.log("Valor total: US$ ", (quantidade * sf4 / dolar))
+        }
+    }
+    if (etapaDoJogo == "DT") {
+        if (categoria == "1") {
+        console.log("Valor do ingresso: US$ ", (dt1 / dolar))
+        console.log("Valor total: US$ ", (quantidade * dt1 / dolar))
+        }
+    }
+    if (etapaDoJogo == "DT") {
+        if (categoria == "2") {
+        console.log("Valor do ingresso: US$ ", (dt2 / dolar))
+        console.log("Valor total: US$ ", (quantidade * dt2 / dolar))
+        }
+    }
+    if (etapaDoJogo == "DT") {
+        if (categoria == "3") {
+        console.log("Valor do ingresso: US$ ", (dt3 / dolar))
+        console.log("Valor total: US$ ", (quantidade * dt3 / dolar))
+        }
+    }
+    if (etapaDoJogo == "DT") {
+        if (categoria == "4") {
+        console.log("Valor do ingresso: US$ ", (dt4 / dolar))
+        console.log("Valor total: US$ ", (quantidade * dt4 / dolar))
+        }
+    }
+    if (etapaDoJogo == "FI") {
+        if (categoria == "1") {
+        console.log("Valor do ingresso: US$ ", (fi1 / dolar))
+        console.log("Valor total: US$ ", (quantidade * fi1 / dolar))
+        }
+    }
+    if (etapaDoJogo == "FI") {
+        if (categoria == "2") {
+        console.log("Valor do ingresso: US$ ", (fi2 / dolar))
+        console.log("Valor total: US$ ", (quantidade * fi2 / dolar))
+        }
+    }
+    if (etapaDoJogo == "FI") {
+        if (categoria == "3") {
+        console.log("Valor do ingresso: US$ ", (fi3 / dolar))
+        console.log("Valor total: US$ ", (quantidade * fi3 / dolar))
+        }
+    }
+    if (etapaDoJogo == "FI") {
+        if (categoria == "4") {
+        console.log("Valor do ingresso: US$ ", (fi4 / dolar))
+        console.log("Valor total: US$ ", (quantidade * fi4 / dolar))
+        }
+    }
+}
