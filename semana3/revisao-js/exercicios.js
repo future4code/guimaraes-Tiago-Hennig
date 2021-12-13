@@ -17,7 +17,7 @@ function retornaArrayInvertido(array) {
 
 // EXERCÍCIO 03
 function retornaArrayOrdenado(array) {
-    
+    return array.sort(function (a,b) {return a-b})
 }
 
 // EXERCÍCIO 04
@@ -125,32 +125,58 @@ function retornaSegundoMaiorESegundoMenor(array) {
 
 // EXERCÍCIO 11
 function retornaChamadaDeFilme(filme) {
-   
-}
+    const diaboVeste = {
+        nome: "O Diabo Veste Prada", 
+        ano: 2006, 
+        diretor: "David Frankel", 
+        atores: ["Meryl Streep","Anne Hathaway","Emily Blunt","Stanley Tucci"]}
+        return`Venha assistir ao filme ${diaboVeste.nome}, de ${diaboVeste.ano}, dirigido por ${diaboVeste.diretor} e estrelado por ${diaboVeste.atores[0]}, ${diaboVeste.atores[1]}, ${diaboVeste.atores[2]}, ${diaboVeste.atores[3]}.`
+    }
 
 // EXERCÍCIO 12
 function retornaPessoaAnonimizada(pessoa) {
-   
+
+    const newUser = {
+        ...pessoa,
+        nome: "ANÔNIMO"
+    }
+    return newUser
 }
+
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
-   
+    const somenteAutorizados = pessoas.filter((pessoa) => {
+        return (pessoa.idade > 14 && pessoa.idade < 60 && pessoa.altura >= 1.5)
+     })
+     return somenteAutorizados
 }
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-  
+    const naoAutorizados = pessoas.filter((pessoa) => {
+        return ((pessoa.idade <= 14) || (pessoa.idade > 60) || (pessoa.altura < 1.5))
+     })
+     return naoAutorizados
 }
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-
+    for (let conta of contas) {
+        totalCompras = conta.compras.reduce((soma, i) => {
+            soma += i
+            console.log(conta.compras, soma)
+            return soma
+        })
+        conta.saldoTotal -= totalCompras
+        conta.compras = []
+        return contas
+    }
 }
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
+    
 }
 
 // EXERCÍCIO 15B
