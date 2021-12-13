@@ -1,0 +1,13 @@
+1 - Prestar atenção no que está sendo pedido no enunciado. Reler o enunciado quantas vezes forem necessárias.
+
+2 - Do enunciado, retirar informações relevantes para poder criar o código pedido. Prestar atenção nas palavras-chave que irão virar objetos e variáveis, e nas outras informações identificar o que vai ser condicional e função.
+
+3 - Observar as entradas e saídas esperadas.
+
+4 - Desenhar ou criar diagramas que mostrem visulamente o funcionamento e o passo-a-passo do programa. Isso torna mais fácil a criação do código.
+
+5 - Começar a criar o código sem muita formatação e de forma esboçada. Tentar iniciar um código "lindo" e perfeito logo de início gera travamento mental (minha opinião).
+
+6 - Testar o código, variando as informações e testando cada condicional e função.
+
+7 - Melhorar o código depois de ver que ele funciona perfeitamente. Se possível, melhorar os nomes das variáveis, funções e etc. Deixar o código mais "bonito" e organizado.
