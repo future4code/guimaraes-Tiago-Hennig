@@ -1,0 +1,12 @@
+@font-face { font-family: 'Alice'; src: url('Alice-Regular.ttf') format('truetype');}
+
+.estilo-geral {
+    font-family: 'Alice';
+    color: royalblue
+
+}
+
+#container {
+
+}
+
