@@ -7,6 +7,9 @@
 * {
     margin: 0;
     padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Roboto', sans-serif;
 }
 
 h2 {
@@ -26,8 +29,8 @@ button:focus {
 }
 
 img {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
 }
 
 div>p:first-child {
@@ -42,8 +45,9 @@ div img {
     background-color: #ffaf43;
     width: 250px;
     height: 40px;
-    border-radius: 5px;
+    border-radius: 3px;
     font-size: 20px;
+    border-color: #ffaf43;
     color: white;
 }
 
@@ -52,9 +56,13 @@ div img {
 }
 
 .container {
-    height: 500px;
+    height: 300px;
     text-align: center;
-    padding-top: 2em;
+    padding-top: 3em;
+}
+
+.texto-para-comprar {
+    margin-bottom: 5em;
 }
 
 .icone {
@@ -72,6 +80,7 @@ div img {
 #container-de-descricao {
     background-color: #2274a5;
     color: white;
+
 
 }
 
@@ -101,6 +110,10 @@ div:last-child {
     text-align: center;
 }
 
+div table {
+    padding-bottom: 9em;
+}
+
 table {
     width: 60%;
     text-align: center;
@@ -108,10 +121,10 @@ table {
 
 td button {
     background-color: #fadf63;
-    width: 150px;
-    height: 30px;
+    width: 110px;
+    height: 25px;
     border-radius: 5px;
-    color: black;
+    border-color: #fadf63;
 }
 
 td button:hover {
@@ -120,7 +133,7 @@ td button:hover {
 
 .container-do-search {
     margin-top: 20px;
-    height: 100px;
+    height: 80px;
 }
 
 
