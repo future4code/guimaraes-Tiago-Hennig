@@ -1,0 +1,17 @@
+* {
+
+}
+
+.icone {
+    height: 20px;
+    width: 20px;
+}
+
+header div {
+    display: inline;
+    flex-direction: row;
+}
+
+img {
+    display: inline;
+}
