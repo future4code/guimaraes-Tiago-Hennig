@@ -43,11 +43,14 @@ nav {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    width: 200px;
+    width: 380px;
 
 
 }
 
+nav div {
+    display: flex;
+}
 nav > div > p {
 padding-right: 100px;
 }
@@ -61,6 +64,10 @@ nav img {
 nav .botao {
     display: flex;
     justify-content: space-between;
+}
+
+.botao img {
+    height: 20px;
 }
 
 .icone-texto {
