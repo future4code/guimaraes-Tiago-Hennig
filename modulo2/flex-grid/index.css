@@ -1,7 +1,73 @@
+
 * {
+    margin: 0px;
+    padding: 0px;
 
 }
 
+header {
+    background-color: mediumvioletred;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header > div {
+    display: flex;
+    align-items: center;
+}
+
+header img {
+    width: 20px;
+    padding: 10px;
+
+}
+
+header > button {
+    margin-right: 10px;
+    padding: 0 10px;
+    border-radius: 0px;
+}
+
+footer {
+    background-color: mediumvioletred;
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    border: 1px solid black;
+    align-items: center;
+}
+
+nav {
+    background-color: #f2d0e0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 200px;
+
+
+}
+
+nav > div > p {
+padding-right: 100px;
+}
+
+nav img {
+    width: 20px;
+    margin-right: 10px;
+
+}
+
+nav .botao {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icone-texto {
+    display: flex;
+    padding: 10px 0;
+}
+/*
 .icone {
     height: 20px;
     width: 20px;
@@ -15,3 +81,4 @@ header div {
 img {
     display: inline;
 }
+*/
