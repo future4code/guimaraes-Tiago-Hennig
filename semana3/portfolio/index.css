@@ -1,0 +1,126 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    margin-right: 0px;
+    margin-left: 0px;
+    min-width: min-content;
+    color: white;
+}
+
+header {
+    text-align: center;
+    padding: 1em;
+    background-color: rgb(14, 70, 236);
+    letter-spacing: 0.02em;
+    margin-bottom: 40px;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+header > h1 {
+    margin-bottom: 10px;
+}
+header > a {
+    margin-top: 15px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+#container {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 25px;
+    background-color: rgb(14, 70, 236);
+    margin-bottom: 40px;
+    text-justify: center;
+    line-height: 20px;
+    white-space: nowrap;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+}
+
+div > ul {
+    list-style: none;
+    line-height: 40px;
+
+}
+.titulo {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-size: xx-large;
+    font-weight: bold
+}
+
+.subtitulo {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: x-large;
+}
+.lista {
+
+}
+
+.redesocial {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(14, 70, 236);
+}
+
+footer {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    background-color: rgb(14, 70, 236);
+    text-justify: center;
+    line-height: 20px;
+    white-space: nowrap;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+#contatos {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 25px;
+    background-color: rgb(14, 70, 236);
+    margin-bottom: 40px;
+    line-height: 30px;
+    white-space: nowrap;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-radius: 10px;
+}
+
+button {
+    background-color: rgb(0, 40, 160);
+    margin-top: 10px;
+    height: 30px;
+}
+
+label {
+    display: inline-block;
+    width: 110px;
+}
+
+.texto {
+    height: 80px;
+    margin-top: 7px;
+}
+
+button:hover {
+    background-color: royalblue;
+
+}
+
+#proj {
+    margin-bottom: 20px;
+}
