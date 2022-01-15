@@ -2,7 +2,6 @@
 * {
     margin: 0px;
     padding: 0px;
-
 }
 
 header {
@@ -20,7 +19,6 @@ header > div {
 header img {
     width: 20px;
     padding: 10px;
-
 }
 
 header > button {
@@ -38,13 +36,15 @@ footer {
     align-items: center;
 }
 
+main {
+    display: flex;
+}
 nav {
     background-color: #f2d0e0;
     display: flex;
     flex-direction: column;
     padding: 10px;
-    width: 380px;
-
+    width: 270px;
 
 }
 
@@ -69,11 +69,35 @@ nav .botao {
 .botao img {
     height: 20px;
 }
-
+.flecha {
+    padding-top: 10px;
+}
 .icone-texto {
     display: flex;
     padding: 10px 0;
 }
+
+.espaco-simbolo {
+    padding-left: 0.4vw;
+}
+
+.container {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 2fr;
+}
+
+.item {
+    border: 1px solid black;
+    width:270px;
+}
+
+.item > img {
+    width: 100%;
+}
+
+
+
 /*
 .icone {
     height: 20px;
