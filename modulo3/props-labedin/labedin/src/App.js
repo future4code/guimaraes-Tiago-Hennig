@@ -3,12 +3,19 @@ import './App.css';
 import CardGrande from './components/CardGrande/CardGrande';
 import ImagemButton from './components/ImagemButton/ImagemButton';
 import CardPequeno from './components/CardPequeno/CardPequeno';
+import styled from 'styled-components';
+
+const Vermelho = styled.h2`
+  color: red;
+  background-color:blue;
+`
+
 
 function App() {
   return (
     <div className="App">
       <div className="page-section-container">
-        <h2>Dados pessoais</h2>
+        <Vermelho>Dados pessoais</Vermelho>
         <CardGrande 
           imagem="https://avatars.githubusercontent.com/u/86529848?v=4"
           nome="Tiago Hennig" 

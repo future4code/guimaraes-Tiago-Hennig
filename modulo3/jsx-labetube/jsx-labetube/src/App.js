@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import styled from 'styled-components';
 
 function App() {
   const titulo = "Título do vídeo"
