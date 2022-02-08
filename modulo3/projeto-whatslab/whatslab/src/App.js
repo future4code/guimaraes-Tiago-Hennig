@@ -1,31 +1,46 @@
 import './App.css';
 import styled from 'styled-components'
+import React from 'react';
+import Mensagem from './components/Mensagem';
 
-const Principal = styled.body`
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: center;
-  margin: 50px;
-`
 
-const Mensagem = styled.button`
-  display: flex;
-  height: 60px;
-  width: 100px;
-  align-items: center;
-`
+class App extends React.Component {
+  state = {
+    usuario: "",
+    mensagem: "",
+    mensagens: []
+  }
 
-function App() {
+
+handleInputUsuarioChange= (event)=>{
+  this.setState({usuario: event.target.value})
+}
+
+handleInputMensagemChange = (event) => {
+  this.setState({mensagem: event.target.value})
+}
+
+onClickEnviar = () => {
+  this.setState({mensagens: [...this.state.mensagens,{usuario: this.state.usuario, mensagem: this.state.mensagem}] })
+}
+
+
+  render() {
   return (
     <div>
-      <Principal>
+        <div>
+          {this.state.mensagens.map(item => <Mensagem usuario={item.usuario} mensagem ={item.mensagem}/>)}
+        </div>
 
-        <Mensagem> AMENDOIM </Mensagem>
-        <Mensagem> CASTANHA</Mensagem>
+        <div>
+          <input placeholder='Usuário' type="text" value={this.state.usuario} onChange={this.handleInputUsuarioChange}/>
+          <input placeholder='Mensagem' type="text" value={this.state.mensagem} onChange={this.handleInputMensagemChange} />
+          <button onClick={this.onClickEnviar}> Enviar </button>
+        </div>
 
-      </Principal>
     </div>
   );
+}
 }
 
 export default App;
