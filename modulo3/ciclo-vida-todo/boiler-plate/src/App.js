@@ -20,17 +20,7 @@ const InputsContainer = styled.div`
 
 class App extends React.Component {
     state = {
-      tarefas: [{
-        id: Date.now(), // Explicação abaixo
-        texto: 'Comprar cebola',
-        completa: false // Indica se a tarefa está completa (true ou false)
-      },
-      {
-        id: Date.now(), // Explicação abaixo
-        texto: 'Comprar café',
-        completa: true // Indica se a tarefa está completa (true ou false)
-      },
-    ],
+      tarefas: [],
       inputValue: '',
       filtro: 'pendentes'
     }
@@ -44,10 +34,19 @@ class App extends React.Component {
   };
 
   onChangeInput = (event) => {
-
+    this.setState({textoNovaTarefa: event.target.value})
   }
 
   criaTarefa = () => {
+    const novaTarefa = {
+      id: Date.now(),
+      texto: this.state.textoNovaTarefa,
+      completa: false
+    }
+
+    const novaListaDeTarefa = [novaTarefa, ... this.state.tarefas]
+
+    this.setState({tarefas: novaListaDeTarefa})
 
   }
 
