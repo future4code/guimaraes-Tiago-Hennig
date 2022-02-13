@@ -22,7 +22,7 @@ class App extends React.Component {
     state = {
       tarefas: [],
       inputValue: '',
-      filtro: 'pendentes'
+      filtro: ''
     }
 
   componentDidUpdate() {
@@ -34,28 +34,35 @@ class App extends React.Component {
   };
 
   onChangeInput = (event) => {
-    this.setState({textoNovaTarefa: event.target.value})
+    this.setState({inputValue: event.target.value})
   }
 
   criaTarefa = () => {
     const novaTarefa = {
       id: Date.now(),
-      texto: this.state.textoNovaTarefa,
+      texto: this.state.inputValue,
       completa: false
     }
-
-    const novaListaDeTarefa = [novaTarefa, ... this.state.tarefas]
-
+    const novaListaDeTarefa = [... this.state.tarefas, novaTarefa]
     this.setState({tarefas: novaListaDeTarefa})
-
   }
 
   selectTarefa = (id) => {
-
+    const novaListaDeTarefa = this.state.tarefas.map((tarefa) => {
+      if(tarefa.id === id) {
+        const novaTarefa = {
+          ...tarefa,
+          completa: !tarefa.completa
+        }
+        return novaTarefa
+      }
+      return tarefa
+    })
+    this.setState({ tarefas:novaListaDeTarefa })
   }
 
   onChangeFilter = (event) => {
-
+    this.setState({filtro: event.target.value})
   }
 
   render() {
@@ -105,7 +112,3 @@ class App extends React.Component {
 }
 
 export default App
-
-
-// Item 7.
-// 
