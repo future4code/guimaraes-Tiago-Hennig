@@ -7,7 +7,6 @@ import Background from './img/background.png'
 const Page = styled.div`
   display: flex;
   flex-direction: column;
-
 `
 
 const Digitacao = styled.div`
@@ -33,6 +32,13 @@ const Box = styled.div`
   background-image: url(${Background});
 `
 
+const CampoUsuario = styled.input`
+  width: 75px;
+`
+
+const CampoMensagem = styled.input`
+  width: 250px;
+`
 
 class App extends React.Component {
   state = {
@@ -50,9 +56,23 @@ handleInputMensagemChange = (event) => {
   this.setState({mensagem: event.target.value})
 }
 
+handleKeyPress = (event) => {
+  if (event.keyCode === 13) {
+  this.onClickEnviar()
+}
+}
+
 onClickEnviar = () => {
   this.setState({mensagens: [{usuario: this.state.usuario, mensagem: this.state.mensagem},...this.state.mensagens] , mensagem: '', usuario: '' })
+
 }
+
+keyDownEnviar = (event) => {
+  if (event.keyCode === 13) {
+    this.onClickEnviar()
+  }
+}
+
 
   render() {
   return (
@@ -65,9 +85,11 @@ onClickEnviar = () => {
         </Box>
 
         <Digitacao>
-          <input placeholder='Usuário' type="text" value={this.state.usuario} onChange={this.handleInputUsuarioChange}/>
-          <input placeholder='Mensagem' type="text" value={this.state.mensagem} onChange={this.handleInputMensagemChange} />
-          <button type="reset" onClick={this.onClickEnviar}> Enviar </button>
+          <CampoUsuario placeholder='Usuário' type="text" value={this.state.usuario} onChange={this.handleInputUsuarioChange} 
+          onKeyPress={this.handleKeyPress} />
+          <CampoMensagem placeholder='Mensagem' type="text" value={this.state.mensagem} onChange={this.handleInputMensagemChange} 
+          onKeyPress={this.handleKeyPress} onKeyDown={this.keyDownEnviar} />
+          <button type="submit" onClick={this.onClickEnviar} onKeyPress={this.handleKeyPress} > Enviar </button>
         </Digitacao>
 
     </Page>
