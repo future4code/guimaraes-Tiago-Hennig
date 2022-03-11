@@ -1,15 +1,15 @@
 
-import './App.css';
 import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { DivPage, Div, Header, Main, Coluna, 
   CriarPlaylist, ListaDePlaylists, AdicionarMusicas, 
-DetalheDaPlaylist, DivPlaylistBotao, BotaoApagar } from './components/style';
+DetalheDaPlaylist, DivPlaylistBotao, BotaoApagar, BotaoDetalhes } from './components/style';
+
 
 
 class App extends React.Component {
-  state ={
+  state = {
     playlists: [],
     inputCP: '',
     inputPlaylist: '',
@@ -21,14 +21,11 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getAllPlaylists()
-    this.getPlaylistTracks()
   }
 
   componentDidUpdate() {
-    this.getPlaylistTracks()
+
   }
-
-
 
 
   getAllPlaylists = () => {
@@ -43,9 +40,6 @@ class App extends React.Component {
     }).catch((error) => console.log(error))
   }
 
-
-
-
   getPlaylistTracks = (idDaPlaylist) => {
     axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${idDaPlaylist}/tracks`,
     {
@@ -53,37 +47,30 @@ class App extends React.Component {
         Authorization: 'tiago-hennig-turmaGuimaraes'
       }
     }).then((response) => {
-      this.setState({faixasDaPlaylist: response.data.result.list})
-      console.log(response.data.result.list)
+      this.setState({faixasDaPlaylist: response.data.result.tracks})
+      console.log(response.data)
     }).catch((error) => console.log(error))
   }
 
 
-
-
-
-
-
   createPlaylist = () => {
+    const url = 'https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists'
     const body = {
       name: this.state.inputCP
     }
 
-    axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists',
-    body,
+    axios.post(url, body,
     {
       headers: {
         Authorization: 'tiago-hennig-turmaGuimaraes'
       }
     }).then((response) => {
       console.log(response.data)
+      this.getAllPlaylists()
     }).catch((error) => {
       console.log(error.response.data)
     })
   }
-
-
-
 
 
   deletePlaylist = (idDaPlaylist) => {
@@ -97,30 +84,24 @@ class App extends React.Component {
       }).catch((error) => console.log(error.response))
   }
 
-
-
-
-
   addTrackToPlaylist = () => {
-    const body = {
-      name: this.state.inputTrack,
-      artist: this.state.inputArtist,
-      url: this.state.inputURL
-    }
-
-    axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks', body,
-    {
-      headers: {
-        Authorization: 'tiago-hennig-turmaGuimaraes'
+      const idDaPlaylist = this.state.playlists.find(playlist => playlist.name === this.state.inputPlaylist).id
+      const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${idDaPlaylist}/tracks`
+      const body = {
+        name: this.state.inputTrack,
+        artist: this.state.inputArtist,
+        url: this.state.inputURL
       }
-    }).then((response) => {
-      console.log(response.data)
-    }).catch((error) => {
-      console.log(error.response.data)
-    })
+      axios.post(url, body,
+      {
+        headers: {
+          Authorization: 'tiago-hennig-turmaGuimaraes'
+        }}).then((response) => {
+          console.log(response)
+        }).catch((error) => {
+        console.log(error.response.data.message)
+      })
   }
-
-
 
   handleInputCP = (event) => {
     this.setState({ inputCP: event.target.value})
@@ -147,39 +128,26 @@ class App extends React.Component {
     console.log(this.state.inputURL)
   }
 
-
-
-
-
     render() {
+
     
     const renderizaPlaylists = this.state.playlists.map((playlist) => {
       return (
-        <DivPlaylistBotao>
-          <p key={playlist.id}>{playlist.name}</p>
+        <DivPlaylistBotao key={playlist.id}>
+          <p>{playlist.name}</p>
           <BotaoApagar onClick={() => this.deletePlaylist(playlist.id)}>x</BotaoApagar>
+          <BotaoDetalhes onClick={() => this.getPlaylistTracks(playlist.id)}>Detalhes</BotaoDetalhes>
         </DivPlaylistBotao>
       )
     })
 
-    // const renderizaDetalhes = this.state.playlists.map((playlist) => {
-    //   return(
-    //     <div>
-    //       <h4 key={this.getPlaylistTracks(playlist.id)}>{playlist.name}</h4>
-    //       {this.state.faixasDaPlaylist.map(item => {
-    //   return(
-    //     <p key={item.id}>{item.name}</p>
-    //   )
-    // })}
-    // </div>
-    //   )
-    // }) 
-
-    // const renderizaFaixas = this.state.faixasDaPlaylist.map(playlist => {
-    //   return(
-    //     <p key={playlist.id}>{playlist.name}</p>
-    //   )
-    // })
+    const renderizaDetalhes = this.state.faixasDaPlaylist.map((playlist) => {
+      return (
+        <div key={playlist.id}>
+          <p>{playlist.name}</p>
+        </div>
+      )
+    })
 
       return(
         <Div>
@@ -215,7 +183,7 @@ class App extends React.Component {
           <p>Adicionar Músicas</p>
 
           <div>
-            <input placeholder='Playlist' value={this.state.inputPlaylist} 
+            <input placeholder='Qual playlist?' value={this.state.inputPlaylist}
             onChange={this.handleInputPlaylist}></input>
             <input placeholder='Nome da música' value={this.state.inputTrack} 
             onChange={this.handleInputTrack}></input>
@@ -223,7 +191,8 @@ class App extends React.Component {
             onChange={this.handleInputArtist}></input>
             <input placeholder='URL da música' value={this.state.inputURL} 
             onChange={this.handleInputURL}></input>
-            <button onClick={this.addTrackToPlaylist}>Adicionar música</button>
+            <button onClick={this.addTrackToPlaylist}>Adicionar Música</button>
+
           </div>
         </AdicionarMusicas>
 
@@ -231,7 +200,7 @@ class App extends React.Component {
           <p>Detalhe da Playlist</p>
 
           <div>
-            {/* {renderizaDetalhes} */}
+            {renderizaDetalhes}
           </div>
         </DetalheDaPlaylist>
       </Main>
@@ -242,3 +211,4 @@ class App extends React.Component {
 }
 }
 export default App;
+

@@ -133,11 +133,6 @@ text-align: center;
 min-height: 250px;
 border-radius: 10px;
 width: 300px;
-
-  p {
-    font-size: larger;
-    font-weight: bold;
-  }
 `
 
 export const DivPlaylistBotao = styled.div`
@@ -148,11 +143,16 @@ justify-content: center;
 p {
   padding-right: 3px;
   font-size: medium;
-  font-weight: 300;
+  font-weight: 400;
+  color: darkblue;
 }
 `
 
 export const BotaoApagar = styled.button`
 color: red;
 align-self: center;
+`
+
+export const BotaoDetalhes = styled.button`
+align-self: center ;
 `
