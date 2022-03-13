@@ -1,12 +1,9 @@
 
 import React from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
 import { DivPage, Div, Header, Main, Coluna, 
   CriarPlaylist, ListaDePlaylists, AdicionarMusicas, 
-DetalheDaPlaylist, DivPlaylistBotao, BotaoApagar, BotaoDetalhes } from './components/style';
-
-
+DetalheDaPlaylist, DivPlaylistBotao, BotaoApagar, BotaoDetalhes, Detalhes } from './components/style';
 
 class App extends React.Component {
   state = {
@@ -24,9 +21,7 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-
   }
-
 
   getAllPlaylists = () => {
     axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists',
@@ -101,6 +96,8 @@ class App extends React.Component {
         }).catch((error) => {
         console.log(error.response.data.message)
       })
+
+      this.setState({inputPlaylist: '', inputTrack: '', inputArtist: '', inputURL: '',})
   }
 
   handleInputCP = (event) => {
@@ -130,7 +127,6 @@ class App extends React.Component {
 
     render() {
 
-    
     const renderizaPlaylists = this.state.playlists.map((playlist) => {
       return (
         <DivPlaylistBotao key={playlist.id}>
@@ -141,11 +137,16 @@ class App extends React.Component {
       )
     })
 
-    const renderizaDetalhes = this.state.faixasDaPlaylist.map((playlist) => {
+    const renderizaDetalhes = this.state.faixasDaPlaylist.map((track) => {
       return (
-        <div key={playlist.id}>
-          <p>{playlist.name}</p>
-        </div>
+        <Detalhes key={track.id}>
+          <p>Música: {track.name}</p>
+          <p>Artista: {track.artist}</p>
+          <audio preload controls>
+            <source src={track.url} type='audio/mp3' />
+          </audio> 
+
+        </Detalhes>
       )
     })
 
@@ -154,6 +155,7 @@ class App extends React.Component {
     <DivPage>
       <Header>
         <p>Labefy</p>
+        
       </Header>
 
       <Main>
@@ -198,9 +200,11 @@ class App extends React.Component {
 
         <DetalheDaPlaylist>
           <p>Detalhe da Playlist</p>
+          
 
           <div>
             {renderizaDetalhes}
+            
           </div>
         </DetalheDaPlaylist>
       </Main>

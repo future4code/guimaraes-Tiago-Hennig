@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 
 export const DivPage = styled.div`
-width: 750px;
+width: 900px;
 align-content:center;
 align-self: center;
 display: flex;
@@ -133,6 +133,12 @@ text-align: center;
 min-height: 250px;
 border-radius: 10px;
 width: 300px;
+padding-bottom: 10px;
+
+p {
+  font-weight: bold;
+  font-size: larger;
+}
 `
 
 export const DivPlaylistBotao = styled.div`
@@ -155,4 +161,27 @@ align-self: center;
 
 export const BotaoDetalhes = styled.button`
 align-self: center ;
+`
+
+export const Detalhes = styled.div`
+display: flex;
+flex-direction: column;
+min-height: 120px;
+margin: 10px;
+border: solid black 1px;
+padding-bottom: 5px;
+padding-top:15px;
+p {
+  margin:0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+audio{
+  margin:0;
+  height: 50px;
+  margin-top: 20px;
+  width: 260px;
+}
+
 `
