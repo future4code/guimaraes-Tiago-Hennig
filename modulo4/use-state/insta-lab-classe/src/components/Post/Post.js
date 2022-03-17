@@ -8,22 +8,22 @@ import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeComentario from '../../img/comment_icon.svg'
 
-class Post extends React.Component {
-  state = {
-    curtido: false, // usado para a lógica de mudança de cor do coração e o aumento/diminuição do número de curtidas
+function Post(props) {
+  
+    const [curtido, setLiked ] = useState(false) // usado para a lógica de mudança de cor do coração e o aumento/diminuição do número de curtidas
     numeroCurtidas: 0, // número de curtidas do post. Varia entre 0 e 1. 
     comentando: false, // usado para a lógica de abrir ou fechar a caixa de comentário
     numeroComentarios: 0, // número de comentários do post.
     comentarios: [], // responsável por guardar a lista de comentários feitos no post
-  }
 
-  onClickCurtida = () => {
+
+  onClickCurtida = (event) => {
     
     // verifica se, no estado, cutido é true ou false
-    if (this.state.curtido) {
+    if (curtido) {
 
       // se for true, entra nesse caso, e o estado é modificado de acordo com esses comandos:
-      this.setState({
+      const 
         curtido: !this.state.curtido,
         numeroCurtidas: this.state.numeroCurtidas - 1
       })
