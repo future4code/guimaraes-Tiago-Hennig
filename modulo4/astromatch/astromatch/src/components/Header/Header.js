@@ -6,7 +6,6 @@ const Astro = styled.div`
     align-self: center;
     text-align: center;
     color: #1F2FEB;
-
 `
 
 const Match = styled.div`
@@ -16,24 +15,64 @@ const Match = styled.div`
 
 const Main = styled.div`
     display: flex;
-    justify-content: center;
+
+    div:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    div > button {
+        justify-self: right;
+        height: 30px;
+        display: ;
+}
 `
 
+const AstroMatch = styled.div`
+    display: flex;
+    text-align: center;
+    justify-self: center;
+    padding-left: 135px;
+    padding-right: 70px;
+`
+
+
+
+
+
+
+
+
 function Header() {
+
+    const [botao, setBotao] = useState(false)
+
+
+    const onClickBotao = () => {
+        setBotao(!botao)
+        console.log(botao)
+    }
+
+
 
     return(
 
         <Main>
 
+            <AstroMatch>
+                <Astro>
+                    <h2>Astro</h2>
+                </Astro>
 
-            <Astro>
-                <h2>Astro</h2>
-            </Astro>
+                <Match>
+                    <h2>Match</h2>
+                </Match>
+            </AstroMatch>
 
-            <Match>
-                <h2>Match</h2>
-            </Match>
-
+            <div>
+                <button onClick={onClickBotao}>Matchs</button>
+            </div>
 
 
                 

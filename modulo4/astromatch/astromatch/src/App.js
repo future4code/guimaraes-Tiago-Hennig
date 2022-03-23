@@ -20,7 +20,9 @@ const Tela = styled.div`
   justify-content: center;
   align-self: center ;
   border-radius: 10px;
+  
 `
+////  ---- HEADER----
 
 const HeaderApp = styled.div`
   height: 80px;
@@ -30,44 +32,86 @@ const HeaderApp = styled.div`
 const Main = styled.div`
   height: 520px;
 `
+const Astro = styled.div`
+    align-items: center;
+    align-self: center;
+    text-align: center;
+    color: #1F2FEB;
+`
+
+const Match = styled.div`
+    text-align: center;
+    color: #6672EE;
+`
+
+const MainHeader = styled.div`
+    display: flex;
+
+    div:nth-child(2) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    div > button {
+        justify-self: right;
+        height: 30px;
+        display: flex;
+}
+`
+const AstroMatch = styled.div`
+    display: flex;
+    text-align: center;
+    justify-self: center;
+    padding-left: 135px;
+    padding-right: 70px;
+`
 
 
+function App() {
 
-class App extends React.Component {
+  const [tela, mudaTela] = useState(false)
 
-  // const [tela, mudaTela] = useState("")
+  const onClickBotao = () => {
+      mudaTela(!tela)
+      console.log(tela)
+  }
 
-  // onClickApp = () => {
-  //   switch (tela) {
-  //     case 'principal':
-  //       mudaTela({TelaPrincipal})
-  //       break;
-  //     case 'match':
-  //       mudaTela({TelaMatch})
-      
-  //   }
 
-  // }
-
-render() {
 
   return (
     <Div>
+
       <Tela>
+
         <HeaderApp>
-          <Header />
+          <MainHeader>
+              <AstroMatch>
+                <Astro>
+                  <h2>Astro</h2>
+                </Astro>
+
+                <Match>
+                  <h2>Match</h2>
+                </Match>
+              </AstroMatch>
+
+              <div>
+                  <button onClick={onClickBotao}>Matchs</button>
+              </div>
+          </MainHeader>
         </HeaderApp>
 
         <Main>
-          <TelaPrincipal />
+          {tela ? <TelaPrincipal /> : <TelaMatch />}
         </Main>
-      </Tela>
 
+      </Tela>
 
     </Div>
   );
 }
-}
+
 
 
 export default App;
