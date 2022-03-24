@@ -17,40 +17,62 @@ const Imagem = styled.div`
 
 
 function TelaPrincipal() {
+    const [foto, changeProfile] = useState("")
+    const [idDoMatch, setIdDoMatch] = useState("")
+    const [matches, setMatches] = useState([])
+    const [accept, setAccept] = useState(Boolean)
+    const [match, setIsMatch] = useState(Boolean)
 
 
-
-
-
-    // const getProfileToChoose = async () => {
-    // try {
-    //     const response = await axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/:aluno/person',
-    //     {
-    //         headers: {
-    //             Authorization: 'tiago-hennig-turmaGuimaraes'
-    //         }})
-    //         changeProfile(response.data)
-    //     }catch(error) {
-    //     console.log(error)}
-
-    // }
     useEffect(() => {
         getProfileToChoose()}, [])
 
     const getProfileToChoose = () => {
-        axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/tiago/person')
+        axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/tiago-hennig/person')
         .then((response) => {
             changeProfile(response.data.profile.photo)
-            console.log(response)
+            setIdDoMatch(response.data.profile.id)
+            // console.log(response)
         })
         .catch(error => console.log(error))
     }
 
-    const [foto, changeProfile] = useState("")
 
-
-
+    const choosePerson = () => {
+        const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/tiago-hennig/choose-person'
+        const body = {
+            id: idDoMatch,
+            choice: accept
+        }
+        axios.post(url,body,
+        ).then((response) => {
+        // console.log(response.data)
+        setIsMatch(response.data.isMatch)
+        console.log(match)
+    }).catch((error) => {
+        console.log(error)
+    })
+    }
     
+    const like = () => {
+        setAccept(true)
+        choosePerson()
+        getProfileToChoose()
+        addMatches()
+    }
+
+    const dislike = () => {
+        setAccept(false)
+        choosePerson()
+        getProfileToChoose()
+    }
+
+    const addMatches = () => {
+        if (match) {
+            setMatches([...matches, idDoMatch])
+            console.log(matches)
+        }}
+
     return(
 
         <div>
@@ -63,7 +85,8 @@ function TelaPrincipal() {
                 </Imagem>
 
                 <button onClick={getProfileToChoose}>JULIANO</button>
-
+                <button onClick={dislike}>NÃO</button>
+                <button onClick={like}>SIM</button>
                 <div>
 
                 </div>

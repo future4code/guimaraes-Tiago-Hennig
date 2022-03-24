@@ -16,7 +16,7 @@ function TelaMatch() {
     return(
 
         <div>
-            <p>MADONNA</p>
+            <p>MATCH</p>
 
         </div>
     )
