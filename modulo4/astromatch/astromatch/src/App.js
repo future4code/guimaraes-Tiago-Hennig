@@ -4,12 +4,19 @@ import TelaPrincipal from './components/TelaPrincipal/TelaPrincipal'
 import TelaMatch from './components/TelaMatch/TelaMatch'
 import Header from './components/Header/Header';
 import React, { useState } from 'react';
+import stripes from './img/stripes.jpg'
+import matches from './img/matches.png'
+import meet from './img/meet.png'
 
 const Div = styled.div`
   display: flex;
   align-content: center;
   justify-content: center;
-  margin: 50px;
+  margin: 0px;
+  background:url(${stripes});
+  background-size: cover;
+  height: 100vh;
+  border: blur(9px);
 `
 
 const Tela = styled.div`
@@ -20,32 +27,42 @@ const Tela = styled.div`
   justify-content: center;
   align-self: center ;
   border-radius: 10px;
+  margin: 50px;
   
 `
 ////  ---- HEADER----
 
 const HeaderApp = styled.div`
   height: 80px;
+  width: 360px;
 
 `
 
 const Main = styled.div`
-  height: 520px;
+  height: 460px;
 `
 const Astro = styled.div`
     align-items: center;
     align-self: center;
     text-align: center;
     color: #1F2FEB;
+    font-size: 30px;
+    font-weight: 700;
 `
 
 const Match = styled.div`
     text-align: center;
     color: #6672EE;
+    font-size: 30px;
+    font-weight: 700;
 `
 
 const MainHeader = styled.div`
     display: flex;
+    width: 360px;
+    justify-content: center;
+    padding-left: 30px;
+    height: 70px;
 
     div:nth-child(2) {
         display: flex;
@@ -53,24 +70,26 @@ const MainHeader = styled.div`
         justify-content: center;
     }
 
-    div > button {
+    div > a {
         justify-self: right;
-        height: 30px;
+        width: 30px;
         display: flex;
 }
+
+    div > a > img {
+      width: 50px;
+      padding-left: 50px;
+    }
 `
 const AstroMatch = styled.div`
     display: flex;
     text-align: center;
-    justify-self: center;
-    padding-left: 135px;
-    padding-right: 70px;
 `
 
 
 function App() {
 
-  const [tela, mudaTela] = useState(false)
+  const [tela, mudaTela] = useState(true)
 
   const onClickBotao = () => {
       mudaTela(!tela)
@@ -88,16 +107,16 @@ function App() {
           <MainHeader>
               <AstroMatch>
                 <Astro>
-                  <h2>Astro</h2>
+                  <p>Astro</p>
                 </Astro>
 
                 <Match>
-                  <h2>Match</h2>
+                  <p>Match</p>
                 </Match>
               </AstroMatch>
 
               <div>
-                  <button onClick={onClickBotao}>Matchs</button>
+                {tela ? <a onClick={onClickBotao}><img src={matches}></img></a> : <a onClick={onClickBotao}><img src={meet}></img></a> }
               </div>
           </MainHeader>
         </HeaderApp>

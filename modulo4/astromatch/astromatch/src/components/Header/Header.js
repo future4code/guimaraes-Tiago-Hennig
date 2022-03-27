@@ -25,7 +25,6 @@ const Main = styled.div`
     div > button {
         justify-self: right;
         height: 30px;
-        display: ;
 }
 `
 
@@ -62,11 +61,11 @@ function Header() {
 
             <AstroMatch>
                 <Astro>
-                    <h2>Astro</h2>
+                    <h1>Astro</h1>
                 </Astro>
 
                 <Match>
-                    <h2>Match</h2>
+                    <p>Match</p>
                 </Match>
             </AstroMatch>
 

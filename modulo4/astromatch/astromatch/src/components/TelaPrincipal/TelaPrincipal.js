@@ -1,17 +1,57 @@
 import styled from 'styled-components';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
+import not from '../../img/not.png'
+import heart from '../../img/heart.png'
 
-const Botoes = styled.div`
+const Div = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
 
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 434px;
+        margin-bottom: 15px;
+        max-width: 360px;
+        border: solid black 1px;
+    }
 `
 
-const Imagem = styled.div`
+const Botoes = styled.div`
+display: flex;
+width: 50px;
+height: 50px;
+justify-content: center;
 
+a > img{
+    width: 60px;
+    height: 60px; 
+    margin-left: 15px;
+    margin-right: 15px;
+}
+`
+
+const Perfil = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    
 
     img {
-        width: 360px;
+        max-height: 360px;
+        max-width: 360px;
+        align-self: center;
+
+
+    p {
+        position: absolute;
+        padding-top: 100px;
     }
+
+}
 
 `
 
@@ -22,6 +62,7 @@ function TelaPrincipal() {
     const [matches, setMatches] = useState([])
     const [accept, setAccept] = useState(Boolean)
     const [match, setIsMatch] = useState(Boolean)
+    const [bio,changeBio] = useState("")
 
 
     useEffect(() => {
@@ -31,12 +72,12 @@ function TelaPrincipal() {
         axios.get('https://us-central1-missao-newton.cloudfunctions.net/astroMatch/tiago-hennig/person')
         .then((response) => {
             changeProfile(response.data.profile.photo)
+            changeBio(response.data.profile.bio)
             setIdDoMatch(response.data.profile.id)
-            // console.log(response)
+            console.log(response)
         })
         .catch(error => console.log(error))
     }
-
 
     const choosePerson = () => {
         const url = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/tiago-hennig/choose-person'
@@ -77,29 +118,22 @@ function TelaPrincipal() {
 
     return(
 
-        <div>
+        <Div>
             <main>
 
-                <Imagem>
+                <Perfil>
                     <img src={foto}></img>
-
-
-                </Imagem>
-
-                <button onClick={getProfileToChoose}>JULIANO</button>
-                <button onClick={dislike}>NÃO</button>
-                <button onClick={like}>SIM</button>
-                <div>
-
-                </div>
+                    <p>{bio}</p>
+                </Perfil>
 
             </main>
 
             <Botoes>
-
-
+                <a onClick={dislike}><img src={not}></img></a>
+                <a onClick={like}><img src={heart}></img></a>
             </Botoes>
-        </div>
+
+        </Div>
     )
 
 
