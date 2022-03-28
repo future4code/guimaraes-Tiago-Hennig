@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import not from '../../img/not.png'
 import heart from '../../img/heart.png'
-import { Div, Botoes, Perfil, Description } from './style'
+import { Div, Botoes, Perfil, Description, Name } from './style'
 
 function TelaPrincipal() {
     const [foto, changeProfile] = useState("")
@@ -12,6 +12,7 @@ function TelaPrincipal() {
     const [match, setIsMatch] = useState(Boolean)
     const [bio,changeBio] = useState("")
     const [age, setAge] = useState("")
+    const [name,setName] = useState("")
 
     useEffect(() => {
         getProfileToChoose()}, [])
@@ -23,6 +24,7 @@ function TelaPrincipal() {
             changeBio(response.data.profile.bio)
             setIdDoMatch(response.data.profile.id)
             setAge(response.data.profile.age)
+            setName(response.data.profile.name)
             console.log(response)
         })
         .catch(error => console.log(error))
@@ -65,6 +67,7 @@ function TelaPrincipal() {
             <main>
                 <Perfil>
                     <img src={foto}></img>
+                    <Name>{name}</Name>
                         <Description>
                             <p>{age},</p>
                             <p>{bio}</p>

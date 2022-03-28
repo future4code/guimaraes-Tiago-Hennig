@@ -9,7 +9,7 @@ export const Div = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
-        height: 434px;
+        height: 490px;
         margin-bottom: 15px;
         width: 360px;
         border: solid black 1px;
@@ -39,19 +39,16 @@ export const Perfil = styled.div`
         max-height: 345px;
         max-width: 360px;
         align-self: center;
-
-    p {
-        position: absolute;
-        padding-top: 100px;
     }
 }
 `
 
+
 export const Description = styled.div`
     display: flex;
     align-items: center;
-    height: 35px;
-    margin-top: 15px;
+    height: 0px;
+    margin-top: 0px;
 
         p:nth-child(1) {
             font-weight: 700;
@@ -64,4 +61,12 @@ export const Description = styled.div`
     p:nth-child(2) {
         margin-right: 10px;
     }
+`
+
+export const Name = styled.p`
+    margin-right: 10px;
+    margin-left: 25px;
+    font-size: xx-large;
+    margin-top: 10px;
+
 `

@@ -13,7 +13,7 @@ export const Div = styled.div`
 `
 
 export const Tela = styled.div`
-    height: 600px;
+    height: 660px;
     background-color: white;
     border: solid black 1px ;
     width: 400px;
