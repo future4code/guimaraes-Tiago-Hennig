@@ -1,16 +1,42 @@
-import React from "react";
+import {React, useState} from "react";
+import { Page } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 
 
 const HomePage = () => {
+    const navigate = useNavigate()
+    const [logado, setLogado] = useState(true)
+
+    const login = () => {
+        setLogado(!logado)
+    }
+
+    const goToListPage = () => {
+        navigate("/list")
+    }
+
+    const goToAdminHomePage = () => {
+        if (logado) {
+            navigate("/admin")
+        } else {
+            navigate("/login")
+        }
+    }
 
     return (
-        <div>
-            <p>LabeX</p>
-            <p>Suas viagens espaciais</p>
-            <button>viagens</button>
-            <button>área restrita</button>
-        </div>
+        <Page>
+            <div>
+                <div>
+                    <h1>LabeX</h1>
+                    <h3>Suas viagens espaciais</h3>
+                </div>
+                <div>
+                    <button onClick={goToListPage}>viagens</button>
+                    <button onClick={goToAdminHomePage}>área restrita</button>
+                </div>
+            </div>
+        </Page>
     )
 }
 
