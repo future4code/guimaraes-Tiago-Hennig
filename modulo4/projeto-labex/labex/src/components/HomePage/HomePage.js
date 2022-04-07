@@ -6,19 +6,19 @@ import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
     const navigate = useNavigate()
-    const [logado, setLogado] = useState(true)
+    const [logado, setLogado] = useState(false)
 
     const login = () => {
         setLogado(!logado)
     }
 
     const goToListPage = () => {
-        navigate("/list")
+        navigate("/trips/list")
     }
 
     const goToAdminHomePage = () => {
         if (logado) {
-            navigate("/admin")
+            navigate("/admin/trips/list")
         } else {
             navigate("/login")
         }

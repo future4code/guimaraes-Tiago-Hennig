@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'
+import { Box } from "./styles";
 
 
 
 const ListTripPage = () => {
+    const [listTrips, setListTrip] = useState([])
+    useEffect(() => {
+        getTripList()}, [] )
     const navigate = useNavigate()
 
     const goBack = () => {
@@ -11,8 +16,29 @@ const ListTripPage = () => {
     }
 
     const goToApplicationFormPage = () => {
-        navigate("/application")
+        navigate("/trips/application")
     }
+
+    const getTripList = () => {
+        const url = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/tiago-hennig-turmaguimaraes/trips"
+
+        axios.get(url)
+        .then((response) => {
+            setListTrip(response.data.trips)
+            console.log(response.data.trips)
+        })
+    }
+
+    const eachTrip = listTrips.map((trip) => {
+        return(
+
+                <Box>
+                    <p>{trip.name}</p>
+                    <p></p>
+                </Box>
+
+        )
+    })
 
     return (
         <div>
@@ -20,7 +46,7 @@ const ListTripPage = () => {
             <button onClick={goToApplicationFormPage}>Inscrever-se</button>
             <p>VIAGENS</p>
             <div>
-                {/* {tripList} */}
+                {eachTrip}
             </div>
         </div>
     )

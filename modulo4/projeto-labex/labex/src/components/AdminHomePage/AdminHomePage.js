@@ -11,7 +11,7 @@ const AdminHomePage = () => {
     }
 
     const goToCreateTrip = () => {
-        navigate("/createtrip")
+        navigate("/admin/trips/createtrip")
     }
 
 

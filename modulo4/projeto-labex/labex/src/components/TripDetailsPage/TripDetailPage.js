@@ -6,7 +6,7 @@ const TripDetailPage = () => {
 
     return (
         <div>
-
+            {/* {trip} */}
         </div>
     )
 }
