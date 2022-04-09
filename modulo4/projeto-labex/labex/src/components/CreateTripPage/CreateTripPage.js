@@ -1,9 +1,11 @@
 import React from "react";
 import { Form } from "./styles";
 import { useNavigate } from "react-router-dom";
+import { useProtectedPage } from "../../App";
 
 
 const CreateTripPage = () => {
+    useProtectedPage()
     const navigate = useNavigate()
 
     const goBack = () => {

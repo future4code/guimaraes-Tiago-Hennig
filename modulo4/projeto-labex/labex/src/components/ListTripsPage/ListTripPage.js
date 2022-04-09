@@ -21,7 +21,7 @@ const ListTripPage = () => {
 
     const getTripList = () => {
         const url = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/tiago-hennig-turmaguimaraes/trips"
-
+        const token = localStorage.getItem('token')
         axios.get(url)
         .then((response) => {
             setListTrip(response.data.trips)

@@ -1,12 +1,18 @@
-import {React, useState} from "react";
+import {React, useEffect, useState} from "react";
 import { Page } from "./styles";
 import { useNavigate } from "react-router-dom";
+
 
 
 
 const HomePage = () => {
     const navigate = useNavigate()
     const [logado, setLogado] = useState(false)
+
+
+    useEffect(() => {
+        checkLogin()}, Boolean)
+
 
     const login = () => {
         setLogado(!logado)
@@ -21,6 +27,16 @@ const HomePage = () => {
             navigate("/admin/trips/list")
         } else {
             navigate("/login")
+        }
+    }
+
+    const checkLogin = () => {
+        const url = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/tiago-hennig-turmaguimaraes/login"
+        const token = window.localStorage.getItem('token')
+        if (token === null) {
+            setLogado(logado)
+        } else {
+            setLogado(!logado)
         }
     }
 
