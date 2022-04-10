@@ -1,7 +1,8 @@
-import React from "react";
+import {React, useEffect, useState} from "react";
 import { Form } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { useProtectedPage } from "../../App";
+import axios from 'axios'
 
 
 const CreateTripPage = () => {
@@ -9,17 +10,12 @@ const CreateTripPage = () => {
     const navigate = useNavigate()
 
     const goBack = () => {
-        navigate(-1)
+        navigate("/admin/trips/list")
     }
 
     return (
         <div>
-            <p>CRIAR VIAGEM</p>
-            <Form>
-                <input></input>
-                <input></input>
-                <input></input>
-            </Form>
+            
             <button onClick={goBack}>voltar</button>
             <button>criar</button>
         </div>
