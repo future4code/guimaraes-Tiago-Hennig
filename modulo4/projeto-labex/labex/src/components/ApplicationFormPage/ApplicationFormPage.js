@@ -1,5 +1,5 @@
 import {React, useEffect, useState} from "react";
-import { Form } from "./styles";
+import { Form, Select } from "./styles";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
@@ -8,7 +8,7 @@ const ApplicationFormPage = () => {
     const navigate = useNavigate()
 
     const [name, setName] = useState("")
-    const [age, setAge] = useState(Number)
+    const [age, setAge] = useState("")
     const [applicationText, setApplicationText] = useState("")
     const [profession, setProfession] = useState("")
     const [country, setCountry] = useState("")
@@ -101,25 +101,22 @@ const ApplicationFormPage = () => {
     return (
         <div>
             <p>INSCREVER-SE</p>
-            <select>
+            <Select>
                 <option>ESCOLHA SUA VIAGEM</option>
                 {dropdownMap}
-            </select>
+            </Select>
             <Form onSubmit={onSubmitForm}>
-                <label>Seu nome</label>
-                <input name={'name'} value={name} onChange={handleNameInput}></input>
-                <label>Idade</label>
-                <input name={'age'} value={age} onChange={handleAgeInput}></input>
-                <label>Por que você deve participar desta viagem?</label>
-                <input name={'applicationText'} value={applicationText} onChange={handleApplicationTextInput}></input>
-                <label>Profissão</label>
-                <input name={'profession'} value={profession} onChange={handleProfessionsInput}></input>
-                <label>País</label>
-                <input name={'country'} value={country} onChange={handleCountryInput}></input>
-                <input></input>
+                <input placeholder="Digite aqui o seu nome" name={'name'} value={name} onChange={handleNameInput}></input>
+                <input placeholder="Digite sua idade" name={'age'} value={age} onChange={handleAgeInput}></input>
+                <input placeholder="Por que você deve participar desta viagem?" name={'applicationText'} value={applicationText} onChange={handleApplicationTextInput}></input>
+                <input placeholder="Digite sua profissão" name={'profession'} value={profession} onChange={handleProfessionsInput}></input>
+                <input placeholder="Digite seu país de origem" name={'country'} value={country} onChange={handleCountryInput}></input>
+                <div>
+                    <button onClick={tripApplication}>Enviar</button>
+                    <button onClick={goBack}>Voltar</button>
+                </div>
             </Form>
-            <button onClick={tripApplication}>Enviar</button>
-            <button onClick={goBack}>Voltar</button>
+
         </div>
     )
 }

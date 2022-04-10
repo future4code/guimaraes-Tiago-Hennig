@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
-import { Box, Botoes } from "./styles";
+import { Box, Botoes , Div, Buttons} from "./styles";
 
 
 
@@ -55,18 +55,19 @@ const ListTripPage = () => {
 
 
     return (
-        <div>
-            <Botoes>
+        <Div>
+            <p>VIAGENS</p>
+            <Buttons>
                 <button onClick={goBack}>Voltar</button>
                 <button onClick={goToApplicationFormPage}>Inscrever-se</button>
-            </Botoes>
+            </Buttons>
             <div>
-                <p>VIAGENS</p>
+                
                 <div>
                     {eachTrip}
                 </div>
             </div>
-        </div>
+        </Div>
     )
 }
 

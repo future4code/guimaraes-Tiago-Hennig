@@ -2,7 +2,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 import Routes from './Routes'
 import styleApp from './styleApp'
-import { Page } from './styleApp'
+import { Page , Div} from './styleApp'
 
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -33,9 +33,9 @@ export const useProtectedPage = () => {
 function App() {
   return (
     <Page>
-      <div>
+      <Div>
         <Routes />
-      </div>
+      </Div>
     </Page>
   );
 }
