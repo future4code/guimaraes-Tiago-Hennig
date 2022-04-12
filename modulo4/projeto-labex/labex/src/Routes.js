@@ -20,7 +20,6 @@ const Router = () => {
                 <Route path="/admin/trips/list" element={<AdminHomePage />} />
                 <Route path="/admin/trips/createtrip" element={<CreateTripPage />} />
                 <Route path="/admin/:id" element={<TripDetailPage />} />
-                
             </Routes>
         </BrowserRouter>
     )
