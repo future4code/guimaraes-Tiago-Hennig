@@ -1,6 +1,7 @@
-import {React, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Page } from "./styles";
 import { useNavigate } from "react-router-dom";
+import { GlobalStateContext } from "../../global/GlobalStateContext";
 
 
 
@@ -8,31 +9,25 @@ import { useNavigate } from "react-router-dom";
 const HomePage = () => {
     const navigate = useNavigate()
     const [logado, setLogado] = useState(false)
+    const {token} = useContext(GlobalStateContext)
 
 
     useEffect(() => {
-        checkLogin()}, Boolean)
-
-
-    const login = () => {
-        setLogado(!logado)
-    }
+        checkLogin()}, [])
 
     const goToListPage = () => {
         navigate("/trips/list")
     }
 
     const goToAdminHomePage = () => {
-        if (logado) {
-            navigate("/admin/trips/list")
+        if (token === null) {
+            navigate('/login')
         } else {
-            navigate("/login")
+            navigate("/admin/trips/list")
         }
     }
 
     const checkLogin = () => {
-        const url = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/tiago-hennig-turmaguimaraes/login"
-        const token = window.localStorage.getItem('token')
         if (token === null) {
             setLogado(logado)
         } else {

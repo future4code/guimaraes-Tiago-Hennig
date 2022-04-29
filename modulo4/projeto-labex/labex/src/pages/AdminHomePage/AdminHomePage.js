@@ -1,18 +1,34 @@
-import {React, useState, useEffect} from "react";
+import {React, useState, useEffect, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
-import { useProtectedPage } from "../../App";
 import { Box, Boxes, Buttons, Page} from "./style";
+import { GlobalStateContext } from "../../global/GlobalStateContext";
 
 
 
 const AdminHomePage = () => {
-    useEffect(() => {
-        getTripList()}, [] )
+    const [listTrips, setListTrip] = useState([])
+    const {useProtectedPage, token} = useContext(GlobalStateContext)
 
     useProtectedPage()
-    const navigate = useNavigate()
 
+    useEffect(() => {
+        checkLogin()
+    }, [])
+
+    const checkLogin = () => {
+        if (token === null) {
+            navigate('/login')
+        } else {
+            navigate('/admin/trips/list')
+        }
+    }
+
+
+
+    const navigate = useNavigate()
+    
+    useProtectedPage()
     const goBack = () => {
         navigate('/')
     }
@@ -26,14 +42,13 @@ const AdminHomePage = () => {
         navigate('/login')
     }
 
-    const [listTrips, setListTrip] = useState([])
+
 
     const getTripList = () => {
         const url = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/tiago-hennig-turmaguimaraes/trips"
         axios.get(url)
         .then((response) => {
             setListTrip(response.data.trips)
-            console.log(response.data.trips)
         })
     }
 
