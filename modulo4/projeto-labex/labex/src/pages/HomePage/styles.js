@@ -7,27 +7,41 @@ export const Page = styled.div`
     justify-content: center;
     flex-direction: column;
 
-    div {
-        display: flex;
-        align-self: center;
-        flex-direction: column;
+    
+`
 
-        div:nth-child(1) {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 50px;
+export const DivCenter = styled.div`
+flex-direction: column ;
+background-color: #F2F2F2;
+display: flex;
+width: 100vw;
+justify-content: center;
+height: 80vh;
 
-            h3 {
-                align-self: center;
-            }
-            h1 {
-                align-self: center;
-            }
-        }
+img {
+height: 60vh;
+align-self: center;
+margin-bottom: 3vh;
+}
+`
 
-        div:nth-child(2) {
-            display: flex;
-            flex-direction: row;
-        }
-    }
+export const Buttons = styled.div`
+display: flex;
+align-self: center;
+margin-bottom: 3vh;
+
+button {
+    border-style: none;
+    background-color: #0C9AF2;
+    border-radius: 3px;
+    height: 7vh;
+    min-width: 15vw;
+    margin: 1vh;
+    color: #ffffff;
+    font-size: 3.5vh;
+}
+
+button:active {
+    background-color: #074FF5;
+}
 `

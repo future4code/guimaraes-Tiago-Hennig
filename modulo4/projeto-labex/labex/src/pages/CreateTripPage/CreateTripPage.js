@@ -1,8 +1,9 @@
-import {React, useContext, useEffect, useState} from "react";
+import {React, useEffect, useState} from "react";
 import { Form } from "./styles";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
-import { GlobalStateContext } from "../../global/GlobalStateContext";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
+
 
 
 const CreateTripPage = () => {
@@ -11,7 +12,7 @@ const CreateTripPage = () => {
     const [date, setDate] = useState("")
     const [description, setDescription] = useState("")
     const [durationInDays, setDurationInDays] = useState(Number)
-    const {useProtectedPage} = useContext(GlobalStateContext)
+
 
     useProtectedPage()
     const navigate = useNavigate()

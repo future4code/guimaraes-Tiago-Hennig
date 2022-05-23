@@ -20,7 +20,7 @@ const ApplicationFormPage = () => {
 
 
     const tripApplication = (code) => {
-        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/tiago-hennig-guimaraes/trips/${code}/apply`
+        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/tiago-hennig-turmaguimaraes/trips/BhmrtgoAXJZzfEvsBEnY/apply`
         const body = {
             name: name,
             age: age,
@@ -42,8 +42,6 @@ const ApplicationFormPage = () => {
         axios.get(url)
         .then((response) => {
             setTrips(response.data.trips)
-            console.log(response.data.trips)
-            console.log(trips)
         })
     }
 
@@ -76,34 +74,25 @@ const ApplicationFormPage = () => {
         console.log(country)
     }
 
-    const lista = () => {
-        return(
-            <p>{trips}</p>
-        )
-    }
-
     const goBack = () => {
         navigate("/trips/list")
     }
 
     const setID = (event) => {
         changeID(event.target.value)
-    }
-
-    const dropdownMap = trips.map((trip) => {
         console.log(id)
-        return(
-            <option key={trip.id} onSelect={setID} value={trip.id}>{trip.name}</option>
-        )
-    })
-
+    }
 
     return (
         <div>
             <p>INSCREVER-SE</p>
-            <Select>
+            <Select onChange={setID}>
                 <option>ESCOLHA SUA VIAGEM</option>
-                {dropdownMap}
+                {trips.map((trip) => {
+                    return(
+                        <option key={trip.id} value={trip.id}>{trip.name}</option>
+                    )
+                })}
             </Select>
             <Form onSubmit={onSubmitForm}>
                 <input placeholder="Digite aqui o seu nome" name={'name'} value={name} onChange={handleNameInput}></input>

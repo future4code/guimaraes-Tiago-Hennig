@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
-import { Box, Botoes , Div, Buttons} from "./styles";
+import {BoxTrips, Buttons, Div, ListTrip} from "./styles";
+import { CardTrip } from "../../Cards/CardTrip";
 
 
 
@@ -39,18 +40,7 @@ const ListTripPage = () => {
 
 
     //* Função que mapeia a lista de viagens *//
-    const eachTrip = listTrips.map((trip) => {
-        return(
-            <Box key={trip.id}>
-                <h2>{trip.name}</h2>
-                <h4>{trip.date}</h4>
-                <h3>{trip.planet}</h3>
-                <p>{trip.description}</p>
-                <p>Duração: {trip.durationInDays} dias</p>
-            </Box>
-            )
-        }
-    )
+
     //***// 
 
 
@@ -63,9 +53,14 @@ const ListTripPage = () => {
             </Buttons>
             <div>
                 
-                <div>
-                    {eachTrip}
-                </div>
+                <BoxTrips>
+                {listTrips.map((trip) => {
+                    return(
+                        <ListTrip>
+                            <CardTrip trip={trip}></CardTrip>
+                        </ListTrip>
+            )})}
+                </BoxTrips>
             </div>
         </Div>
     )

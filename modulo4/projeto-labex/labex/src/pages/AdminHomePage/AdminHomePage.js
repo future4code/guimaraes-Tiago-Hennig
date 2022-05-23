@@ -2,33 +2,16 @@ import {React, useState, useEffect, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import { Box, Boxes, Buttons, Page} from "./style";
-import { GlobalStateContext } from "../../global/GlobalStateContext";
+import { useProtectedPage } from "../../hooks/useProtectedPage";
 
 
 
 const AdminHomePage = () => {
-    const [listTrips, setListTrip] = useState([])
-    const {useProtectedPage, token} = useContext(GlobalStateContext)
-
     useProtectedPage()
-
-    useEffect(() => {
-        checkLogin()
-    }, [])
-
-    const checkLogin = () => {
-        if (token === null) {
-            navigate('/login')
-        } else {
-            navigate('/admin/trips/list')
-        }
-    }
-
-
 
     const navigate = useNavigate()
-    
-    useProtectedPage()
+    const [listTrips, setListTrip] = useState([])
+
     const goBack = () => {
         navigate('/')
     }
@@ -41,7 +24,6 @@ const AdminHomePage = () => {
         window.localStorage.removeItem('token')
         navigate('/login')
     }
-
 
 
     const getTripList = () => {

@@ -1,7 +1,8 @@
-import React, {useContext, useEffect, useState} from "react";
-import { Page } from "./styles";
+import React, {useEffect, useState} from "react";
+import { DivCenter, Page, Buttons } from "./styles";
 import { useNavigate } from "react-router-dom";
-import { GlobalStateContext } from "../../global/GlobalStateContext";
+import LabeX from "../../img/LabeX_11zon.png"
+
 
 
 
@@ -9,9 +10,9 @@ import { GlobalStateContext } from "../../global/GlobalStateContext";
 const HomePage = () => {
     const navigate = useNavigate()
     const [logado, setLogado] = useState(false)
-    const {token} = useContext(GlobalStateContext)
 
-
+    const token = window.localStorage.getItem("token")
+    console.log(token)
     useEffect(() => {
         checkLogin()}, [])
 
@@ -37,16 +38,13 @@ const HomePage = () => {
 
     return (
         <Page>
-            <div>
-                <div>
-                    <h1>LabeX</h1>
-                    <h3>Suas viagens espaciais</h3>
-                </div>
-                <div>
-                    <button onClick={goToListPage}>viagens</button>
-                    <button onClick={goToAdminHomePage}>área restrita</button>
-                </div>
-            </div>
+            <DivCenter>
+                    <img src={LabeX}></img>
+                    <Buttons>
+                        <button onClick={goToListPage}>Viagens</button>
+                        <button onClick={goToAdminHomePage}>Área Restrita</button>
+                    </Buttons>
+            </DivCenter>
         </Page>
     )
 }
