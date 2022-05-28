@@ -13,65 +13,14 @@ const clientes:Cliente[] = [
         { cliente: "Soter", saldoTotal: 1200, debitos: [] }
     ]
 
-    clientes.forEach(item => {
-        let soma = 0
-        for (let i = 0; i < item.debitos.length; i++) {
-            soma += item.debitos[i]
-        }
-        item.debitos = soma
-    })
+    const checarEmprestimo = (array:Cliente[]):Cliente[] => {
+        array.forEach((item:Cliente) => {
+            const debits = item.debitos.reduce((a:number, b:number) => a + b, 0)
+            item.saldoTotal = item.saldoTotal - debits
+            item.debitos = []
+        })
+        const checaSaldoNegativo = array.filter((item) => item.saldoTotal < 0)
+        return checaSaldoNegativo
+    }
 
-// const checaSaldoNegativo = (array:Cliente[]) => {
-//     array.forEach(item => {
-//         let soma = 0
-//         for (let i = 0; i < item.debitos.length; i++) {
-//             soma += item.debitos[i]
-//         }
-//         item.debitos = soma
-//     })
-
-//     // const array3 = array2.filter((item:any) => {
-//     //     item.saldoTotal < item.debitos
-
-//     //     })
-    
-
-    
-// }
-
-
-
-// const checaSaldoNegativo = (array:Cliente[]) => {
-//     const item = array.forEach(item => {
-//         item.debitos = [10]
-//     })
-//     return item
-
-
-
-//     // const item:number[] = array.map((person) => {
-//     //     let soma = 0
-//     //     for (let i=0; i < person.debitos.length; i++) {
-//     //         soma += person.debitos[i]
-//     //     }
-//     //     return soma
-//     // })
-//     //     return item
-
-// }
-
-console.log((clientes))
-
-
-
-
-
-
-
-    // clientes.forEach(item => {
-    //     let soma = 0
-    //     for (let i = 0; i < item.debitos.length; i++) {
-    //         soma += item.debitos[i]
-    //     }
-    //     item.debitos = soma
-    // })
+console.log(checarEmprestimo(clientes))
