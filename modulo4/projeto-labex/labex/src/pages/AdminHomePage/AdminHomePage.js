@@ -1,13 +1,17 @@
 import {React, useState, useEffect, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
-import { Box, Boxes, Buttons, Page} from "./style";
+import { Box, Boxes, Buttons, DivLeft, DivRight, NameOfTrip, Page, RedBox, Title} from "./style";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
-
+import LabeX from "../../img/LabeX_11zon.png"
 
 
 const AdminHomePage = () => {
     useProtectedPage()
+
+    useEffect(() =>
+    getTripList()
+    , [])
 
     const navigate = useNavigate()
     const [listTrips, setListTrip] = useState([])
@@ -53,8 +57,12 @@ const AdminHomePage = () => {
     const eachTrip = listTrips.map((trip) => {
         return(
             <Box key={trip.id}>
-                <p>{trip.name}</p>
-                <button onClick={() => deleteTrip(trip.id)}>Apagar</button>
+                <NameOfTrip>
+                    <p>{trip.name}</p>
+                </NameOfTrip>
+                <RedBox>
+                    <button onClick={() => deleteTrip(trip.id)}>X</button>
+                </RedBox>
             </Box>
             )
         }
@@ -62,16 +70,21 @@ const AdminHomePage = () => {
 
     return (
         <Page>
-            <p>ÁREA DO ADMINISTRADOR</p>
-            <Buttons>
-                <button onClick={goBack}>voltar</button>
-                <button onClick={goToCreateTrip}>criar viagem</button>
-                <button onClick={logout}>logout</button>
-            </Buttons>
-
-            <Boxes>
-                {eachTrip}
-            </Boxes>
+            <DivLeft>
+                <img src={LabeX}></img>
+                <p>ÁREA DO ADMINISTRADOR</p>
+                <Buttons>
+                    <button onClick={goToCreateTrip}>CRIAR VIAGEM</button>
+                    <button onClick={goBack}>VOLTAR</button>
+                    <button onClick={logout}>SAIR</button>
+                </Buttons>
+            </DivLeft>
+            <DivRight>
+                <Boxes>
+                    <Title>VIAGENS</Title>
+                    {eachTrip}
+                </Boxes>
+            </DivRight>
         </Page>
     )
 }

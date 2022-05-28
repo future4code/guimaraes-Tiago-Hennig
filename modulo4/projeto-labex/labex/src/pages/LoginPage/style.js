@@ -62,8 +62,6 @@ button {
     font-size: 3.5vh;
 }
 
-
-
 button:nth-child(5) {
     background-color: #0C9AF2;
     margin-bottom: 2vh;
@@ -75,4 +73,13 @@ button:nth-child(6) {
     color: #000000;
     background-color:#D9D9D9 ;
 }
+
+button:nth-child(5):active {
+    background-color: #074FF5;
+}
+
+button:nth-child(6):active {
+    background-color: #B3B3B3;
+}
+
 `
