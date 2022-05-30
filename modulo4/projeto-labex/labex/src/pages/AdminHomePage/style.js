@@ -28,6 +28,7 @@ p {
     margin: 0;
     width: 32.5vw;
 }
+
 `
 
 export const RedBox = styled.div`
@@ -66,8 +67,9 @@ button {
     border-style: none;
     margin: 1vh;
     color: #ffffff;
-    font-size: 3.6vh;
+    font-size: 3.2vh;
     justify-items: center;
+    height: 6.5vh;
 }
 
 button:nth-child(3) {
@@ -101,12 +103,13 @@ p {
     margin: 1vh;
     letter-spacing: -0.05vw;
     margin-bottom: 2vh;
-    background-color: #FF7C8A;
+    /* background-color: #AFDEFF; */
     width: 21.55vw;
     text-align: center;
     height: 6vh;
     justify-self: center;
     padding-top: 1.1vh;
+    border: solid 2px #86CAFF ;
 }
 
 `
