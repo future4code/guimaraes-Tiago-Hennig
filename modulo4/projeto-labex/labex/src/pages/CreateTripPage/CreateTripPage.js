@@ -1,8 +1,9 @@
 import {React, useEffect, useState} from "react";
 import { Form } from "./styles";
 import { useNavigate } from "react-router-dom";
-import { useProtectedPage } from "../../App";
 import axios from 'axios'
+import { useProtectedPage } from "../../hooks/useProtectedPage";
+
 
 
 const CreateTripPage = () => {
@@ -11,6 +12,7 @@ const CreateTripPage = () => {
     const [date, setDate] = useState("")
     const [description, setDescription] = useState("")
     const [durationInDays, setDurationInDays] = useState(Number)
+
 
     useProtectedPage()
     const navigate = useNavigate()
