@@ -5,7 +5,7 @@ type Todo = {
     completed: boolean
 }
 
-export const todos = [
+export const todos:Todo[] = [
     {
       "userId": 1,
       "id": 1,

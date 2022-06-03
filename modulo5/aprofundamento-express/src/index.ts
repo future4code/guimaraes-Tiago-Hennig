@@ -39,6 +39,15 @@ app.get("/todos/", (req:Request , res: Response) => {
 })
 
 
+app.post("/todos", (req: Request, res: Response) => {
+
+    
+
+
+
+})
+
+
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {
