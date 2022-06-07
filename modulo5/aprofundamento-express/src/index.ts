@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import { AddressInfo } from "net";
-import { todos } from "./data"
+import { Todo, todos } from "./data"
 
 
 const app = express()
@@ -16,7 +16,9 @@ app.get("/ping", (req: Request, res: Response) => {
     res.status(200).send("pong")
 })
 
-app.get("/todos/", (req:Request , res: Response) => {
+// exercicio 4
+
+app.get("/todos", (req:Request , res: Response) => {
 
     const todoList = todos
 
@@ -38,15 +40,71 @@ app.get("/todos/", (req:Request , res: Response) => {
     }
 })
 
+// exercício 5
 
-app.post("/todos", (req: Request, res: Response) => {
+app.post("/todos", (req, res) => {
 
-    
+        const userId = req.body.userId
+        const title = req.body.title
 
+        const newTodo: Todo = {
+        userId: userId,
+        id: Math.random(),
+        title,
+        completed: false
+        }
 
+        todos.push(newTodo)
+
+        res.status(200).send(todos)
 
 })
 
+// exercicio 6
+
+app.put("/todos", (req, res) => {
+
+    const id = Number(req.query.id)
+
+    for (let element of todos) {
+        if (element.id === id) {
+            element.completed = !element.completed
+        }
+    }
+
+    res.status(200).send(todos)
+})
+
+// exercicio 7
+
+app.delete("/todos", (req, res) => {
+
+    const id = Number(req.query.id)
+
+    for (let i = 0; i < todos.length; i++) {
+        if (todos[i].id === id) {
+            todos.splice(i , 1)
+        }
+        res.status(200).send(todos)
+    }
+})
+
+// exercicio 8
+
+app.get("/todos/each/" , (req, res) => {
+
+    const id = Number(req.query.id)
+    let newTodos:Todo[] = []
+
+    for (let i = 0; i < todos.length; i++) {
+        if (todos[i].id === id) {
+            newTodos.push(todos[i])
+        }
+    }
+    res.status(200).send(newTodos)
+
+
+})
 
 
 const server = app.listen(process.env.PORT || 3003, () => {
