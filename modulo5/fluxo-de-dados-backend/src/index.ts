@@ -15,13 +15,30 @@ app.get("/test", (req: Request, res: Response) => {
     res.status(200).send("This API is working fine.")
 })
 
-// 3 
+// 3 & 7
 app.post("/products", (req: Request, res: Response) => {
 
+    const name = req.body.name
+    const price = req.body.price
+
+    if ((!price) || (!name)) {
+        throw new Error("Price and/or Name cannot be empty.")
+    }
+
+    if (typeof name !== "string" ){
+        throw new Error('Name must be a string.')
+    }
+
+    if (typeof price !== "number") {
+        throw new Error('Price must be a number.')
+    }
+
+    const id = products.length+1
+
     const newProduct:Product = {
-        id: Math.random().toString(),
-        name: req.body.name,
-        price: req.body.price
+        id: id.toString(),
+        name: name,
+        price: price
     }
     products.push(newProduct)
 
