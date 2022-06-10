@@ -7,7 +7,7 @@ export type Client = {
 }
 
 export type Transaction = {
-    date: number,
+    date: string,
     amount: number,
     description: string
 }
