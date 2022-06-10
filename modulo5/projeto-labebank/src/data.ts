@@ -1,50 +1,50 @@
 export type Client = {
     name: string,
     cpf: string,
-    age: number,
+    date_of_birth: string,
     balance: number,
-    bank_statement:Bank_statement[]
+    bank_statement:Transaction[]
 }
 
-export type Bank_statement = {
+export type Transaction = {
     date: number,
     amount: number,
     description: string
 }
 
-export const clients:Client[] = [
+export let clients:Client[] = [
     {
         name: "Jack Dawson",
         cpf: "33041288054",
-        age: 20,
+        date_of_birth: "10/01/1890",
         balance: 20,
         bank_statement: []
     },
     {
         name: "Rose DeWitt Bukater",
         cpf: "55422588930",
-        age: 18,
+        date_of_birth: "12/01/1895",
         balance: 240000,
         bank_statement: []
     },
     {
         name: "Caledon Hockley",
         cpf: "11044011487",
-        age: 33,
+        date_of_birth: "15/03/1882",
         balance: 45000700,
         bank_statement: []
     },
     {
         name: "Margaret Brown",
         cpf: "22558741368",
-        age: 40,
+        date_of_birth: "02/08/1871",
         balance: 11000000,
         bank_statement: []
     },
     {
         name: "Thomas Andrews",
         cpf: "11035821490",
-        age: 55,
+        date_of_birth: "11/11/1860",
         balance: 1200000,
         bank_statement: []
     }

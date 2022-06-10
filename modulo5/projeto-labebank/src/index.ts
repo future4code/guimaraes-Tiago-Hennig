@@ -10,50 +10,87 @@ app.use(cors());
 
 //----------------//
 
-// Create an account
 
-app.post('/openaccount', (req, res) => {
+const data = new Date()
+const day = String(data.getDate()).padStart(2, '0')
+const month = String(data.getMonth() + 1).padStart(2, '0')
+const year = data.getFullYear()
+const today = day + '/' + month + '/' + year
+console.log(today)
 
-    const name = req.body.name
-    const cpf = req.body.cpf
-    const age = req.body.age
+// Get users
 
-    try {
-    if (age < 18) {
-        throw new Error("You must be at least 18 to open an account.")
-    }
-
-    for (let client of clients) {
-        if (client.cpf === req.body.cpf) {
-            throw new Error("The provided CPF already exists in another registration. Please check your documents.")
-        }
-    }
-
-    const newAccount:Client = {
-        name: name,
-        cpf: cpf,
-        age: age,
-        balance: 0,
-        bank_statement: []
-    }
-
-    clients.push(newAccount)
-
-    }catch(error) {
-    res.send("Something went wrong. Call you account manager for more information.")
-}
-
+app.get('/users', (req, res) => {
     res.status(200).send(clients)
-
 })
 
 
-// Acessing the balance
+// Create an account
 
-app.get("/myaccount/balance" , (req, res) => {
+app.post('/users', (req, res) => {
 
-    const name = req.query.name
-    const cpf = req.query.cpf
+    const name = req.body.name
+    const cpf = req.body.cpf
+    const date_of_birth = req.body.date_of_birth
+    const yearBirthSplit:string = date_of_birth.split('/')
+    const dayBirth = Number(yearBirthSplit[0])
+    const monthBirth = Number(yearBirthSplit[1])
+    const yearBirth = Number(yearBirthSplit[2])
+    let idade:number = year - yearBirth
+
+    if (idade === 18) {
+        if(Number(month) < monthBirth ) {
+            throw new Error("You must be at least 18 to open an account.")
+        } else {
+            if (Number(day) < dayBirth) {
+                throw new Error("You must be at least 18 to open an account.")
+            } else {
+                    for (let client of clients) {
+                        if (client.cpf === req.body.cpf) {
+                            throw new Error("The provided CPF already exists in another registration. Please check your documents.")
+                        }
+                    }
+                    const newAccount:Client = {
+                        name: name,
+                        cpf: cpf,
+                        date_of_birth: date_of_birth,
+                        balance: 0,
+                        bank_statement: []
+                    }
+                
+                    clients.push(newAccount)
+
+            }
+        }
+
+    } else if (idade < 18) {
+        throw new Error("You must be at least 18 to open an account.")
+    } else {
+        for (let client of clients) {
+            if (client.cpf === req.body.cpf) {
+                throw new Error("The provided CPF already exists in another registration. Please check your documents.")
+            }
+        }
+    
+        const newAccount:Client = {
+            name: name,
+            cpf: cpf,
+            date_of_birth: date_of_birth,
+            balance: 0,
+            bank_statement: []
+        }
+        clients.push(newAccount)
+    }
+    res.status(200).send(clients)
+})
+
+
+// Check balance
+
+app.get("/myaccount" , (req, res) => {
+
+    const name = req.headers.name
+    const cpf = req.headers.cpf
 
         if (!name) {
             throw new Error("Please check the name entered.")
@@ -62,24 +99,55 @@ app.get("/myaccount/balance" , (req, res) => {
             throw new Error("Please check the CPF entered.")
     }
 
-        const filteredClient = clients.filter(client => client.name === req.query.name && client.cpf === req.query.cpf)
-        console.log(filteredClient)
-        if (!filteredClient.length) {
-            throw new Error("Something is wrong. Please check the name and/or CPF entered.")
-        }
+        const indexBalance = clients.findIndex(client => client.name === name && client.cpf === cpf)
+
         try {
-            for (let client of filteredClient) {
-                if (client.name == req.query.name && client.cpf == req.query.cpf) {
-                    res.status(200).send(`${client.name}, your balance is: ${client.balance} dollars.`)       
-                }
-            }  
-    }catch(error) {
-        throw new Error("Something is wrong. Please call your account manager.")
+
+            res.status(200).send(`${clients[indexBalance].name}, your balance is: ${clients[indexBalance].balance} dollars.`)       
+        
+        }catch(error) {
+            throw new Error("Something is wrong. Please call your account manager.")
     }
 
 })
 
+// Cash deposit
 
+app.put("/myaccount", (req, res) => {
+
+    const name : string = req.body.name
+    const cpf : string = req.body.cpf
+    const cash : number = req.body.cash
+
+    if (!name) {
+        throw new Error("Please check the name entered.")
+}
+    if (!cpf) {
+        throw new Error("Please check the CPF entered.")
+}
+    if (!cash) {
+    throw new Error("Please check the cash amount entered.")
+}
+
+    const indexDeposit = clients.findIndex(client => client.name === name && client.cpf === cpf)
+    console.log(indexDeposit)
+    try {
+        if (indexDeposit != -1)
+                clients[indexDeposit].balance = clients[indexDeposit].balance + cash
+                res.status(200).send(`${clients[indexDeposit].name}, you have deposited ${cash} dollars. Your current  ${clients[indexDeposit].balance}`)
+    }catch(error) {
+    throw new Error("Something is wrong. Please call your account manager.")
+}
+})
+
+
+// Pay bills
+
+// app.post('/myaccount/paybill' , (req, res) => {
+
+    
+
+// })
 
 //----------------//
 
