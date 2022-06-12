@@ -10,13 +10,13 @@ app.use(cors());
 
 //----------------//
 
-
 const data = new Date()
 const day = String(data.getDate()).padStart(2, '0')
 const month = String(data.getMonth() + 1).padStart(2, '0')
 const year = data.getFullYear()
 const today = day + '/' + month + '/' + year
 console.log(today)
+
 
 // Get users
 
@@ -136,12 +136,12 @@ app.put("/myaccount", (req, res) => {
                 const newDeposit = {
                     date: today,
                     amount: cash,
-                    description: "Cash deposit."
+                    description: "Cash deposit"
                 }
                 clients[indexDeposit].bank_statement.push(newDeposit)
                 res.status(200).send(`${clients[indexDeposit].name}, you have deposited ${cash} dollars. Your current  ${clients[indexDeposit].balance}`)
             } else {
-                throw new Error("")
+                throw new Error("Check the information entered.")
             }
     }catch(error) {
     throw new Error("Something is wrong. Please call your account manager.")
@@ -184,7 +184,6 @@ app.post('/myaccount/bill' , (req, res) => {
         } else {
             throw new Error("Check the information provided.")
         }
-
     }catch(error) {
         throw new Error('Something wrong happened. Check the informations provided or call your account manager.')
     }
