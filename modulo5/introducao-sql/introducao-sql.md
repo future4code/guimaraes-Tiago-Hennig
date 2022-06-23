@@ -39,4 +39,44 @@ d) select * from Actor where salary <= 500000;
 
 e) SELECT id, name from Actor WHERE id = "002";
 
+
+-- DESAFIOS --
+
+5)
+
+a) A query acima pega as linhas da tabela que os nomes comecem com A ou com J e que tenham salário maior que 300000.
+
+b) SELECT * FROM Actor WHERE (name NOT LIKE "A%") AND salary > 350000;
+
+c) SELECT * FROM Actor WHERE (name LIKE "%G%");
+
+d) SELECT * FROM Actor WHERE (name LIKE "%G%" OR name LIKE "%A%") AND salary BETWEEN 350000 AND 900000;
+
+
+6)
+
+a) CREATE TABLE Movies (
+id VARCHAR(255) PRIMARY KEY,
+name VARCHAR(255) NOT NULL,
+synopsis TEXT NOT NULL,
+release_date DATE NOT NULL,
+ratings FLOAT(2) NOT NULL);
+
+Filmes inseridos no banco com sucesso.
+
+
+7)
+
+a) SELECT id, name, ratings FROM Movies WHERE id = "002";
+
+b) SELECT * FROM Movies WHERE name = "Se Eu Fosse Você";
+
+c) SELECT id, name, synopsis FROM Movies WHERE ratings >= 7;
+
+
+8)
+
+a) SELECT * FROM Movies WHERE (name LIKE "%vida%");
+
+b) SELECT * FROM Movies WHERE (name LIKE "%vida%" OR synopsis LIKE "%vida%");
 ```
