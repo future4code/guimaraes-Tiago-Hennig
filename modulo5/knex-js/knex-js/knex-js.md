@@ -27,6 +27,25 @@ c) app.get("/test", async (req, res) => {
 })
 
 
+2)
+
+a) app.put("/test", async (req, res) => {
+
+    try {
+        await connection("Actor")
+        .update({
+            salary: req.body.newSalary
+        })
+        .where({
+            id: req.body.id
+        });
+        res.send("Sucesso!")
+    } catch(e) {
+        res.send(e)
+    }
+
+})
+
 
 
 
