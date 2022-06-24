@@ -118,4 +118,61 @@ app.get("/actor/:gender", async (req: Request, res: Response) => {
     }
 });
 
+
+
+4)
+
+- CRIANDO UM ATOR -
+app.post("/actor", async (req: Request, res: Response) => {
+    try {
+        await connection("Actor")
+        .insert({
+            id: req.body.id,
+            name: req.body.name,
+            salary: req.body.salary,
+            birth_date: req.body.dateOfBirth,
+            gender: req.body.gender
+        })
+    res.status(200).send("Sucesso");
+    } catch (err) {
+    res.status(400).send({
+        message: err,
+    });
+    }
+});
+
+a) app.put("/actor", async (req: Request, res: Response) => {
+    try {
+        await connection("Actor")
+        .update({
+            salary: req.body.salary,
+        })
+        .where({
+            id: req.body.id
+        })
+    res.status(200).send("Sucesso");
+    } catch (err) {
+    res.status(400).send({
+        message: err,
+    });
+    }
+});
+
+
+b) app.delete("/actor", async (req: Request, res: Response) => {
+    try {
+        await connection("Actor")
+        .delete()
+        .where({
+            id: req.body.id
+        })
+    res.status(200).send("Sucesso");
+    } catch (err) {
+    res.status(400).send({
+        message: err,
+    });
+    }
+});
+
+
 `

@@ -1,6 +1,7 @@
 import connection from "./connection";
 import app from "./app";
 import { Request, Response } from "express"
+import { idText } from "typescript";
 
 // app.put("/test", async (req, res) => {
 
@@ -22,15 +23,16 @@ import { Request, Response } from "express"
 
 
 
-app.get("/actor/:gender", async (req: Request, res: Response) => {
+app.put("/actor/:id", async (req: Request, res: Response) => {
     try {
-    const gender = req.params.gender;
-    const result = await connection.raw(`
-    SELECT COUNT(*) FROM Actor WHERE gender = '${gender}'
-`)
-
-    res.status(200).send(result[0])
-
+        await connection("Actor")
+        .update({
+            salary: req.params.id,
+        })
+        .where({
+            id: req.body.id
+        })
+    res.status(200).send("Sucesso");
     } catch (err) {
     res.status(400).send({
         message: err,
