@@ -1,0 +1,14 @@
+// padrão
+GET http://localhost:3003/recipes
+###
+// filtro
+GET http://localhost:3003/recipes?title=sopa
+###
+// ordenação
+GET http://localhost:3003/recipes?sort=title&order=DESC
+###
+// paginação
+GET http://localhost:3003/recipes?size=6&page=1
+###
+// todos juntos
+GET http://localhost:3003/recipes?title=sopa&sort=title&order=ASC&size=1&page=1
