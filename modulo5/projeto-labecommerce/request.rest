@@ -1,4 +1,42 @@
-// padrão
-GET http://localhost:3003/
+////// USER //////
+
+// Get all users
+GET http://localhost:3003/users
 ###
 
+// New user
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "name": "Richard Maison",
+    "email": "richardmaison@hotmail.com",
+    "password": "123456"
+}
+###
+
+// Delete user by id
+DELETE http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "id": "e7aeb5e3-140d-4871-b658-d76d8f0a34f7"
+}
+###
+
+////// PRODUCTS //////
+
+// Get all products
+GET http://localhost:3003/products
+###
+
+// New product
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "iPhone 8 64 GB Silver White",
+    "price": 2300.00,
+    "image_url": "https://www.lojasmoretto.com.br/tb_estrutura_produtos/4189/thumb/3/PRATA.jpg"
+}
+###
