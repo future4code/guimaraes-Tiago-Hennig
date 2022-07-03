@@ -67,7 +67,7 @@ export async function getAllUsers(
 
     try {
         const users = await connection("labecommerce_users")
-        .select("name")
+        .select("*")
         res.status(200).send(users)
     } catch (err) {
         res.status(500).send(err)

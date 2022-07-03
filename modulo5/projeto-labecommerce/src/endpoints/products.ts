@@ -22,7 +22,7 @@ export async function newProduct(
                 price: price,
                 image_url: image_url
             })
-            console.log(typeof(price))
+
             res.status(200).send("A new product has been registered.")
         }
     } catch (err) {
@@ -38,7 +38,7 @@ export async function getAllProducts(
 
     try {
         const products = await connection("labecommerce_products")
-        .select("name", "price")
+        .select("*")
         res.status(200).send(products)
     } catch (err) {
         res.status(500).send(err)

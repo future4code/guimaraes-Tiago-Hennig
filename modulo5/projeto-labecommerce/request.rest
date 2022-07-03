@@ -9,8 +9,8 @@ POST http://localhost:3003/users
 Content-Type: application/json
 
 {
-    "name": "Richard Maison",
-    "email": "richardmaison@hotmail.com",
+    "name": "Jason Bourne",
+    "email": "jasonbourne@hotmail.com",
     "password": "123456"
 }
 ###
@@ -20,9 +20,11 @@ DELETE http://localhost:3003/users
 Content-Type: application/json
 
 {
-    "id": "e7aeb5e3-140d-4871-b658-d76d8f0a34f7"
+    "id": "9df0a3b8-6c1f-45df-b92b-85158b9c24e6"
 }
 ###
+
+
 
 ////// PRODUCTS //////
 
@@ -35,8 +37,26 @@ POST http://localhost:3003/products
 Content-Type: application/json
 
 {
-    "name": "iPhone 8 64 GB Silver White",
-    "price": 2300.00,
-    "image_url": "https://www.lojasmoretto.com.br/tb_estrutura_produtos/4189/thumb/3/PRATA.jpg"
+    "name": "iPhone XR 128 GB Product Red",
+    "price": 3100.00,
+    "image_url": "https://cdnv2.moovin.com.br/redecelltronics/imagens/produtos/original/celular-apple-iphone-xr-128gb-560bbbf4705381f83f0bea7e2e436f23.png"
 }
 ###
+
+
+////// PURCHASES //////
+
+// New purchase
+POST http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+    "user_id": "cb11a0ea-0186-4b18-8cf3-ff5c23355bd1",
+    "product_id": "d4628c0b-cc8f-46c5-aa3d-43c647586265",
+    "quantity": 2
+}
+###
+
+// Purchase by User ID
+GET http://localhost:3003/users/cb11a0ea-0186-4b18-8cf3-ff5c23355bd1/purchases
+
