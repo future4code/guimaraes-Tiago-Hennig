@@ -8,8 +8,9 @@ const getProduct = async(productId: string): Promise <any> => {
     .select("name", "price")
     .where("id", "like", `${productId}`)
 
-    return result[0]
+    return result
 }
+
 
 export async function newPurchase(
     req: Request,
@@ -20,21 +21,21 @@ export async function newPurchase(
 
         const {user_id, product_id, quantity} = req.body
 
-        if (!user_id || !product_id || !quantity || !user_id.length || !product_id.length || (typeof(quantity) != "number")) {
+        if (!user_id || !product_id || !quantity || (typeof(quantity) != "number")) {
             res.send(400).send("Check the information provided.")
         } else {
 
             const product = await getProduct(product_id)
         
-            const totalPrice = product.price * quantity
+            const total_price = product.price * quantity
     
             await connection("labecommerce_purchases")
             .insert({
                 id: generateId(),
-                user_id: user_id,
-                product_id: product_id,
-                quantity: quantity,
-                total_price: totalPrice
+                user_id,
+                product_id,
+                quantity,
+                total_price
             })
             res.status(200).send("A new purchase has been registered.")
         }
@@ -42,7 +43,6 @@ export async function newPurchase(
     } catch (err) {
         res.send(err)
     }
-
 }
 
 
@@ -55,13 +55,26 @@ export async function purchasesByUser(
         const user_id = req.params.user_id
 
         const purchases = await connection("labecommerce_purchases")
-        .select("product_id" , "quantity", "total_price")
-        .where("user_id", "like", `${user_id}`)
+        .join("labecommerce_users", "labecommerce_users.id","labecommerce_purchases.user_id")
+        .join("labecommerce_products", 'labecommerce_products.id', "labecommerce_purchases.product_id")
+        .select("labecommerce_users.id","labecommerce_users.name","labecommerce_users.email",
+        "labecommerce_products.name", "labecommerce_products.price", "labecommerce_products.image_url",
+        "labecommerce_purchases.quantity", "labecommerce_purchases.total_price")
+        .where({"labecommerce_users.id": user_id})
 
         res.status(200).send(purchases)
 
     } catch (err) {
         res.status(500).send(err)
     }
+}
 
+
+const getPurchases = async(productId: string): Promise <any> => {
+
+    const result = await connection("labecommerce_purchases")
+    .select("name", "price")
+    .where("id", "like", `${productId}`)
+
+    return result
 }

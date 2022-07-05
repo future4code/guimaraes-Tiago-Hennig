@@ -11,18 +11,16 @@ export async function newProduct(
     const {name, price, image_url} = req.body
 
     try {
-        if (!name || !price || !image_url || !name.length || (typeof(price) != "number") || !image_url.length) {
-            res.status(400).send("Information in missing.")
+        if (!name || !price || !image_url || (typeof(price) != "number")) {
+            res.status(400).send("Something is wrong with the information provided.")
         } else {
-
             await connection("labecommerce_products")
             .insert({
                 id: generateId(),
-                name: name,
-                price: price,
-                image_url: image_url
+                name,
+                price,
+                image_url
             })
-
             res.status(200).send("A new product has been registered.")
         }
     } catch (err) {
@@ -36,12 +34,34 @@ export async function getAllProducts(
     res: Response
 ): Promise<void> {
 
-    try {
-        const products = await connection("labecommerce_products")
-        .select("*")
-        res.status(200).send(products)
-    } catch (err) {
-        res.status(500).send(err)
-    }
+    const order = req.query.order as string
+    const search = req.query.search as string
 
+    if (order) {
+        try {
+            const products = await connection("labecommerce_products")
+            .select("*")
+            .orderBy("name", order)
+            res.status(200).send(products)
+        } catch (err) {
+            res.status(500).send(err)
+        }
+    } else if (search) {
+        try {
+            const products = await connection("labecommerce_products")
+            .select("*")
+            .where("name", "like", `%${search}%`)
+            res.status(200).send(products)
+        } catch (err) {
+            res.status(500).send(err)
+        }
+    } else {
+        try {
+            const products = await connection("labecommerce_products")
+            .select("*")
+            res.status(200).send(products)
+        } catch (err) {
+            res.status(500).send(err)
+        }
+    }
 }

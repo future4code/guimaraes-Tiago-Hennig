@@ -12,23 +12,21 @@ export async function newUser(
 
     try {
 
-        if (!name || !email || !password || !name.length || !email.length || !password.length) {
+        if (!name || !email || !password) {
             res.status(400).send("Please check the informations you gave.")
         } else {
             await connection("labecommerce_users")
             .insert({
                 id: generateId(),
-                name: name,
-                email: email,
-                password: password
+                name,
+                email,
+                password
             })
             res.status(200).send("A new user has been created.").end()
         }
-
     } catch(err) {
         res.status(500).send(err)
     }
-
 }
 
 // Delete user
@@ -41,21 +39,19 @@ export async function deleteUserById(
 
     try {
 
-        if ( !id || !id.length ) {
+        if ( !id  ) {
             res.status(400).send("Please check the id you gave.")
         } else {
             await connection("labecommerce_users")
             .delete()
             .where({
-                id: id,
+                id,
             })
             res.status(200).send("User was deleted.").end()
         }
-
     } catch(err) {
         res.status(500).send(err)
     }
-
 }
 
 
@@ -67,12 +63,12 @@ export async function getAllUsers(
 
     try {
         const users = await connection("labecommerce_users")
-        .select("*")
+        .join("labecommerce_purchases", "labecommerce_purchases.user_id" , "labecommerce_users.id" )
+        .select("name", "email", "total_price")
         res.status(200).send(users)
     } catch (err) {
         res.status(500).send(err)
     }
-
 }
 
 
