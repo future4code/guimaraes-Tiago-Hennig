@@ -9,6 +9,7 @@
 
 <h2> 📜 Link da documentação da API 🔗</h2>
 <p> https://documenter.getpostman.com/view/19721031/UzJPLEtW </p>
+<p> Obs.: A documentação da API, as tabelas e propriedades do banco de dados, e as mensagens de sucesso e erro, estão todos em inglês. </p>
 
 <h2> ✅ O que funciona</h2>
 
