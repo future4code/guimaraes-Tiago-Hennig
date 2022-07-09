@@ -1,6 +1,7 @@
 import { Request, Response} from "express"
 import connection from "../connection"
 import { v4 as generateId } from 'uuid';
+import { Product } from "../types";
 
 const getProduct = async(productId: string): Promise <any> => {
 
@@ -27,7 +28,7 @@ export async function newPurchase(
 
             const product = await getProduct(product_id)
         
-            const total_price = product.price * quantity
+            const total_price = product[0].price * quantity
     
             await connection("labecommerce_purchases")
             .insert({
@@ -67,14 +68,4 @@ export async function purchasesByUser(
     } catch (err) {
         res.status(500).send(err)
     }
-}
-
-
-const getPurchases = async(productId: string): Promise <any> => {
-
-    const result = await connection("labecommerce_purchases")
-    .select("name", "price")
-    .where("id", "like", `${productId}`)
-
-    return result
 }

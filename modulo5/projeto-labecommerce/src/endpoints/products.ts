@@ -1,6 +1,7 @@
 import { Request, Response} from "express"
 import connection from "../connection"
 import { v4 as generateId } from 'uuid';
+import { Product } from "../types";
 
 
 export async function newProduct(
@@ -36,10 +37,11 @@ export async function getAllProducts(
 
     const order = req.query.order as string
     const search = req.query.search as string
+    let products: Product[]
 
     if (order) {
         try {
-            const products = await connection("labecommerce_products")
+            products = await connection("labecommerce_products")
             .select("*")
             .orderBy("name", order)
             res.status(200).send(products)
@@ -48,7 +50,7 @@ export async function getAllProducts(
         }
     } else if (search) {
         try {
-            const products = await connection("labecommerce_products")
+            products = await connection("labecommerce_products")
             .select("*")
             .where("name", "like", `%${search}%`)
             res.status(200).send(products)
@@ -57,7 +59,7 @@ export async function getAllProducts(
         }
     } else {
         try {
-            const products = await connection("labecommerce_products")
+            products = await connection("labecommerce_products")
             .select("*")
             res.status(200).send(products)
         } catch (err) {

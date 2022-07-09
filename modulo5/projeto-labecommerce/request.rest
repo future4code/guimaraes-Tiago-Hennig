@@ -9,8 +9,8 @@ POST http://localhost:3003/users
 Content-Type: application/json
 
 {
-    "name": "Jason Bourne",
-    "email": "jasonbourne@hotmail.com",
+    "name": "Pedro Henrique",
+    "email": "pedrohenrique@hotmail.com",
     "password": "123456"
 }
 ###
@@ -20,16 +20,15 @@ DELETE http://localhost:3003/users
 Content-Type: application/json
 
 {
-    "id": "9df0a3b8-6c1f-45df-b92b-85158b9c24e6"
+    "id": "123abc"
 }
 ###
-
 
 
 ////// PRODUCTS //////
 
 // Get all products
-GET http://localhost:3003/products?search=xr
+GET http://localhost:3003/products
 ###
 
 // New product
@@ -37,9 +36,9 @@ POST http://localhost:3003/products
 Content-Type: application/json
 
 {
-    "name": "iPhone",
-    "price": 3100.00,
-    "image_url": "https://cdnv2.moovin.com.br/redecelltronics/imagens/produtos/original/celular-apple-iphone-xr-128gb-560bbbf4705381f83f0bea7e2e436f23.png"
+    "name": "iPhone X 64GB Black",
+    "price": 2800.00,
+    "image_url": "https://i.zst.com.br/thumbs/12/3/39/-13306456.jpg"
 }
 ###
 
@@ -51,9 +50,9 @@ POST http://localhost:3003/purchases
 Content-Type: application/json
 
 {
-    "user_id": "e66e9717-7d0e-49a1-a791-451f2e979fc0",
-    "product_id": "4987e186-3db3-4470-92ae-60b884ea97f4",
-    "quantity": 10
+    "user_id": "c0ff87a5-891a-4de1-9f06-444e0d97a190",
+    "product_id": "0afae5c5-1dfd-4b5c-9d01-f8ca1576ba5b",
+    "quantity": 2
 }
 ###
 

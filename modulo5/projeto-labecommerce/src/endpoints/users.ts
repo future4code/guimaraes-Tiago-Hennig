@@ -1,6 +1,7 @@
 import { Request, Response} from "express"
 import connection from "../connection"
 import { v4 as generateId } from 'uuid';
+import { Users } from "../types";
 
 // Create new user
 export async function newUser(
@@ -36,10 +37,15 @@ export async function deleteUserById(
 ): Promise<void> {
 
     const id = req.body.id
+    const checkId = await connection("labecommerce_users")
+                    .select("id")
+                    .where("id", id)
+    
+    console.log(checkId)
 
     try {
 
-        if ( !id  ) {
+        if ( !id || !checkId.length  ) {
             res.status(400).send("Please check the id you gave.")
         } else {
             await connection("labecommerce_users")
@@ -55,20 +61,41 @@ export async function deleteUserById(
 }
 
 
+
 // Get all users
-export async function getAllUsers(
+
+const selectPurchasesByUser = async (userId: string): Promise<any> => {
+    const response = await connection("labecommerce_purchases")
+        .select("name","price", "quantity", "total_price","labecommerce_purchases.id",)
+        .join("labecommerce_products", "labecommerce_purchases.product_id", "labecommerce_products.id")
+        .where("user_id", userId)
+
+    return response
+}
+
+
+const purchasesFor = async (users: any[]): Promise<Users[]> => {
+    for (let user of users) {
+        user.purchases = await selectPurchasesByUser(user.id)
+    }
+
+    return users
+}
+
+export const getAllUsers = async(
     req: Request,
     res: Response
-): Promise<void> {
+): Promise<void> => {
 
     try {
-        const users = await connection("labecommerce_users")
-        .join("labecommerce_purchases", "labecommerce_purchases.user_id" , "labecommerce_users.id" )
-        .select("name", "email", "total_price")
-        res.status(200).send(users)
-    } catch (err) {
-        res.status(500).send(err)
+        const users:Users[] = await connection("labecommerce_users")
+        .select("*")
+        const purchasesByUser: Users[] = await purchasesFor(users)
+        res.status(200).send(purchasesByUser)
+    } catch (error: any) {
+        res.send(error.message || error.sqlMessage)
     }
+    
 }
 
 
