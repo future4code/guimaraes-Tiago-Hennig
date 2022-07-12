@@ -23,3 +23,4 @@
 Desafios concluídos:
 * Ordenar a lista de produtos ↕️
 * Buscar um produto pelo nome 🔎
+* Busca por todos os usuários com a propriedade Purchases dentro do objeto de cada usuário.
