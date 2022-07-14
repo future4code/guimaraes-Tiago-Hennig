@@ -7,5 +7,7 @@ export const Box = styled.div`
     margin: 20px;
     width: 400px;
     align-items: center;
-    border-radius: 10px;
+    background-color: #0C9AF2;
+    color: #ffffff;
+    text-align: center;
 `

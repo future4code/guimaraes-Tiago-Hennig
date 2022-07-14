@@ -3,6 +3,7 @@ import { Form } from "./styles";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 import { useProtectedPage } from "../../hooks/useProtectedPage";
+import { BASE_URL } from "../../constants/BASE_URL";
 
 
 
@@ -46,7 +47,7 @@ const CreateTripPage = () => {
     }
 
     const createTrip = () => {
-        const url = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/tiago-hennig-turmaguimaraes/trips/"
+        const url = `${BASE_URL}/trips`
         const token = window.localStorage.getItem('token')
         const headers = {
             auth: token,
