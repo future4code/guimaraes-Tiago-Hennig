@@ -1,0 +1,61 @@
+////// USER //////
+
+// Get all users
+GET http://localhost:3003/users
+###
+
+// New user
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "name": "Pedro Henrique",
+    "email": "pedrohenrique@hotmail.com",
+    "password": "123456"
+}
+###
+
+// Delete user by id
+DELETE http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "id": "123abc"
+}
+###
+
+
+////// PRODUCTS //////
+
+// Get all products
+GET http://localhost:3003/products
+###
+
+// New product
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "iPhone X 64GB Black",
+    "price": 2800.00,
+    "image_url": "https://i.zst.com.br/thumbs/12/3/39/-13306456.jpg"
+}
+###
+
+
+////// PURCHASES //////
+
+// New purchase
+POST http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+    "user_id": "c0ff87a5-891a-4de1-9f06-444e0d97a190",
+    "product_id": "0afae5c5-1dfd-4b5c-9d01-f8ca1576ba5b",
+    "quantity": 2
+}
+###
+
+// Purchase by User ID
+GET http://localhost:3003/users/cb11a0ea-0186-4b18-8cf3-ff5c23355bd1/purchases
+###
