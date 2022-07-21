@@ -1,0 +1,8 @@
+1
+a) O método Construtor ele inicializa o objeto novo que está sendo criado.
+    Chamamos o contrutor ao criar o novo objeto, e colocados os valores que são pedidos nele, 
+    como parâmetros.
+
+b) Uma vez só.
+
+c) Criando métodos que acessem essas propriedades e as retornem.
