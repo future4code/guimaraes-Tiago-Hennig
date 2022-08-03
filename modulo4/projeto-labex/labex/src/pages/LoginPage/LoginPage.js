@@ -2,8 +2,9 @@ import {React, useEffect, useState} from "react";
 import { useNavigate} from "react-router-dom";
 import axios from "axios"
 import { useProtectedPage } from "../../hooks/useProtectedPage";
-import { Div, DivLeft, DivRight, Inputs} from "./style";
+import { Block, Div, DivLeft, DivRight, Inputs} from "./style";
 import LabeX from "../../img/LabeX_11zon.png"
+import { BASE_URL } from "../../constants/BASE_URL";
 
 
 const LoginPage = () => {
@@ -30,7 +31,7 @@ const LoginPage = () => {
             email: email,
             password: password
         }
-        const res = await axios.post("https://us-central1-labenu-apis.cloudfunctions.net/labeX/tiago-hennig-turmaguimaraes/login", body)
+        const res = await axios.post(`${BASE_URL}/login`, body)
             window.localStorage.setItem("token", res.data.token)
             navigate('/admin/trips/list')}
         catch(error){
@@ -51,16 +52,18 @@ const LoginPage = () => {
     return (
         <Div>
             <DivLeft>
-                <h1>ÁREA RESTRITA</h1>
-                <h2>Identifique-se</h2>
-                <Inputs>
-                    <p>Email</p>
-                    <input placeholder="Digite o email" value={email} onChange={emailValue}/>
-                    <p>Senha</p>
-                    <input placeholder="Digite a senha" value={password} onChange={passwordValue} />
-                    <button onClick={login}>Login</button>
-                    <button onClick={goBack}>Voltar</button>
-                </Inputs>
+                <Block>
+                    <h1>ÁREA RESTRITA</h1>
+                    <h2>Identifique-se</h2>
+                    <Inputs>
+                        <p>Email</p>
+                        <input placeholder="Digite o email" value={email} onChange={emailValue}/>
+                        <p>Senha</p>
+                        <input placeholder="Digite a senha" value={password} onChange={passwordValue} />
+                        <button onClick={login}>Login</button>
+                        <button onClick={goBack}>Voltar</button>
+                    </Inputs>
+                </Block>
             </DivLeft>
 
             <DivRight>
