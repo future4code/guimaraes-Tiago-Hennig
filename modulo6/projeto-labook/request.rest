@@ -1,0 +1,31 @@
+POST http://localhost:3003/user
+Content-Type: application/json 
+
+{
+    "name": "Rebeca",
+    "email": "rebeca@email.com",
+    "password": "123"
+}
+
+###
+POST http://localhost:3003/post
+Content-Type: application/json 
+
+{
+    "photo": "photo2",
+    "description": "Festa na casa da Lady Gaga",
+    "type": "event",
+    "authorId": "1660056313221"
+}
+
+###
+
+GET http://localhost:3003/user
+
+###
+
+GET http://localhost:3003/user/1660056313221
+
+###
+
+POST http://localhost:3003/1660066704494/1660056313221
