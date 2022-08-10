@@ -20,4 +20,23 @@ export class FriendshipController {
             res.status(400).send(error.message);
         }
     };
+
+    public deleteFriendship = async (req: Request, res: Response) => {
+        try {
+            const { friend1, friend2 } = req.params
+
+            const input: friendshipDTO = {
+                friend1,
+                friend2
+            };
+
+            const friendshipBusiness = new FriendshipBusiness();
+            await friendshipBusiness.deleteFriendship(input);
+
+            res.status(201).send("Amizade desfeita.")
+
+        } catch (error:any) {
+            res.status(400).send("Essa amizade não existe.")
+        }
+    }
 }

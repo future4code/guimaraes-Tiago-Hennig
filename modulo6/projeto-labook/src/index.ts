@@ -9,5 +9,3 @@ app.use('/', userRouter )
 app.use('/',postRouter )
 
 app.use('/', friendshipRouter)
-
-

@@ -29,3 +29,11 @@ GET http://localhost:3003/user/1660056313221
 ###
 
 POST http://localhost:3003/1660066704494/1660056313221
+
+
+###
+
+
+DELETE http://localhost:3003/1660066704494/1660056313221
+
+###

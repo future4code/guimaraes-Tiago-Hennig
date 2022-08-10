@@ -23,4 +23,14 @@ export class FriendshipBusiness {
             throw new Error(error.message);
         }
     };
+
+    public deleteFriendship = async (input: friendshipDTO) => {
+        try {
+
+            const friendshipDatabase = new FriendshipDatabase()
+            await friendshipDatabase.deleteFriendship(input)
+        } catch (error:any) {
+            throw new Error(error.message)
+        }
+    }
 }
