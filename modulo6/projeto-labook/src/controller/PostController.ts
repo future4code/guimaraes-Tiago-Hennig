@@ -20,7 +20,7 @@ export class PostController {
 
       res.status(201).send( "Post criado!" )
     } catch (error: any) {
-      res.status(400).send(error.message);
+      res.status(400).send(error.message || error.sqlMessage);
     }
   };
 }

@@ -28,15 +28,6 @@ CREATE TABLE
         FOREIGN KEY (friend_id) REFERENCES labook_users (id)
     );
 
-SELECT
-    photo,
-    description,
-    type,
-    author_id
-FROM labook_posts
-WHERE
-    author_id LIKE "1660056313221";
-
 SELECT  labook_users.name, labook_posts.photo, 
         labook_posts.description,
         labook_posts.type, labook_posts.created_at

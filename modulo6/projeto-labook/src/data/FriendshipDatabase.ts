@@ -1,5 +1,6 @@
 import { BaseDatabase } from "./BaseDatabase";
 import { friendship, friendshipDTO } from "../model/friendship";
+import { CustomError } from "../error/CustomError";
 
 export class FriendshipDatabase extends BaseDatabase {
 
@@ -39,7 +40,7 @@ export class FriendshipDatabase extends BaseDatabase {
             .where("friend_id", "like", friendId)
 
             if (!checkId1.length && !checkId2.length) {
-                throw new Error()
+                throw new CustomError("A amizade entre estes ids não existe ou um ou mais ids é inválido", 400)
             }
 
             await FriendshipDatabase.connection(FriendshipDatabase.DB)
@@ -57,4 +58,5 @@ export class FriendshipDatabase extends BaseDatabase {
         }
 
     }
+
 }

@@ -1,5 +1,4 @@
 import { UserDatabase } from "../data/UserDatabase";
-import { CustomError } from "../error/CustomError";
 import { InvalidEmail } from "../error/InvalidEmail";
 import { InvalidRequest } from "../error/InvalidRequest";
 import { ShortName } from "../error/ShortName";
@@ -24,7 +23,6 @@ export class UserBusiness {
 				throw new ShortName()
 			}
 
-
 			const id: string = generateId()
 
 			const userDatabase = new UserDatabase();
@@ -33,10 +31,10 @@ export class UserBusiness {
 				name,
 				email,
 				password,
-			});
+			})
 
 		} catch (error: any) {
-			throw new CustomError(error.message || error.sqlMessage, error.statusCode);
+			throw new Error(error.message || error.sqlMessage);
 		}
 	}
 
@@ -49,7 +47,7 @@ export class UserBusiness {
 			return response
 
 		} catch (error: any) {
-			throw new Error(error.message)
+			throw new Error(error.message || error.sqlMessage)
 		}
 	}
 
@@ -61,7 +59,7 @@ export class UserBusiness {
 			return response
 
 		} catch (error:any) {
-			throw new Error(error.message)
+			throw new Error(error.message || error.sqlMessage)
 		}
 	}
 

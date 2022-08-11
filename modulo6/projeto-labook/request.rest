@@ -2,8 +2,8 @@ POST http://localhost:3003/user
 Content-Type: application/json 
 
 {
-    "name": "Rebeca",
-    "email": "rebeca@email.com",
+    "name": "Adele",
+    "email": "adele@email.com",
     "password": "123"
 }
 
@@ -12,10 +12,10 @@ POST http://localhost:3003/post
 Content-Type: application/json 
 
 {
-    "photo": "photo2",
-    "description": "Festa na casa da Rita Cadillac",
-    "type": "event",
-    "authorId": "1660066704494"
+    "photo": "foto_com_a_gaga.jpg",
+    "description": "Foto com a minha best Lady Gaga.",
+    "type": "normal",
+    "authorId": "5962abac-fb0d-4b6b-aa43-5b6bc894a81f"
 }
 
 ###
@@ -24,11 +24,12 @@ GET http://localhost:3003/user
 
 ###
 
-GET http://localhost:3003/user/1660056313221
+GET http://localhost:3003/user/
 
 ###
 
-POST http://localhost:3003/1660066704494/1660056313221
+// Criar amizade
+POST http://localhost:3003/af119a34-2961-488a-8c16-b4d41a7abd2c/0eb4c7bb-0646-4a6b-a4d6-dffae87fd6ce
 
 ###
 
@@ -36,4 +37,4 @@ DELETE http://localhost:3003/1660056313221/1660066704494
 
 ###
 
-GET http://localhost:3003/1660066704494
+GET http://localhost:3003/af119a34-2961-488a-8c16-b4d41a7abd2c

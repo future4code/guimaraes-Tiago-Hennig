@@ -19,7 +19,7 @@ export class UserController {
          }
 
          const userBusiness = new UserBusiness
-         userBusiness.createUser(input)
+         await userBusiness.createUser(input)
 
          res.status(201).send("Usuário criado!")
       } catch (error: any) {

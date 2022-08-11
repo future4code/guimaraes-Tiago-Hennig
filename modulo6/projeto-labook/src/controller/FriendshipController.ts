@@ -17,7 +17,7 @@ export class FriendshipController {
 
             res.status(201).send("Amizade criada!")
         } catch (error: any) {
-            res.status(400).send(error.message);
+            res.status(400).send(error.message || error.sqlMessage);
         }
     };
 

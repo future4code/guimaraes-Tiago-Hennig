@@ -1,4 +1,4 @@
-export type post = {
+export interface post {
    id: string,
    photo: string,
    description: string,
@@ -16,4 +16,12 @@ export interface PostInputDTO {
 export enum postType {
    NORMAL = "normal",
    EVENT = "event"
+}
+
+export interface postFeed {
+   name: string,
+   photo: string,
+   description: string,
+   type: string,
+   created_at: string
 }

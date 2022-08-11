@@ -1,4 +1,5 @@
 import { FeedDatabase } from "../data/FeedDatabase";
+import { CustomError } from "../error/CustomError";
 
 
 export class FeedBusiness {
@@ -6,7 +7,7 @@ export class FeedBusiness {
         try {
 
             if (!userId ) {
-                throw new Error("Informe o id de um usuário válido!");
+                throw new CustomError("Informe o id de um usuário válido!", 400);
             }
 
             const feedDatabase = new FeedDatabase();
@@ -14,7 +15,7 @@ export class FeedBusiness {
 
             return response
         } catch (error: any) {
-            throw new Error(error.message);
+            throw new Error(error.message || error.sqlMessage);
         }
     };
 }

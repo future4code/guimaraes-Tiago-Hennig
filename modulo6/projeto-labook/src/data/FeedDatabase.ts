@@ -1,12 +1,12 @@
+import { postFeed } from "../model/post";
 import { BaseDatabase } from "./BaseDatabase";
-import { post } from "../model/post";
 
 export class FeedDatabase extends BaseDatabase {
 
     public getPosts = async (
         userId: string
     ) => {
-        const response = await FeedDatabase.connection("labook_posts")
+        const response: postFeed[] = await FeedDatabase.connection("labook_posts")
             .select("labook_users.name", "labook_posts.photo", 
                 "labook_posts.description",
                 "labook_posts.type", "labook_posts.created_at")
