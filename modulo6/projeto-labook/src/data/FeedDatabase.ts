@@ -13,6 +13,7 @@ export class FeedDatabase extends BaseDatabase {
             .join("labook_friendship", "labook_posts.author_id", "labook_friendship.friend_id")
             .join("labook_users", "labook_users.id", "labook_posts.author_id")
             .where("labook_friendship.user_id", "like", userId)
+            .orderBy("labook_posts.created_at", "desc")
 
         return response
     }

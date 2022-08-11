@@ -44,5 +44,7 @@ SELECT  labook_users.name, labook_posts.photo,
         labook_posts.author_id =
         labook_friendship.friend_id
         INNER JOIN labook_users ON labook_users.id = labook_posts.author_id
+
         WHERE labook_friendship.user_id LIKE  1660066704494
+            ORDER BY labook_posts.created_at DESC
         ;
