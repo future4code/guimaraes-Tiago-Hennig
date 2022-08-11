@@ -5,20 +5,26 @@ import { generateId } from "../services/generateId";
 export class FriendshipBusiness {
     public createFriendship = async (input: friendshipDTO) => {
         try {
-            const { friend1, friend2 } = input
+            const { userId, friendId } = input
 
-            if ( !friend1 || !friend2 ) {
+            if ( !userId || !friendId ) {
                 throw new Error("Todos os campos são obrigatórios!");
             }
 
-            const id: string = generateId()
+            const id1: string = generateId()
+            const id2: string = generateId()
 
             const friendshipDatabase = new FriendshipDatabase();
             await friendshipDatabase.insertFriendship({
-                id,
-                friend1,
-                friend2
+                id1,
+                userId,
+                friendId
             });
+            await friendshipDatabase.mutualFriendship({
+                id2,
+                userId,
+                friendId
+            })
         } catch (error: any) {
             throw new Error(error.message);
         }

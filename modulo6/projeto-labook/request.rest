@@ -13,9 +13,9 @@ Content-Type: application/json
 
 {
     "photo": "photo2",
-    "description": "Festa na casa da Lady Gaga",
+    "description": "Festa na casa da Rita Cadillac",
     "type": "event",
-    "authorId": "1660056313221"
+    "authorId": "1660066704494"
 }
 
 ###
@@ -30,10 +30,10 @@ GET http://localhost:3003/user/1660056313221
 
 POST http://localhost:3003/1660066704494/1660056313221
 
+###
+
+DELETE http://localhost:3003/1660056313221/1660066704494
 
 ###
 
-
-DELETE http://localhost:3003/1660066704494/1660056313221
-
-###
+GET http://localhost:3003/1660066704494

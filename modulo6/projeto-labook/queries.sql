@@ -22,8 +22,27 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS labook_friendship(
         id VARCHAR(255) PRIMARY KEY,
-        id_friend_1 VARCHAR(255) NOT NULL,
-        id_friend_2 VARCHAR(255) NOT NULL,
-        FOREIGN KEY (id_friend_1) REFERENCES labook_users (id),
-        FOREIGN KEY (id_friend_2) REFERENCES labook_users (id)
+        user_id VARCHAR(255) NOT NULL,
+        friend_id VARCHAR(255) NOT NULL,
+        FOREIGN KEY (user_id) REFERENCES labook_users (id),
+        FOREIGN KEY (friend_id) REFERENCES labook_users (id)
     );
+
+SELECT
+    photo,
+    description,
+    type,
+    author_id
+FROM labook_posts
+WHERE
+    author_id LIKE "1660056313221";
+
+SELECT  labook_users.name, labook_posts.photo, 
+        labook_posts.description,
+        labook_posts.type, labook_posts.created_at
+        FROM  labook_posts INNER JOIN labook_friendship ON
+        labook_posts.author_id =
+        labook_friendship.friend_id
+        INNER JOIN labook_users ON labook_users.id = labook_posts.author_id
+        WHERE labook_friendship.user_id LIKE  1660066704494
+        ;

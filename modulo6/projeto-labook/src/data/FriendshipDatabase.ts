@@ -10,29 +10,46 @@ export class FriendshipDatabase extends BaseDatabase {
     ) => {
         await FriendshipDatabase.connection(FriendshipDatabase.DB)
             .insert({
-                id: relation.id,
-                id_friend_1: relation.friend1,
-                id_friend_2: relation.friend2
+                id: relation.id1,
+                user_id: relation.userId,
+                friend_id: relation.friendId
             })
+
+    }
+
+    public mutualFriendship = async (
+        relation: friendship
+    ) => {
+        await FriendshipDatabase.connection(FriendshipDatabase.DB)
+        .insert({
+            id: relation.id2,
+            user_id: relation.friendId,
+            friend_id: relation.userId
+        })
     }
 
 
     public deleteFriendship = async (input:friendshipDTO) => {
         try {
-            const {friend1, friend2} = input
+            const {userId, friendId} = input
 
             const checkId1 = await FriendshipDatabase.connection(FriendshipDatabase.DB).select("*")
-            .where("id_friend_1", "like", friend1)
+            .where("user_id", "like", userId)
             const checkId2 = await FriendshipDatabase.connection(FriendshipDatabase.DB).select("*")
-            .where("id_friend_2", "like", friend2)
+            .where("friend_id", "like", friendId)
 
             if (!checkId1.length && !checkId2.length) {
                 throw new Error()
             }
 
-            return await FriendshipDatabase.connection(FriendshipDatabase.DB)
-            .where("id_friend_1", "like", friend1)
-            .andWhere("id_friend_2", "like", friend2)
+            await FriendshipDatabase.connection(FriendshipDatabase.DB)
+            .where("user_id", "like", userId)
+            .andWhere("friend_id", "like", friendId)
+            .del()
+
+            await FriendshipDatabase.connection(FriendshipDatabase.DB)
+            .where("user_id", "like", friendId)
+            .andWhere("friend_id", "like", userId)
             .del()
 
         } catch (error:any) {

@@ -5,11 +5,11 @@ import { friendshipDTO } from "../model/friendship";
 export class FriendshipController {
     public createFriendship = async (req: Request, res: Response) => {
         try {
-            const { friend1, friend2 } = req.params
+            const { userId, friendId } = req.params
 
             const input: friendshipDTO = {
-                friend1,
-                friend2
+                userId,
+                friendId
             };
 
             const friendshipBusiness = new FriendshipBusiness();
@@ -23,11 +23,11 @@ export class FriendshipController {
 
     public deleteFriendship = async (req: Request, res: Response) => {
         try {
-            const { friend1, friend2 } = req.params
+            const { userId, friendId } = req.params
 
             const input: friendshipDTO = {
-                friend1,
-                friend2
+                userId,
+                friendId
             };
 
             const friendshipBusiness = new FriendshipBusiness();

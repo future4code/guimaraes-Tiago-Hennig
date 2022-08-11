@@ -1,10 +1,11 @@
 export type friendship = {
-    id: string,
-    friend1: string,
-    friend2: string
+    id1?: string,
+    id2?: string,
+    userId: string,
+    friendId: string
 }
 
 export interface friendshipDTO {
-    friend1: string,
-    friend2: string
+    userId: string,
+    friendId: string
 }
