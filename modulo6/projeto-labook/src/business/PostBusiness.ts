@@ -1,7 +1,7 @@
 import { PostDatabase } from "../data/PostDatabase";
 import { CustomError } from "../error/CustomError";
 import { InvalidRequest } from "../error/InvalidRequest";
-import { PostInputDTO, postType } from "../model/post";
+import { postDB, PostInputDTO, postType } from "../model/post";
 import { generateId } from "../services/generateId";
 
 export class PostBusiness {
@@ -30,6 +30,34 @@ export class PostBusiness {
     } catch (error: any) {
       throw new Error(error.message || error.sqlMessage);
     }
-  };
+  }
+
+
+  public getPostById = async (id:any) => {
+		try {
+			const postDatabase = new PostDatabase()
+			const response: postDB[] = await postDatabase.getPostById(id)
+
+			return response
+
+		} catch (error:any) {
+			throw new Error(error.message || error.sqlMessage)
+		}
+	}
+
+
+  public getAllPosts = async () => {
+		try {
+			const postDatabase = new PostDatabase()
+			const response: postDB[] = await postDatabase.getAllPosts()
+
+			return response
+
+		} catch (error:any) {
+			throw new Error(error.message || error.sqlMessage)
+		}
+	}
+
+
 }
 

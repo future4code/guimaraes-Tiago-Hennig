@@ -1,5 +1,5 @@
 import { BaseDatabase } from "./BaseDatabase";
-import { post } from "../model/post";
+import { post, postDB } from "../model/post";
 
 export class PostDatabase extends BaseDatabase {
 
@@ -17,5 +17,31 @@ export class PostDatabase extends BaseDatabase {
             author_id: post.authorId
          })
    }
+
+   public getPostById = async (id:any) => {
+		try {
+			const response: postDB[] = await PostDatabase.connection(PostDatabase.DB)
+			.select("*")
+			.where("id", "like", id)
+
+			return response
+
+		} catch (error:any) {
+			throw new Error(error.message)
+		}
+	}
+
+   public getAllPosts = async () => {
+		try {
+			const response: postDB[] = await PostDatabase.connection(PostDatabase.DB)
+			.select("*")
+
+			return response
+
+		} catch (error:any) {
+			throw new Error(error.message)
+		}
+	}
+
 }
 

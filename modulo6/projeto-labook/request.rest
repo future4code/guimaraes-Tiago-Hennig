@@ -38,3 +38,11 @@ DELETE http://localhost:3003/af119a34-2961-488a-8c16-b4d41a7abd2c/0eb4c7bb-0646-
 ###
 
 GET http://localhost:3003/0eb4c7bb-0646-4a6b-a4d6-dffae87fd6ce
+
+###
+
+GET http://localhost:3003/allposts
+
+###
+
+GET http://localhost:3003/post/5da3b358-1034-4eae-bb88-188aa0435da1

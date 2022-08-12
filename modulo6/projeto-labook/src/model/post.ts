@@ -3,7 +3,7 @@ export interface post {
    photo: string,
    description: string,
    type: string,
-   authorId: string,
+   authorId: string
 }
 
 export interface PostInputDTO {
@@ -23,5 +23,14 @@ export interface postFeed {
    photo: string,
    description: string,
    type: string,
+   created_at: string
+}
+
+export interface postDB {
+   id: string,
+   photo: string,
+   description: string,
+   type: string,
+   author_id: string,
    created_at: string
 }
