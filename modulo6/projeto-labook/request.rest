@@ -1,0 +1,48 @@
+POST http://localhost:3003/user
+Content-Type: application/json 
+
+{
+    "name": "Adele",
+    "email": "adele@email.com",
+    "password": "123"
+}
+
+###
+POST http://localhost:3003/post
+Content-Type: application/json 
+
+{
+    "photo": "foto_com_a_gaga.jpg",
+    "description": "Foto com a minha best Lady Gaga.",
+    "type": "normal",
+    "authorId": "5962abac-fb0d-4b6b-aa43-5b6bc894a81f"
+}
+
+###
+
+GET http://localhost:3003/user
+
+###
+
+GET http://localhost:3003/user/
+
+###
+
+// Criar amizade
+POST http://localhost:3003/af119a34-2961-488a-8c16-b4d41a7abd2c/0eb4c7bb-0646-4a6b-a4d6-dffae87fd6ce
+
+###
+
+DELETE http://localhost:3003/af119a34-2961-488a-8c16-b4d41a7abd2c/0eb4c7bb-0646-4a6b-a4d6-dffae87fd6ce
+
+###
+
+GET http://localhost:3003/0eb4c7bb-0646-4a6b-a4d6-dffae87fd6ce
+
+###
+
+GET http://localhost:3003/allposts
+
+###
+
+GET http://localhost:3003/post/5da3b358-1034-4eae-bb88-188aa0435da1
