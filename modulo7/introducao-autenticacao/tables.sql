@@ -1,8 +1,7 @@
+-- Active: 1658791594652@@35.226.146.116@3306@guimaraes-4211043-tiago-hennig
 
 CREATE TABLE IF NOT EXISTS Auth_users (
     id VARCHAR(64) PRIMARY KEY,
-    name VARCHAR(64) NOT NULL,
-    nickname VARCHAR(64) NOT NULL,
     email VARCHAR(64) NOT NULL,
     password VARCHAR(64) NOT NULL
 );
