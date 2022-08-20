@@ -42,5 +42,19 @@ export class UserDatabase extends BaseDatabase {
     } catch (error: any) {
       throw new CustomError(400, error.message);
     }
+  }
+
+
+  public getUser = async (id: string) => {
+    try {
+      const result = await UserDatabase.connection("Auth_users")
+      .select("id", "email")
+      .where({id})
+
+      return result[0]
+
+    } catch (error: any) {
+      throw new CustomError(400, error.message);
+    }
   };
 }

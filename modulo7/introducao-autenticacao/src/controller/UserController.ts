@@ -61,4 +61,18 @@ export class UserController {
       }
 
 
+      public getUser = async (req: Request, res: Response) => {
+        try {
+          const token: string = req.headers.authorization as string
+    
+          const userBusiness = new UserBusiness()
+          const result = await userBusiness.getUser(token);
+          
+          res.status(201).send(result);
+        } catch (error: any) {
+          res.status(400).send(error.message);
+        }
+      } 
+
+
 }

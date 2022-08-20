@@ -81,7 +81,7 @@ export class UserBusiness {
     } catch (error: any) {
       throw new CustomError(400, error.message);
     }
-  };
+  }
 
 
 
@@ -114,6 +114,26 @@ export class UserBusiness {
     } catch (error: any) {
       throw new CustomError(400, error.message);
     }
-  };
+  }
+
+
+  public getUser = async (token: string): Promise<string> => {
+    try {
+
+      if ( !token ) {
+        throw new CustomError(400,'Preencha o hearder Authorization com um token.');
+      }
+
+      const {id} = authenticator(token)
+
+      const userDatabase = new UserDatabase();
+      const result = await userDatabase.getUser(id);
+
+      return result
+
+    } catch (error: any) {
+      throw new CustomError(400, error.message);
+    }
+  }
 
 }
