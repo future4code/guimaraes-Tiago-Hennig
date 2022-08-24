@@ -6,6 +6,9 @@ import { BaseDatabase } from "./BaseDatabase";
 
 
 export class RecipeDatabase extends BaseDatabase {
+
+    private tableName = "Cookenu_recipes"
+
     public createRecipe = async (recipe: recipe) => {
         try {
             await RecipeDatabase.connection
@@ -16,7 +19,7 @@ export class RecipeDatabase extends BaseDatabase {
                     author_id: recipe.authorId,
                     created_at: recipe.createdAt
                 })
-                .into("Cookenu_recipes");
+                .into(this.tableName);
         } catch (error: any) {
             throw new CustomError(400, error.message);
         }
@@ -26,7 +29,7 @@ export class RecipeDatabase extends BaseDatabase {
 
         try {
 
-            const result = await RecipeDatabase.connection("Cookenu_recipes")
+            const result = await RecipeDatabase.connection(this.tableName)
                 .select("id", "title", "description", "created_at")
                 .where("id", "like", id)
 

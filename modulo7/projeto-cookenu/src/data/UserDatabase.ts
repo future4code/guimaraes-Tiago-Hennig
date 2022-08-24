@@ -4,9 +4,12 @@ import { user, UserOutput } from "../model/user";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class UserDatabase extends BaseDatabase {
+
+	private tableName = "Cookenu_users"
+
 	public insertUser = async (user: user) => {
 		try {
-			await UserDatabase.connection
+			await UserDatabase.connection(this.tableName)
 				.insert({
 					id: user.id,
 					name: user.name,
@@ -14,7 +17,6 @@ export class UserDatabase extends BaseDatabase {
 					password: user.password,
 					role: user.role
 				})
-				.into("Cookenu_users");
 		} catch (error: any) {
 			throw new CustomError(400, error.message);
 		}
@@ -23,7 +25,7 @@ export class UserDatabase extends BaseDatabase {
 
 	public findUserByEmail = async (email: string): Promise<user> => {
 		try {
-			const result = await UserDatabase.connection("Cookenu_users")
+			const result = await UserDatabase.connection(this.tableName)
 				.select("*")
 				.where("email", "like", email);
 
@@ -38,7 +40,7 @@ export class UserDatabase extends BaseDatabase {
 
 		try {
 
-			const result = await UserDatabase.connection("Cookenu_users")
+			const result = await UserDatabase.connection(this.tableName)
 				.select("id", "name", "email")
 				.where("id", "like", id)
 
@@ -48,7 +50,6 @@ export class UserDatabase extends BaseDatabase {
 			throw new CustomError(400, error.message)
 		}
 	}
-
 
 
 }
