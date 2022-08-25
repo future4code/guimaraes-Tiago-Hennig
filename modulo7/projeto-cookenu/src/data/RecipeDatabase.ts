@@ -40,5 +40,20 @@ export class RecipeDatabase extends BaseDatabase {
     }
 
 
+    public getAllRecipes = async (): Promise<recipeOutput[]> => {
+
+        try {
+
+            const result = await RecipeDatabase.connection(this.tableName)
+                .select("id", "title", "description", "created_at")
+
+            return result
+
+        } catch (error:any) {
+            throw new CustomError(400, error.message)
+        }
+
+    }
+
 
 }

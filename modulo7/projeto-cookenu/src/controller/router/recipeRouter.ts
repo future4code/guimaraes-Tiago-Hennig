@@ -7,3 +7,4 @@ const recipeController = new RecipeController()
 
 recipeRouter.post('/recipe', recipeController.createRecipe)
 recipeRouter.get('/recipe/:id', recipeController.getRecipe)
+recipeRouter.get('/recipe', recipeController.getAllRecipes)

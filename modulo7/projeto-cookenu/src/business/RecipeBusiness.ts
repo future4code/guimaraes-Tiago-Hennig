@@ -43,8 +43,6 @@ export class RecipeBusiness {
                 throw new Unauthorized()
             }
 
-
-
             const recipe = {
                 id,
                 title,
@@ -55,7 +53,6 @@ export class RecipeBusiness {
             const result = this.recipeDatabase.createRecipe(recipe)
 
             return result
-
 
         } catch (error: any) {
             throw new CustomError(400, error.message)
@@ -93,6 +90,43 @@ export class RecipeBusiness {
             const formattedDate = moment(recipeDB.created_at).format("DD/MM/YYYY")
 
             recipeDB.created_at = formattedDate
+
+            return recipeDB
+
+        } catch (error: any) {
+            throw new CustomError(400, error.message)
+        }
+    }
+
+    public getAllRecipes = async (token: string): Promise<any> => {
+
+        try {
+
+            if (!token) {
+                throw new MissingToken()
+            }
+
+            const tokenData = authenticator.getTokenData(token)
+            const userExist = await this.userDatabase.getProfile(tokenData.id)
+
+            if (!userExist) {
+                throw new UserNotFound()
+            }
+
+            if (!tokenData) {
+                throw new Unauthorized()
+            }
+
+            const recipeDB = await this.recipeDatabase.getAllRecipes()
+
+            if (!recipeDB) {
+                throw new CustomError(400, "Não há nenhuma receita cadastrada no nosso banco de dados no momento.")
+            }
+
+            recipeDB.map(date => {
+                const formattedDate = moment(date.created_at).format("DD/MM/YYYY")
+                date.created_at = formattedDate
+            })
 
             return recipeDB
 
