@@ -1,6 +1,5 @@
 import { CustomError } from "../error/customError";
 import { recipe, recipeOutput } from "../model/recipe";
-import { EditUserInput } from "../model/user";
 import { BaseDatabase } from "./BaseDatabase";
 
 
@@ -16,8 +15,7 @@ export class RecipeDatabase extends BaseDatabase {
                     id: recipe.id,
                     title: recipe.title,
                     description: recipe.description,
-                    author_id: recipe.authorId,
-                    created_at: recipe.createdAt
+                    author_id: recipe.authorId
                 })
                 .into(this.tableName);
         } catch (error: any) {

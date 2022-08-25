@@ -2,8 +2,7 @@ export type recipe = {
     id: string,
     title: string,
     description: string,
-    authorId: string,
-    createdAt: string
+    authorId: string
 }
 
 export type recipeInputDTO = {
@@ -23,5 +22,5 @@ export type recipeOutput = {
     id: string,
     title: string,
     description: string,
-    createdAt: string
+    created_at: string
 }

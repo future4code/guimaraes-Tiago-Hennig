@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS Cookenu_recipes (
     id VARCHAR(64) PRIMARY KEY,
     title VARCHAR(64) NOT NULL,
     description VARCHAR(1024) DEFAULT "No description provided",
-    created_at VARCHAR(10) ,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP ,
     author_id VARCHAR(64),
     FOREIGN KEY (author_id) REFERENCES Cookenu_users(id)
 );

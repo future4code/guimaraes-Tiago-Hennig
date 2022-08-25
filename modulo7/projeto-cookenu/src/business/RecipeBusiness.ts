@@ -3,8 +3,8 @@ import { UserDatabase } from "../data/UserDatabase";
 import { CustomError, InvalidToken, MissingInformation, MissingToken, Unauthorized, UserNotFound } from "../error/customError";
 import { recipeInputDTO, recipeOutput } from "../model/recipe";
 import { Authenticator } from "../services/Authenticator";
-import { DateOfCreation } from "../services/DateManager";
 import { IdGenerator } from "../services/IdGenerator";
+import moment from "moment"
 
 const idGenerator = new IdGenerator()
 const authenticator = new Authenticator()
@@ -43,14 +43,13 @@ export class RecipeBusiness {
                 throw new Unauthorized()
             }
 
-            const date = DateOfCreation()
+
 
             const recipe = {
                 id,
                 title,
                 description,
-                authorId: tokenData.id,
-                createdAt: date
+                authorId: tokenData.id
             }
 
             const result = this.recipeDatabase.createRecipe(recipe)
@@ -64,7 +63,7 @@ export class RecipeBusiness {
     }
 
 
-    public getRecipe = async (input: any): Promise<recipeOutput> => {
+    public getRecipe = async (input: any): Promise<any> => {
 
         try {
 
@@ -81,9 +80,9 @@ export class RecipeBusiness {
                 throw new UserNotFound()
             }
 
-            const recipe = await this.recipeDatabase.getRecipe(id)
+            const recipeDB = await this.recipeDatabase.getRecipe(id)
 
-            if (!recipe) {
+            if (!recipeDB) {
                 throw new CustomError(400, "Não foi encontrada uma receita com o id informado.")
             }
 
@@ -91,7 +90,11 @@ export class RecipeBusiness {
                 throw new Unauthorized()
             }
 
-            return recipe
+            const formattedDate = moment(recipeDB.created_at).format("DD/MM/YYYY")
+
+            recipeDB.created_at = formattedDate
+
+            return recipeDB
 
         } catch (error: any) {
             throw new CustomError(400, error.message)

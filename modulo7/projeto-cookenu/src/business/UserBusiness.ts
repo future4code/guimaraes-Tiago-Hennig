@@ -42,6 +42,10 @@ export class UserBusiness {
 				throw new CustomError(400, "A senha deve ter no mínimo 6 caracteres")
 			}
 
+			if (role !== "user" && role !== "admin") {
+				throw new CustomError(422, 'A propriedade "role" deve ser "admin" ou "user".')
+			}
+
 			const id: string = idGenerator.generateId();
 			const hashPassword = await hashManager.hashGenerator(password)
 

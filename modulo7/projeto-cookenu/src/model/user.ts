@@ -36,5 +36,5 @@ export type UserOutput = {
 
 enum USER_ROLES {
    admin = "admin", 
-   normal = "normal"
+   user = "user"
 }
