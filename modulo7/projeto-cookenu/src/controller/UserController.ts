@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { UserBusiness } from "../business/UserBusiness";
-import { EditUserInputDTO, LoginInputDTO, UserInputDTO } from "../model/user";
+import { LoginInputDTO, UserInputDTO } from "../model/user";
 
 const userBusiness = new UserBusiness()
 
@@ -47,7 +47,7 @@ export class UserController {
 	public getOwnProfile = async (req: Request, res: Response) => {
 
 		try {
-			const token = req.headers.authorization
+			const token = req.headers.authorization as string
 
 			const result = await userBusiness.getOwnProfile(token)
 
@@ -64,7 +64,7 @@ export class UserController {
 	public getAnotherProfile = async (req: Request, res: Response) => {
 
 		try {
-			const token = req.headers.authorization
+			const token = req.headers.authorization as string
 			const id = req.params.id
 
 			const infoGiven = {
@@ -80,5 +80,22 @@ export class UserController {
 			res.status(400).send(error.message)
 		}
 	}
+
+
+	public getAllUsers = async (req: Request, res: Response) => {
+
+        try {
+
+            const token = req.headers.authorization as string
+
+            const result = await userBusiness.getAllUsers(token)
+
+            res.status(200).send(result)
+            
+        } catch (error:any) {
+            res.status(400).send(error.message)
+        }
+
+    }
 
 }

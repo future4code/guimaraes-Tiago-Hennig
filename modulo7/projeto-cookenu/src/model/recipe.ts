@@ -24,3 +24,8 @@ export type recipeOutput = {
     description: string,
     created_at: string
 }
+
+export type getRecipeDTO = {
+    id: string,
+    token: string
+}

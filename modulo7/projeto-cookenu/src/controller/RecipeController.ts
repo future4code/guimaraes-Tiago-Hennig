@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { RecipeBusiness } from "../business/RecipeBusiness";
 
 
-
 const recipeBusiness = new RecipeBusiness()
 
 export class RecipeController {
@@ -19,7 +18,7 @@ export class RecipeController {
                 token
             }
 
-            const result = await recipeBusiness.createRecipe(input)
+            await recipeBusiness.createRecipe(input)
 
             res.status(200).send("Receita criada com sucesso!")
             

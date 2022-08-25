@@ -13,8 +13,8 @@ export interface UserInputDTO {
    role: USER_ROLES
 }
 
-export interface EditUserInputDTO {
-   name: string,
+export interface getAnotherProfileInputDTO {
+   id: string,
    token: string
 }
 

@@ -1,7 +1,7 @@
 import { RecipeDatabase } from "../data/RecipeDatabase";
 import { UserDatabase } from "../data/UserDatabase";
-import { CustomError, InvalidToken, MissingInformation, MissingToken, Unauthorized, UserNotFound } from "../error/customError";
-import { recipeInputDTO, recipeOutput } from "../model/recipe";
+import { CustomError, MissingInformation, MissingToken, Unauthorized, UserNotFound } from "../error/customError";
+import { recipeInputDTO, recipeOutput, getRecipeDTO } from "../model/recipe";
 import { Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/IdGenerator";
 import moment from "moment"
@@ -60,7 +60,7 @@ export class RecipeBusiness {
     }
 
 
-    public getRecipe = async (input: any): Promise<any> => {
+    public getRecipe = async (input: getRecipeDTO): Promise<recipeOutput> => {
 
         try {
 
@@ -98,7 +98,7 @@ export class RecipeBusiness {
         }
     }
 
-    public getAllRecipes = async (token: string): Promise<any> => {
+    public getAllRecipes = async (token: string): Promise<recipeOutput[]> => {
 
         try {
 

@@ -31,6 +31,12 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgxYWNkNDE0LTEyMWYt
 
 ###
 
+
+GET http://localhost:3003/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYTU5ZTE4LWVkZGMtNGM5MS05Yzg1LTliNDQ3OTY2ODUwMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxNDQxNDI4LCJleHAiOjE2NjE0ODQ2Mjh9.4YoMXlN8Pua_8vwrdzhQi0O9ZyegtuOcXN8zJOuIpYI
+
+###
+
 POST http://localhost:3003/recipe
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYTU5ZTE4LWVkZGMtNGM5MS05Yzg1LTliNDQ3OTY2ODUwMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxNDQxNDI4LCJleHAiOjE2NjE0ODQ2Mjh9.4YoMXlN8Pua_8vwrdzhQi0O9ZyegtuOcXN8zJOuIpYI
 Content-Type: application/json

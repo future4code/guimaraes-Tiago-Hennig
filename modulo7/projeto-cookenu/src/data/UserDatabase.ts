@@ -51,5 +51,20 @@ export class UserDatabase extends BaseDatabase {
 		}
 	}
 
+	public getAllUsers = async (): Promise<UserOutput[]> => {
+
+        try {
+
+            const result = await UserDatabase.connection(this.tableName)
+                .select("id", "name", "email", "role")
+
+            return result
+
+        } catch (error:any) {
+            throw new CustomError(400, error.message)
+        }
+
+    }
+
 
 }

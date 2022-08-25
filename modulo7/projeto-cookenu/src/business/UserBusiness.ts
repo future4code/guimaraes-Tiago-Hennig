@@ -1,6 +1,6 @@
 import { UserDatabase } from "../data/UserDatabase";
 import { CustomError, EmailAlreadyExists, InvalidEmail, InvalidName, InvalidPassword, InvalidToken, UserNotFound } from "../error/customError";
-import { UserInputDTO, user, UserOutput } from "../model/user";
+import { UserInputDTO, user, UserOutput, LoginInputDTO, getAnotherProfileInputDTO } from "../model/user";
 import { Authenticator } from "../services/Authenticator";
 import { HashManager } from "../services/HashManager";
 import { IdGenerator } from "../services/IdGenerator";
@@ -68,7 +68,7 @@ export class UserBusiness {
 	};
 
 
-	public login = async (input: any): Promise<string> => {
+	public login = async (input: LoginInputDTO): Promise<string> => {
 		try {
 			const { email, password } = input;
 
@@ -98,7 +98,7 @@ export class UserBusiness {
 			}
 
 			const token = authenticator.generateToken(payload);
-			
+
 			return token;
 		} catch (error: any) {
 			throw new CustomError(400, error.message)
@@ -106,10 +106,10 @@ export class UserBusiness {
 	};
 
 
-	public getOwnProfile = async (input: any): Promise<UserOutput> => {
+	public getOwnProfile = async (token: string): Promise<UserOutput> => {
 		try {
 
-			const tokenData = authenticator.getTokenData(input)
+			const tokenData = authenticator.getTokenData(token)
 
 			const user = await this.userDatabase.getProfile(tokenData.id)
 
@@ -126,64 +126,55 @@ export class UserBusiness {
 
 
 
-	public getAnotherProfile = async (input: any): Promise<UserOutput> => {
+	public getAnotherProfile = async (input: getAnotherProfileInputDTO): Promise<UserOutput> => {
 
 		try {
-			const {token, id} = input
+			const { token, id } = input
 
-		const tokenData = authenticator.getTokenData(token)
+			const tokenData = authenticator.getTokenData(token)
 
-		const userExists = await this.userDatabase.getProfile(tokenData.id)
+			const userExists = await this.userDatabase.getProfile(tokenData.id)
 
-		if (!userExists) {
-			throw new InvalidToken();
-		}
+			if (!userExists) {
+				throw new InvalidToken();
+			}
 
-		const user = await this.userDatabase.getProfile(id)
+			const user = await this.userDatabase.getProfile(id)
 
-		if (!user) {
-			throw new UserNotFound()
-		}
+			if (!user) {
+				throw new UserNotFound()
+			}
 
-		return user
+			return user
 
-		} catch (error:any) {
+		} catch (error: any) {
 			throw new CustomError(400, error.message)
 		}
-
-
-		
-
 	}
 
 
+	public getAllUsers = async (token: string): Promise<UserOutput[]> => {
+		try {
 
-	// public editUser = async (input: EditUserInputDTO) => {
-	//   try {
-	//     const { name, nickname, token } = input;
+			const tokenData = authenticator.getTokenData(token)
 
-	//     if (!name || !nickname) {
-	//       throw new CustomError(
-	//         400,
-	//         'Preencha os campos , "name" e "nickname"'
-	//       );
-	//     }
-	//     const { id } = authenticator.getTokenData(token)
+			const userExists = await this.userDatabase.getProfile(tokenData.id)
 
-	//     if (name.length < 4) {
-	//       throw new InvalidName();
-	//     }
+			if (!userExists) {
+				throw new InvalidToken();
+			}
 
-	//     const editUserInput: EditUserInput = {
-	//       id,
-	//       name,
-	//       nickname,
-	//     };
+			const user = await this.userDatabase.getAllUsers()
 
-	//     const userDatabase = new UserDatabase();
-	//     await userDatabase.editUser(editUserInput);
-	//   } catch (error: any) {
-	//     throw new CustomError(400, error.message);
-	//   }
-	// };
+			if (!user) {
+				throw new CustomError(404, "Não há usuários cadastrados em nosso banco de dados.");
+			}
+
+			return user
+
+		} catch (error: any) {
+			throw new CustomError(400, error.message)
+		}
+	};
+
 }
