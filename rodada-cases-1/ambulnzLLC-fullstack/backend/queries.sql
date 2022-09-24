@@ -17,6 +17,7 @@ CREATE TABLE
 
 CREATE TABLE
     IF NOT EXISTS ambulnz_orders (
+        id VARCHAR(255) NOT NULL PRIMARY KEY,
         user_id VARCHAR(255) NOT NULL,
         pizza_name VARCHAR(255) NOT NULL,
         quantity INTEGER NOT NULL,

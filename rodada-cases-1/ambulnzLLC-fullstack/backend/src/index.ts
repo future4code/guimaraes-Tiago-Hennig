@@ -4,6 +4,7 @@ import express from "express";
 import cors from 'cors'
 import { pizzaRouter } from "./routes/pizzaRouter";
 import { userRouter } from "./routes/userRouter";
+import { orderRouter } from "./routes/orderRouter";
 
 dotenv.config();
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.json());
 
 app.use("/", pizzaRouter)
 app.use("/", userRouter)
+app.use("/", orderRouter)
 
 const server = app.listen(process.env.PORT || 3003, () => {
     if (server) {

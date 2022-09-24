@@ -38,19 +38,19 @@ export class UserDatabase extends BaseDatabase {
         };
 
 
-    async login(id:string) {
+    // async login(id:string) {
 
-        try {
-            const result = await this.getConnection()
-            .select("*")
-            .from(UserDatabase.TABLE_NAME)
-            .where("id", "like", id)
+    //     try {
+    //         const result = await this.getConnection()
+    //         .select("*")
+    //         .from(UserDatabase.TABLE_NAME)
+    //         .where("id", "like", id)
 
-            return result
+    //         return result
 
-        } catch (error:any) {
-            throw new Error(error.message)
-        }
-    }
+    //     } catch (error:any) {
+    //         throw new Error(error.message)
+    //     }
+    // }
 
 }

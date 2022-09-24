@@ -57,20 +57,34 @@ export class UserBusiness {
     }
 
 
+    async login(input:any) {
 
+        const { email, password } = input
 
-    async login(inpuy:any) {
+        if ( !email || !password ) {
+            throw new MissingInformation()
+        }
 
-        // const payload = { id }
+        const user = await this.userDatabase.findUserByEmail(email)
 
-        // const token = authenticator.generateToken(payload)
-        
-        // return token
+        if (!user) {
+            throw new CustomError(400, "Invalid email. This email isn't in our database.")
+        }
 
+        const hashPassword= await hashManager.hashCompare(password, user.password)
 
+        if (!hashPassword) {
+            throw new CustomError(400, "Wrong password!")
+        }
 
+        const payload = {
+            id: user.id
+        }
+
+        const token = authenticator.generateToken(payload)
+
+        return token
 
     }
-
 
 }

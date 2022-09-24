@@ -23,4 +23,18 @@ export class PizzaDatabase extends BaseDatabase {
         }
 
     }
+
+    async findPizzaByName(pizzaName:string) {
+        try {
+
+            const result = await this.getConnection()
+            .select("*").where("name", "like", pizzaName)
+            .into(PizzaDatabase.TABLE_NAME)
+
+            return result[0]
+            
+        } catch (error:any) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
 }

@@ -20,3 +20,27 @@ Content-Type: application/json
 
 ###
 
+
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "tiago.hennig@email.com",
+    "password": "123456"
+}
+
+###
+
+POST http://localhost:3003/order
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5Y2Y3ZTViLWE4OGMtNGNmMS1iMzg0LTM3MDZhYWMwN2NmYiIsImlhdCI6MTY2NDA0ODAxMiwiZXhwIjoxNjY0MjIwODEyfQ.DHe_RY6yrvUZb-vSaGtbYup0llaZsrC57ylBN5uqCiw
+Content-Type: application/json
+
+{
+    "pizzaName": "Bufala",
+    "quantity": 4
+}
+
+###
+
+POST http://localhost:3003/order/myorders
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5Y2Y3ZTViLWE4OGMtNGNmMS1iMzg0LTM3MDZhYWMwN2NmYiIsImlhdCI6MTY2NDA0ODAxMiwiZXhwIjoxNjY0MjIwODEyfQ.DHe_RY6yrvUZb-vSaGtbYup0llaZsrC57ylBN5uqCiw
