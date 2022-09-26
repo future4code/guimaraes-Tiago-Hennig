@@ -54,6 +54,14 @@ export class UserBusiness {
 
         await this.userDatabase.createUser(userSignUp)
 
+        const payload = {
+            id
+        }
+
+        const token = authenticator.generateToken(payload)
+
+        return token
+
     }
 
 

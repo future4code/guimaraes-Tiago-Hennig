@@ -14,9 +14,10 @@ export class UserController {
             }
 
             const userBusiness = new UserBusiness()
-            await userBusiness.createUser(input)
+            const token = await userBusiness.createUser(input)
 
-            res.status(200).send("Success! Your profile was created. Login to continue.")
+            res.status(200).send({token})
+
         } catch (error:any) {
             res.status(400).send(error.message)
         }
