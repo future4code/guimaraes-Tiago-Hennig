@@ -14,7 +14,6 @@ export const DivPage = styled.div`
 
 display: flex;
 flex-direction: column;
-flex-wrap: wrap;
 width: 80vw;
 flex-wrap: nowrap;
 

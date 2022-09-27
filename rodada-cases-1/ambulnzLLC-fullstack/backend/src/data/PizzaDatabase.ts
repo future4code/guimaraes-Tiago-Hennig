@@ -7,7 +7,8 @@ export class PizzaDatabase extends BaseDatabase {
     async createPizza(
         name:string,
         price:number,
-        ingredients:string
+        ingredients:string,
+        img_url:string
     ): Promise<void> {
 
         try {
@@ -15,7 +16,8 @@ export class PizzaDatabase extends BaseDatabase {
             .insert({
                 name,
                 price,
-                ingredients
+                ingredients,
+                img_url
             })
             .into(PizzaDatabase.TABLE_NAME)
         } catch (error:any) {
@@ -34,7 +36,20 @@ export class PizzaDatabase extends BaseDatabase {
             return result[0]
             
         } catch (error:any) {
-            throw new Error(error.sqlMessage || error.message);
+            throw new Error(error.sqlMessage || error.message)
+        }
+    }
+
+    async getAllPizzas() {
+        try {
+            
+            const result = await this.getConnection()
+            .select("*").into(PizzaDatabase.TABLE_NAME)
+            
+            return result
+
+        } catch (error:any) {
+            throw new Error(error.sqlMessage || error.message)
         }
     }
 }

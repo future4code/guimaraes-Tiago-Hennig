@@ -12,13 +12,20 @@ export class PizzaBusiness {
     
     async createPizza(input:Pizza):Promise<any> {
 
-        const {name, price, ingredients} = input
+        const {name, price, ingredients, img_url} = input
 
-        if (!name || !price || !ingredients) {
+        if ( !name || !price || !ingredients || !img_url ) {
             throw new MissingInformation()
         }
 
-        await this.pizzaDatabase.createPizza(name, price, ingredients)
+        await this.pizzaDatabase.createPizza(name, price, ingredients, img_url)
+    }
+
+    async getAllPizzas() {
+
+        const result = await this.pizzaDatabase.getAllPizzas()
+
+        return result
     }
 
 }

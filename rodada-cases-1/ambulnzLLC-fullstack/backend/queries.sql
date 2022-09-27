@@ -27,3 +27,5 @@ CREATE TABLE
     );
 
 ALTER TABLE ambulnz_pizzas MODIFY price FLOAT(4) NOT NULL;
+
+ALTER TABLE ambulnz_pizzas ADD COLUMN img_url VARCHAR(255);

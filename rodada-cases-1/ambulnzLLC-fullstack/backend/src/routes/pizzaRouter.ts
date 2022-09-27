@@ -7,3 +7,4 @@ export const pizzaRouter = express.Router()
 const pizzaController = new PizzaController()
 
 pizzaRouter.post("/pizza/create", pizzaController.createPizza)
+pizzaRouter.get("/pizza/all", pizzaController.getAllPizzas)

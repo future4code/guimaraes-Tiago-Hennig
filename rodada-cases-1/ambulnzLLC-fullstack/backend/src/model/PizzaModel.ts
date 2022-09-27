@@ -1,5 +1,6 @@
 export type Pizza = {
     name:string,
     price:number,
-    ingredients: string
+    ingredients: string,
+    img_url: string
 }
