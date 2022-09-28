@@ -12,6 +12,8 @@ export const GlobalState = (props) => {
         getPizzas()
     },[])
 
+
+
     const getPizzas = async () => {
         try {
             const res = await axios.get(`${BASE_URL}pizza/all`)
@@ -22,6 +24,8 @@ export const GlobalState = (props) => {
         }
         
     }
+
+
 
 
 

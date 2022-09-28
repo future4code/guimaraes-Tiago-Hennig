@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { CardPizza } from "../../components/CardPizza/CardPizza";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
+import { goToLoginPage } from "../../routes/coordinator";
 import { Buttons, DivPage, PageContainer, Pizzas, Subtitle } from "./style";
 
 export const HomeScreen = () => {
@@ -11,6 +12,11 @@ export const HomeScreen = () => {
     const navigate = useNavigate()
 
     const {pizzas} = useContext(GlobalStateContext)
+
+    const logout = () => {
+        localStorage.removeItem('token')
+        goToLoginPage(navigate)
+    }
 
     return (
 
@@ -24,7 +30,7 @@ export const HomeScreen = () => {
 
                     <button> My Orders </button>
 
-                    <button> Logoff </button>
+                    <button onClick={()=> logout(navigate)}> Logoff </button>
 
                 </Buttons>
 

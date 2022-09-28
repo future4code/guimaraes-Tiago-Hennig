@@ -13,7 +13,7 @@ export const DivPage = styled.div`
 
 display: flex;
 flex-direction: column;
-width: 85vw;
+width: 90vw;
 align-items: center;
 margin-top: 0;
 
@@ -40,7 +40,7 @@ margin-bottom: 5px;
 
 button {
     background-color: #ffffff;
-    border: 1.5px solid  #CF0808;
+    border: 1.5px solid  #CE0808;
     border-radius: 8px;
     height: 45px;
     width: 135px;

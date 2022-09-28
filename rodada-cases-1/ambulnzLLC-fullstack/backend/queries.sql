@@ -2,8 +2,9 @@
 CREATE TABLE
     IF NOT EXISTS ambulnz_pizzas (
         name VARCHAR(255) UNIQUE NOT NULL PRIMARY KEY,
-        price INTEGER NOT NULL,
-        ingredients VARCHAR(255) NOT NULL
+        price FLOAT(4) NOT NULL,
+        ingredients VARCHAR(255) NOT NULL,
+        img_url VARCHAR(255) NOT NULL
     );
 
 
@@ -25,7 +26,3 @@ CREATE TABLE
         FOREIGN KEY(user_id) REFERENCES ambulnz_users(id),
         FOREIGN KEY(pizza_name) REFERENCES ambulnz_pizzas(name)
     );
-
-ALTER TABLE ambulnz_pizzas MODIFY price FLOAT(4) NOT NULL;
-
-ALTER TABLE ambulnz_pizzas ADD COLUMN img_url VARCHAR(255);
