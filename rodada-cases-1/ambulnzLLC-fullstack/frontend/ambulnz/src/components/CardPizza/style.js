@@ -4,7 +4,7 @@ export const CardContainer = styled.div`
 
 display: flex;
 flex-direction: column;
-border: 1px solid  #CF0808;
+border: 2px solid  #CF0808;
 border-radius: 8px;
 height: 80vw;
 max-height: 266px;
@@ -17,7 +17,6 @@ padding: 0;
 
 img {
     width: 92%;
-    max-height: auto;
     align-self: center;
     margin-bottom: 0;
 }
@@ -66,11 +65,11 @@ button {
     border: none;
     background-color: #CF0808;
     color: #ffffff;
-    font-size: 22px;
-    border-radius: 8px 0px 8px 0px;
+    font-size: 25px;
+    border-radius: 10px 0px 5px 0px;
     margin: 0;
     padding: 0;
-    width: 37px;
+    width: 25%;
     height: 100%;
 
 }

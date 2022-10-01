@@ -7,6 +7,10 @@ import { BASE_URL } from "../constants/BASE_URL";
 export const GlobalState = (props) => {
 
     const [pizzas, setPizzas] = useState([])
+    const [cart, setCart] = useState([])
+    const [openModalPizza, setOpenModalPizza] = useState(false)
+    const [pizzaOfTheModal, setPizzaOfTheModal] = useState()
+    const [quantityFromModal, setQuantityFromModal] = useState(0)
 
     useEffect(()=>{
         getPizzas()
@@ -18,9 +22,7 @@ export const GlobalState = (props) => {
         try {
             const res = await axios.get(`${BASE_URL}pizza/all`)
             setPizzas(res.data)
-            console.log(res.data)
         } catch (error) {
-            console.log(error.request.message)
         }
         
     }
@@ -28,8 +30,17 @@ export const GlobalState = (props) => {
 
 
 
+    const addCart=(product,quantity)=>{
+        product.quantity = quantity
+        setCart([...cart,product])
+    }
 
-    const data = {pizzas}
+    console.log(cart)
+
+
+
+    const data = {pizzas, openModalPizza, setOpenModalPizza, pizzaOfTheModal, setPizzaOfTheModal,
+                quantityFromModal, setQuantityFromModal, addCart}
 
     return(
         <GlobalStateContext.Provider value={data}>

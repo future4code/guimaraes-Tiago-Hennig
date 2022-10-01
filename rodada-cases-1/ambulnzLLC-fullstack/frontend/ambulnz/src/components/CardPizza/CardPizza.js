@@ -4,7 +4,6 @@ import { AddButtonAndPrice, CardContainer } from "./style";
 
 export const CardPizza = (props) => {
     let price = props.pizza.price.toString()
-    console.log(price.length)
 
     if (price.length == 1) {
         price = price + ".00"
@@ -25,7 +24,7 @@ export const CardPizza = (props) => {
             <AddButtonAndPrice>
 
                 <p> {`$${price}`} </p>
-                <button>+</button>
+                <button onClick={() => {props.setPizzaOfTheModal(props.pizza); props.handleOpen()}}>+</button>
 
             </AddButtonAndPrice>
 
