@@ -1,0 +1,57 @@
+POST http://localhost:3003/signup
+Content-Type: application/json
+
+{
+   "name": "Luís Augusto", 
+   "email": "luis.augusto@ibest.com" ,
+   "password": "123456",
+   "role": "user"
+}
+
+###
+
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+
+   "email": "luis.augusto@ibest.com" ,
+   "password": "123456"
+}
+
+###
+
+GET http://localhost:3003/user/profile
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgxYWNkNDE0LTEyMWYtNGEyMC1iNTIwLTZhYzM4OTM0MWY5NCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxMjYzNTkxLCJleHAiOjE2NjEzMDY3OTF9.oA_RtP_hSWoGKiK5z6DYi145H_e42GmRYKVrOImZeSA
+
+###
+
+GET http://localhost:3003/user/c136cec6-2186-4d24-ac03-50c20e17b068
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgxYWNkNDE0LTEyMWYtNGEyMC1iNTIwLTZhYzM4OTM0MWY5NCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxMjY2MDMwLCJleHAiOjE2NjEzMDkyMzB9.lFGz_WDw7LzLWPXnPj_Z7j9c1iIP3YQrLeefEYmAyG8
+
+###
+
+
+GET http://localhost:3003/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYTU5ZTE4LWVkZGMtNGM5MS05Yzg1LTliNDQ3OTY2ODUwMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxNDQxNDI4LCJleHAiOjE2NjE0ODQ2Mjh9.4YoMXlN8Pua_8vwrdzhQi0O9ZyegtuOcXN8zJOuIpYI
+
+###
+
+POST http://localhost:3003/recipe
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYTU5ZTE4LWVkZGMtNGM5MS05Yzg1LTliNDQ3OTY2ODUwMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxNDQxNDI4LCJleHAiOjE2NjE0ODQ2Mjh9.4YoMXlN8Pua_8vwrdzhQi0O9ZyegtuOcXN8zJOuIpYI
+Content-Type: application/json
+
+{
+   "title": "Lasanha de brócolis",
+   "description": "Compre no mercado. Asse. Sirva quente."
+}
+
+###
+
+GET http://localhost:3003/recipe/4bee33d8-868c-46e8-bfaf-f3f6994b6abd
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYTU5ZTE4LWVkZGMtNGM5MS05Yzg1LTliNDQ3OTY2ODUwMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxNDQxNDI4LCJleHAiOjE2NjE0ODQ2Mjh9.4YoMXlN8Pua_8vwrdzhQi0O9ZyegtuOcXN8zJOuIpYI
+
+###
+
+GET http://localhost:3003/recipe
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyYTU5ZTE4LWVkZGMtNGM5MS05Yzg1LTliNDQ3OTY2ODUwMCIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjYxNDQxNDI4LCJleHAiOjE2NjE0ODQ2Mjh9.4YoMXlN8Pua_8vwrdzhQi0O9ZyegtuOcXN8zJOuIpYI
