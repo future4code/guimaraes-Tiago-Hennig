@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { GlobalStateContext } from "../../global/GlobalStateContext";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
-import { goToLoginPage } from "../../routes/coordinator";
-import { Buttons, DivPage, PageContainer, Subtitle } from "./style";
+import { goToHome, goToLoginPage } from "../../routes/coordinator";
+import { Buttons, CartCard, DivPage, PageContainer, Subtitle } from "./style";
 
 
 export const Cart = () => {
 
     useProtectedPage()
     const navigate = useNavigate()
+
+    const { cart } = useContext(GlobalStateContext)
+
 
     const logout = () => {
         localStorage.removeItem('token')
@@ -23,7 +27,7 @@ export const Cart = () => {
 
                 <Buttons>
 
-                    <button> My Orders </button>
+                    <button onClick={()=> goToHome(navigate)}> Pizzas </button>
 
                     <button onClick={()=> logout(navigate)}> Logout </button>
 
@@ -34,6 +38,27 @@ export const Cart = () => {
                     <h2> Cart </h2>
 
                 </Subtitle>
+
+                <div>
+
+                    {cart?.map((pizza) => {
+                        return(
+                            <CartCard key={pizza.name}>
+                                <p>{pizza.quantity}x </p>
+                                <p> {pizza.name}</p>
+                            </CartCard>
+                        )
+                    })}
+
+                            {/* <CartCard >
+                                <p>3x</p>
+                                <p> Marguerita</p>
+                            </CartCard>
+                            <CartCard >
+                                <p>3x</p>
+                                <p> Marguerita</p>
+                            </CartCard> */}
+                </div>
 
             </DivPage>
 

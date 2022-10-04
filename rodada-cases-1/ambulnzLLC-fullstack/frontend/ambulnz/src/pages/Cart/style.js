@@ -73,3 +73,25 @@ height: 40px;
 
 
 `
+
+export const CartCard = styled.div`
+display: flex;
+flex-direction: row;
+border: 1px solid black;
+border-radius: 8px;
+font-size: 1.7rem;
+margin-bottom: 5px;
+align-items: center;
+width: 90vw;
+height: 50px;
+
+p:nth-child(1) {
+    padding-left: 10px;
+}
+
+p:nth-child(2) {
+    padding-left: 10px;
+}
+
+
+`

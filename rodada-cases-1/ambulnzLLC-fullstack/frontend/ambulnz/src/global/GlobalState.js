@@ -32,8 +32,12 @@ export const GlobalState = (props) => {
 
 
     const addCart=(product,quantity)=>{
-        product.quantity = quantity
-        setCart([...cart,product])
+        if (quantityFromModal > 0) {
+            product.quantity = quantity
+            setCart([...cart,product])
+            setQuantityFromModal(0)
+        }
+
     }
 
     console.log(cart)
@@ -41,7 +45,7 @@ export const GlobalState = (props) => {
 
 
     const data = { pizzas, openModalPizza, setOpenModalPizza, pizzaOfTheModal, setPizzaOfTheModal,
-                quantityFromModal, setQuantityFromModal, addCart, openModalCart, setOpenModalCart }
+                quantityFromModal, setQuantityFromModal, addCart, openModalCart, setOpenModalCart, cart }
 
     return(
         <GlobalStateContext.Provider value={data}>
