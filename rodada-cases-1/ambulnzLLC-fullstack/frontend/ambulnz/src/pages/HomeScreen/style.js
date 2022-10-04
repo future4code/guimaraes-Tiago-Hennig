@@ -1,4 +1,5 @@
 import { red } from "@mui/material/colors"
+import { height } from "@mui/system"
 import styled from "styled-components"
 
 export const PageContainer = styled.div`
@@ -33,7 +34,7 @@ h1 {
 
 `
 
-export const BoxStyle = {
+export const BoxStylePizza = {
     position: 'absolute',
     top: '50%',
     left: '50%',
@@ -49,6 +50,7 @@ export const BoxStyle = {
     }
 
 }
+
 
 export const Select = styled.select`
 
@@ -180,6 +182,7 @@ box-shadow: 0px 0px 10px 4px gray;
 
 
 button {
+    font-size: 1.8rem;
 
     p:first-child {
     display: flex;
@@ -193,7 +196,7 @@ button {
     display: flex;
     background-color: #CE0808;
     color: #ffffff;
-    font-size: 1.3rem;
+
     border-radius: 8px;
     border: none;
     height: 60%;
@@ -209,6 +212,7 @@ button {
 
     p:nth-child(2) {
         place-self: center;
+
     }
 
 }

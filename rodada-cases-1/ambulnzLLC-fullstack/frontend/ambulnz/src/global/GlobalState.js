@@ -11,6 +11,7 @@ export const GlobalState = (props) => {
     const [openModalPizza, setOpenModalPizza] = useState(false)
     const [pizzaOfTheModal, setPizzaOfTheModal] = useState()
     const [quantityFromModal, setQuantityFromModal] = useState(0)
+    const [openModalCart, setOpenModalCart] = useState(false)
 
     useEffect(()=>{
         getPizzas()
@@ -39,8 +40,8 @@ export const GlobalState = (props) => {
 
 
 
-    const data = {pizzas, openModalPizza, setOpenModalPizza, pizzaOfTheModal, setPizzaOfTheModal,
-                quantityFromModal, setQuantityFromModal, addCart}
+    const data = { pizzas, openModalPizza, setOpenModalPizza, pizzaOfTheModal, setPizzaOfTheModal,
+                quantityFromModal, setQuantityFromModal, addCart, openModalCart, setOpenModalCart }
 
     return(
         <GlobalStateContext.Provider value={data}>

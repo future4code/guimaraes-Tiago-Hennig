@@ -1,14 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CardPizza } from "../../components/CardPizza/CardPizza";
 import { GlobalStateContext } from "../../global/GlobalStateContext";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
-import { goToLoginPage } from "../../routes/coordinator";
-import { BoxStyle, Buttons, CartFooter, ContainerHowManyAndAddButton, DivPage, HowManyPizzas, PageContainer, Pizzas, Select, Subtitle } from "./style";
+import { goToCart, goToLoginPage } from "../../routes/coordinator";
+import { BoxStylePizza, Buttons, CartFooter, ContainerHowManyAndAddButton, DivPage, HowManyPizzas, PageContainer, Pizzas, Subtitle } from "./style";
 import CartBag from "../../images/cartBag.png"
 import Modal from "@mui/material/Modal"
 import { Box } from "@mui/material"
-import MenuItem from '@mui/material/MenuItem'
 
 const style = {
     position: 'absolute',
@@ -57,7 +56,7 @@ export const HomeScreen = () => {
 
             <Modal open={openModalPizza} onClose={handleCloseModalPizza}>
                 
-                <Box sx={BoxStyle}>
+                <Box sx={BoxStylePizza}>
                     <h1>{pizzaOfTheModal?.name}? Good choice!</h1>
                     <h2>How many?</h2>
 
@@ -84,7 +83,7 @@ export const HomeScreen = () => {
 
                     <button> My Orders </button>
 
-                    <button onClick={()=> logout(navigate)}> Logoff </button>
+                    <button onClick={()=> logout(navigate)}> Logout </button>
 
                 </Buttons>
 
@@ -110,7 +109,7 @@ export const HomeScreen = () => {
 
                 <CartFooter>
                     
-                    <button> <p> $21.50 </p> Cart <img src={CartBag}></img> </button>
+                    <button onClick={() => goToCart(navigate)}> <p> $21.50 </p> Cart <img src={CartBag}></img> </button>
 
                 </CartFooter>
 

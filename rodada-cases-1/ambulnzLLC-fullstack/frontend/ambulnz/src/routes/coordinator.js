@@ -13,3 +13,7 @@ export const goToSignUpPage = (navigate) => {
 export const goToSplashScreen = (navigate) => {
     navigate("/")
 }
+
+export const goToCart = (navigate) => {
+    navigate("/cart")
+}
