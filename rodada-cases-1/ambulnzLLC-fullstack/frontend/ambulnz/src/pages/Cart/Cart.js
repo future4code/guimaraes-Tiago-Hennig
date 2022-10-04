@@ -11,11 +11,12 @@ export const Cart = () => {
     useProtectedPage()
     const navigate = useNavigate()
 
-    const { cart } = useContext(GlobalStateContext)
+    const { cart, setCart } = useContext(GlobalStateContext)
 
 
     const logout = () => {
         localStorage.removeItem('token')
+        setCart([])
         goToLoginPage(navigate)
     }
 

@@ -45,7 +45,7 @@ export const GlobalState = (props) => {
 
 
     const data = { pizzas, openModalPizza, setOpenModalPizza, pizzaOfTheModal, setPizzaOfTheModal,
-                quantityFromModal, setQuantityFromModal, addCart, openModalCart, setOpenModalCart, cart }
+                quantityFromModal, setQuantityFromModal, addCart, openModalCart, setOpenModalCart, cart, setCart }
 
     return(
         <GlobalStateContext.Provider value={data}>

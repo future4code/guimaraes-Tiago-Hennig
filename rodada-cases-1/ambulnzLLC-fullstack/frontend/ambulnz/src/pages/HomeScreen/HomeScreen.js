@@ -30,11 +30,13 @@ export const HomeScreen = () => {
     const navigate = useNavigate()
 
     const { pizzas, openModalPizza, setOpenModalPizza, pizzaOfTheModal, setPizzaOfTheModal,
-        quantityFromModal, setQuantityFromModal, addCart } = useContext(GlobalStateContext)
+        quantityFromModal, setQuantityFromModal, addCart, setCart } = useContext(GlobalStateContext)
 
     const logout = () => {
         localStorage.removeItem('token')
+        setCart([])
         goToLoginPage(navigate)
+        
     }
 
 	const handleOpenModalPizza = () => setOpenModalPizza(true)

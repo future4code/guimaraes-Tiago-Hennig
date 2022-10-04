@@ -61,7 +61,7 @@ display: flex;
 flex-direction: column;
 height: 60px;
 width: 100%;
-margin-bottom: 25px;
+margin-bottom: 0;
 
 h2 {
 font-size: 30px;
@@ -77,7 +77,7 @@ height: 40px;
 export const CartCard = styled.div`
 display: flex;
 flex-direction: row;
-border: 1px solid black;
+border: 2px solid  #CF0808;
 border-radius: 8px;
 font-size: 1.7rem;
 margin-bottom: 5px;
