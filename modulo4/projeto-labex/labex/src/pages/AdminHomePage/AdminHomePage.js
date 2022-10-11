@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Box, Boxes, Buttons, DivLeft, DivRight, NameOfTrip, Page, RedBox, Title} from "./style";
 import { useProtectedPage } from "../../hooks/useProtectedPage";
 import LabeX from "../../img/LabeX_11zon.png"
+import { BASE_URL } from "../../constants/BASE_URL";
 
 
 const AdminHomePage = () => {
@@ -31,7 +32,7 @@ const AdminHomePage = () => {
 
 
     const getTripList = () => {
-        const url = "https://us-central1-labenu-apis.cloudfunctions.net/labeX/tiago-hennig-turmaguimaraes/trips"
+        const url = `${BASE_URL}/trips`
         axios.get(url)
         .then((response) => {
             setListTrip(response.data.trips)
@@ -39,7 +40,7 @@ const AdminHomePage = () => {
     }
 
     const deleteTrip = (tripId) => {
-        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labeX/tiago-hennig-turmaguimaraes/trips/${tripId}`
+        const url = `${BASE_URL}/${tripId}`
         const token = window.localStorage.getItem('token')
         const headers = {
             auth: token,

@@ -61,7 +61,6 @@ width: 22.6vw;
 
 button {
     width: auto;
-    padding: 1.8vh;
     background-color: #0C9AF2;
     border-radius: 4px;
     border-style: none;
@@ -69,6 +68,7 @@ button {
     color: #ffffff;
     font-size: 3.2vh;
     justify-items: center;
+    text-align: center;
     height: 6.5vh;
 }
 
