@@ -1,0 +1,43 @@
+# @name signup
+
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+   "email": "osbourne@oscorp.com" ,
+   "password": "ihatepeter"
+}
+
+###
+
+
+
+PUT http://localhost:3003/user/edit/
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA5NmE4OGIyLTBlYTItNGVmMi04Y2VlLTE2YjgwMGQ5MzU0ZiIsImlhdCI6MTY2MDkzNDEyNywiZXhwIjoxNjYwOTM3NzI3fQ.8yd5_MQ1dgqk_JKVY3uLeTSvgYdpa9Szdi1QsoeA05k
+Content-Type: application/json
+
+{
+   "email": "madonna.ciccone@email.com",
+   "password": "iloveme" 
+}
+
+###
+
+GET http://localhost:3003/user/profile
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhhYTNlNzQzLTUyMGMtNGMzYi05ODZkLTY2YjAwOTM1YTM4MSIsImlhdCI6MTY2MDk0MzEyMCwiZXhwIjoxNjYwOTQ2NzIwfQ.Xt-1tgJhbDPdLQckFEyFUzoKbFWhskqtPL17aMWXy_w
+
+
+
+###
+
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+   "email": "osbourne@oscorp.com" ,
+   "password": "ihatepeter"
+}
+
+
+###
+
