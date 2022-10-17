@@ -57,7 +57,7 @@ interface ResultItem {
     unallowed: string[];
 }
 
-const verifyAge = (casino:Casino, users: Client[]): Result => {
+export const verifyAge = (casino:Casino, users: Client[]): Result => {
 
     const allowed: Client[] = []
     const unallowed: Client[] = []
@@ -100,57 +100,3 @@ const verifyAge = (casino:Casino, users: Client[]): Result => {
 
 }
 
-export const clientList:Client[] = [
-    {
-        name: "Tiago",
-        nacionality: NACIONALITY.BRAZILIAN,
-        age: 28
-    },
-    {
-        name: "Madonna",
-        nacionality: NACIONALITY.AMERICAN,
-        age: 64 
-    },
-    {
-        name: "Lady GaGa",
-        nacionality: NACIONALITY.AMERICAN,
-        age: 20
-    },
-    {
-        name: "Lucas",
-        nacionality: NACIONALITY.BRAZILIAN,
-        age: 22
-    },
-    {
-        name: "Rodrigo",
-        nacionality: NACIONALITY.BRAZILIAN,
-        age: 19
-    },
-    {
-        name: "James",
-        nacionality: NACIONALITY.AMERICAN,
-        age: 30
-    },
-    {
-        name: "Guilherme",
-        nacionality: NACIONALITY.BRAZILIAN,
-        age: 26
-    },
-    {
-        name: "Jonathan",
-        nacionality: NACIONALITY.AMERICAN,
-        age: 35
-    },
-    {
-        name: "Rick",
-        nacionality: NACIONALITY.AMERICAN,
-        age: 50
-    }
-]
-
-const ceasar:Casino = {
-    name: "Ceasar Palace",
-    location: LOCATION.USA
-}
-
-console.log(verifyAge(ceasar, clientList))

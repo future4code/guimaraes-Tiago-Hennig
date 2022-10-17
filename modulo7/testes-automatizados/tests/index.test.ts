@@ -1,4 +1,4 @@
-import { Client, NACIONALITY, performPurchase, User } from "../src"
+import { Casino, Client, LOCATION, NACIONALITY, performPurchase, User, verifyAge } from "../src"
 
 describe.skip("Exercise 2", ()=> {
 
@@ -31,55 +31,133 @@ describe.skip("Exercise 2", ()=> {
 })
 
 
-export const clientList:Client[] = [
-    {
-        name: "Tiago",
-        nacionality: NACIONALITY.BRAZILIAN,
-        age: 28
-    },
-    {
-        name: "Madonna",
-        nacionality: NACIONALITY.AMERICAN,
-        age: 64 
-    },
-    {
-        name: "Lady GaGa",
-        nacionality: NACIONALITY.AMERICAN,
-        age: 32
-    },
-    {
-        name: "Lucas",
-        nacionality: NACIONALITY.BRAZILIAN,
-        age: 22
-    },
-    {
-        name: "Rodrigo",
-        nacionality: NACIONALITY.BRAZILIAN,
-        age: 25
-    },
-    {
-        name: "James",
-        nacionality: NACIONALITY.AMERICAN,
-        age: 30
-    },
-    {
-        name: "Guilherme",
-        nacionality: NACIONALITY.BRAZILIAN,
-        age: 26
-    },
-    {
-        name: "Jonathan",
-        nacionality: NACIONALITY.AMERICAN,
-        age: 35
-    },
-    {
-        name: "Rick",
-        nacionality: NACIONALITY.AMERICAN,
-        age: 50
+describe.skip("Exercise 3", ()=>{
+
+    test("(4a)", ()=>{
+
+        const users:Client[] = [{
+            name: "Tiago",
+            nacionality: NACIONALITY.BRAZILIAN,
+            age: 18
+        }]
+
+        const casino1:Casino = {
+            name: "Ceasar",
+            location: LOCATION.BRAZIL
+        }
+
+        const result = verifyAge(casino1, users)
+
+        expect(result.brazilians.allowed).toEqual(["Tiago"])
+
+    })
+
+    test("(4b)", ()=>{
+
+        const users:Client[] = [{
+            name: "Tiago",
+            nacionality: NACIONALITY.AMERICAN,
+            age: 18
+        }]
+
+        const casino1:Casino = {
+            name: "Ceasar",
+            location: LOCATION.BRAZIL
+        }
+
+        const result = verifyAge(casino1, users)
+
+        expect(result.americans.allowed).toEqual(["Tiago"])
+
+    })
+
+    test("(4c)", ()=>{
+        expect.assertions(3)
+    const users:Client[] = [
+        {
+            name:"Tiago",
+            nacionality: NACIONALITY.AMERICAN,
+            age: 19
+        },
+        {
+            name: "James",
+            nacionality: NACIONALITY.BRAZILIAN,
+            age: 19
+        }
+    ]
+
+    const casino1:Casino = {
+        name: "Ceasar",
+        location: LOCATION.BRAZIL
     }
-]
 
-describe("Exercise 3", ()=>{
+    const result = verifyAge(casino1, users)
 
-    test("(3a)")
+    expect(result).toEqual({
+        brazilians: {
+            allowed: ["James"],
+            unallowed: []
+        },
+        americans: {
+            allowed: ["Tiago"],
+            unallowed: []
+        }    
+    })
+    
+    expect(result.americans.allowed).toEqual(["Tiago"])
+    expect(result.brazilians.allowed).toEqual(["James"])
+
+    })
+
+    test("(4d)", ()=>{
+
+        const users:Client[] = [
+            {
+                name:"Tiago",
+                nacionality: NACIONALITY.AMERICAN,
+                age: 21
+            },
+            {
+                name: "James",
+                nacionality: NACIONALITY.BRAZILIAN,
+                age: 19
+            },
+            {
+                name: "Ruth",
+                nacionality: NACIONALITY.AMERICAN,
+                age: 21
+            },
+            {
+                name: "Rita",
+                nacionality: NACIONALITY.BRAZILIAN,
+                age: 19
+            }
+        ]
+    
+        const casino1:Casino = {
+            name: "Ceasar",
+            location: LOCATION.USA
+        }
+
+        const result = verifyAge(casino1, users)
+
+        expect(result.americans.allowed).toEqual(["Tiago", "Ruth"])
+        expect(result.americans.unallowed).toEqual([])
+        expect(result.brazilians.allowed).toEqual([])
+        expect(result.brazilians.unallowed).toEqual(["James", "Rita"])
+        expect(result).toEqual({
+            brazilians: {
+                allowed: [],
+                unallowed: ["James", "Rita"]
+            },
+            americans: {
+                allowed: ["Tiago", "Ruth"],
+                unallowed: []
+            }    
+        })
+
+    })
+
+
 })
+
