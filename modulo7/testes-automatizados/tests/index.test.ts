@@ -1,8 +1,8 @@
-import { performPurchase, User } from "../src"
+import { Client, NACIONALITY, performPurchase, User } from "../src"
 
-describe("Test", ()=> {
+describe.skip("Exercise 2", ()=> {
 
-    test("(a) Testing a value smaller than the user's balance", ()=>{
+    test("(2a) Testing a value smaller than the user's balance", ()=>{
         const tiago = new User("Tiago", 300)
 
         const result = performPurchase(tiago, 100)
@@ -11,7 +11,7 @@ describe("Test", ()=> {
         expect(result).toEqual({name:"Tiago", balance: 200})
     })
 
-    test("(b) Testing a value equal to the user's balance", ()=>{
+    test("(2b) Testing a value equal to the user's balance", ()=>{
         const tiago = new User("Tiago", 300)
 
         const result = performPurchase(tiago, 300)
@@ -20,7 +20,7 @@ describe("Test", ()=> {
         expect(result).toEqual({name:"Tiago", balance: 0})
     })
 
-    test("(c) Testing a value greatter than the user's balance", ()=>{
+    test("(2c) Testing a value greatter than the user's balance", ()=>{
         const tiago = new User("Tiago", 300)
 
         const result = performPurchase(tiago, 400)
@@ -28,4 +28,58 @@ describe("Test", ()=> {
         expect(result).toBe(undefined)
         expect(result).toBeUndefined()
     })
+})
+
+
+export const clientList:Client[] = [
+    {
+        name: "Tiago",
+        nacionality: NACIONALITY.BRAZILIAN,
+        age: 28
+    },
+    {
+        name: "Madonna",
+        nacionality: NACIONALITY.AMERICAN,
+        age: 64 
+    },
+    {
+        name: "Lady GaGa",
+        nacionality: NACIONALITY.AMERICAN,
+        age: 32
+    },
+    {
+        name: "Lucas",
+        nacionality: NACIONALITY.BRAZILIAN,
+        age: 22
+    },
+    {
+        name: "Rodrigo",
+        nacionality: NACIONALITY.BRAZILIAN,
+        age: 25
+    },
+    {
+        name: "James",
+        nacionality: NACIONALITY.AMERICAN,
+        age: 30
+    },
+    {
+        name: "Guilherme",
+        nacionality: NACIONALITY.BRAZILIAN,
+        age: 26
+    },
+    {
+        name: "Jonathan",
+        nacionality: NACIONALITY.AMERICAN,
+        age: 35
+    },
+    {
+        name: "Rick",
+        nacionality: NACIONALITY.AMERICAN,
+        age: 50
+    }
+]
+
+describe("Exercise 3", ()=>{
+
+    test("(3a)")
 })
