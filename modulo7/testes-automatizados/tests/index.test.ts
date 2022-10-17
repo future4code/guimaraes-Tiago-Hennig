@@ -31,7 +31,7 @@ describe.skip("Exercise 2", ()=> {
 })
 
 
-describe.skip("Exercise 3", ()=>{
+describe.skip("Exercise 3 & 4", ()=>{
 
     test("(4a)", ()=>{
 
@@ -161,3 +161,122 @@ describe.skip("Exercise 3", ()=>{
 
 })
 
+describe.skip("Exercise 5", ()=>{
+
+    test("(5a)", ()=>{
+
+        const users:Client[] = [{
+            name: "Tiago",
+            nacionality: NACIONALITY.BRAZILIAN,
+            age: 18
+        }]
+
+        const casino1:Casino = {
+            name: "Ceasar",
+            location: LOCATION.BRAZIL
+        }
+
+        const result = verifyAge(casino1, users)
+
+        expect(result.brazilians.allowed.length).toBeGreaterThan(0)
+        expect(result.brazilians.allowed.length).toBeLessThan(2)
+
+    })
+
+    test("(5b)", ()=>{
+
+        const users:Client[] = [{
+            name: "Tiago",
+            nacionality: NACIONALITY.AMERICAN,
+            age: 18
+        }]
+
+        const casino1:Casino = {
+            name: "Ceasar",
+            location: LOCATION.BRAZIL
+        }
+
+        const result = verifyAge(casino1, users)
+
+        expect(result.americans.unallowed.length).toBe(0)
+
+    })
+
+    test("(5c)", ()=>{
+
+        const users:Client[] = [
+            {
+                name:"Tiago",
+                nacionality: NACIONALITY.AMERICAN,
+                age: 19
+            },
+            {
+                name: "James",
+                nacionality: NACIONALITY.BRAZILIAN,
+                age: 19
+            },
+            {
+                name: "Ruth",
+                nacionality: NACIONALITY.AMERICAN,
+                age: 19
+            },
+            {
+                name: "Rita",
+                nacionality: NACIONALITY.BRAZILIAN,
+                age: 19
+            }
+        ]
+    
+        const casino1:Casino = {
+            name: "Ceasar",
+            location: LOCATION.USA
+        }
+
+        const result = verifyAge(casino1, users)
+
+        expect(result.americans.unallowed).toContain("Tiago")
+        expect(result.brazilians.unallowed).toContain("James")
+
+    })
+
+
+    test("(5d)", ()=>{
+
+        const users:Client[] = [
+            {
+                name:"Tiago",
+                nacionality: NACIONALITY.AMERICAN,
+                age: 21
+            },
+            {
+                name: "James",
+                nacionality: NACIONALITY.BRAZILIAN,
+                age: 19
+            },
+            {
+                name: "Ruth",
+                nacionality: NACIONALITY.AMERICAN,
+                age: 21
+            },
+            {
+                name: "Rita",
+                nacionality: NACIONALITY.BRAZILIAN,
+                age: 19
+            }
+        ]
+
+        const casino1:Casino = {
+            name: "Ceasar",
+            location: LOCATION.USA
+        }
+
+        const result = verifyAge(casino1, users)
+
+        expect(result.brazilians.unallowed.length).toBeGreaterThan(1)
+        expect(result.americans.unallowed.length).toBeLessThan(1)
+        expect(result.americans.allowed.length).toBe(2)
+
+    })
+
+
+})
