@@ -2,27 +2,27 @@ import { Casino, Client, LOCATION, NACIONALITY, performPurchase, User, verifyAge
 import { BaseDatabase } from "../src/BaseDatabase"
 import { post, PostDatabase } from "../src/PostDatabase"
 
-describe.skip("Exercise 2", ()=> {
+describe.skip("Exercise 2", () => {
 
-    test("(2a) Testing a value smaller than the user's balance", ()=>{
+    test("(2a) Testing a value smaller than the user's balance", () => {
         const tiago = new User("Tiago", 300)
 
         const result = performPurchase(tiago, 100)
 
         expect(result?.balance).toBe(200)
-        expect(result).toEqual({name:"Tiago", balance: 200})
+        expect(result).toEqual({ name: "Tiago", balance: 200 })
     })
 
-    test("(2b) Testing a value equal to the user's balance", ()=>{
+    test("(2b) Testing a value equal to the user's balance", () => {
         const tiago = new User("Tiago", 300)
 
         const result = performPurchase(tiago, 300)
 
         expect(result?.balance).toBe(0)
-        expect(result).toEqual({name:"Tiago", balance: 0})
+        expect(result).toEqual({ name: "Tiago", balance: 0 })
     })
 
-    test("(2c) Testing a value greatter than the user's balance", ()=>{
+    test("(2c) Testing a value greatter than the user's balance", () => {
         const tiago = new User("Tiago", 300)
 
         const result = performPurchase(tiago, 400)
@@ -33,17 +33,17 @@ describe.skip("Exercise 2", ()=> {
 })
 
 
-describe.skip("Exercise 3 & 4", ()=>{
+describe.skip("Exercise 3 & 4", () => {
 
-    test("(4a)", ()=>{
+    test("(4a)", () => {
 
-        const users:Client[] = [{
+        const users: Client[] = [{
             name: "Tiago",
             nacionality: NACIONALITY.BRAZILIAN,
             age: 18
         }]
 
-        const casino1:Casino = {
+        const casino1: Casino = {
             name: "Ceasar",
             location: LOCATION.BRAZIL
         }
@@ -54,15 +54,15 @@ describe.skip("Exercise 3 & 4", ()=>{
 
     })
 
-    test("(4b)", ()=>{
+    test("(4b)", () => {
 
-        const users:Client[] = [{
+        const users: Client[] = [{
             name: "Tiago",
             nacionality: NACIONALITY.AMERICAN,
             age: 18
         }]
 
-        const casino1:Casino = {
+        const casino1: Casino = {
             name: "Ceasar",
             location: LOCATION.BRAZIL
         }
@@ -73,49 +73,49 @@ describe.skip("Exercise 3 & 4", ()=>{
 
     })
 
-    test("(4c)", ()=>{
+    test("(4c)", () => {
         expect.assertions(3)
-    const users:Client[] = [
-        {
-            name:"Tiago",
-            nacionality: NACIONALITY.AMERICAN,
-            age: 19
-        },
-        {
-            name: "James",
-            nacionality: NACIONALITY.BRAZILIAN,
-            age: 19
-        }
-    ]
-
-    const casino1:Casino = {
-        name: "Ceasar",
-        location: LOCATION.BRAZIL
-    }
-
-    const result = verifyAge(casino1, users)
-
-    expect(result).toEqual({
-        brazilians: {
-            allowed: ["James"],
-            unallowed: []
-        },
-        americans: {
-            allowed: ["Tiago"],
-            unallowed: []
-        }    
-    })
-    
-    expect(result.americans.allowed).toEqual(["Tiago"])
-    expect(result.brazilians.allowed).toEqual(["James"])
-
-    })
-
-    test("(4d)", ()=>{
-
-        const users:Client[] = [
+        const users: Client[] = [
             {
-                name:"Tiago",
+                name: "Tiago",
+                nacionality: NACIONALITY.AMERICAN,
+                age: 19
+            },
+            {
+                name: "James",
+                nacionality: NACIONALITY.BRAZILIAN,
+                age: 19
+            }
+        ]
+
+        const casino1: Casino = {
+            name: "Ceasar",
+            location: LOCATION.BRAZIL
+        }
+
+        const result = verifyAge(casino1, users)
+
+        expect(result).toEqual({
+            brazilians: {
+                allowed: ["James"],
+                unallowed: []
+            },
+            americans: {
+                allowed: ["Tiago"],
+                unallowed: []
+            }
+        })
+
+        expect(result.americans.allowed).toEqual(["Tiago"])
+        expect(result.brazilians.allowed).toEqual(["James"])
+
+    })
+
+    test("(4d)", () => {
+
+        const users: Client[] = [
+            {
+                name: "Tiago",
                 nacionality: NACIONALITY.AMERICAN,
                 age: 21
             },
@@ -135,8 +135,8 @@ describe.skip("Exercise 3 & 4", ()=>{
                 age: 19
             }
         ]
-    
-        const casino1:Casino = {
+
+        const casino1: Casino = {
             name: "Ceasar",
             location: LOCATION.USA
         }
@@ -155,7 +155,7 @@ describe.skip("Exercise 3 & 4", ()=>{
             americans: {
                 allowed: ["Tiago", "Ruth"],
                 unallowed: []
-            }    
+            }
         })
 
     })
@@ -163,17 +163,17 @@ describe.skip("Exercise 3 & 4", ()=>{
 
 })
 
-describe.skip("Exercise 5", ()=>{
+describe.skip("Exercise 5", () => {
 
-    test("(5a)", ()=>{
+    test("(5a)", () => {
 
-        const users:Client[] = [{
+        const users: Client[] = [{
             name: "Tiago",
             nacionality: NACIONALITY.BRAZILIAN,
             age: 18
         }]
 
-        const casino1:Casino = {
+        const casino1: Casino = {
             name: "Ceasar",
             location: LOCATION.BRAZIL
         }
@@ -185,15 +185,15 @@ describe.skip("Exercise 5", ()=>{
 
     })
 
-    test("(5b)", ()=>{
+    test("(5b)", () => {
 
-        const users:Client[] = [{
+        const users: Client[] = [{
             name: "Tiago",
             nacionality: NACIONALITY.AMERICAN,
             age: 18
         }]
 
-        const casino1:Casino = {
+        const casino1: Casino = {
             name: "Ceasar",
             location: LOCATION.BRAZIL
         }
@@ -204,11 +204,11 @@ describe.skip("Exercise 5", ()=>{
 
     })
 
-    test("(5c)", ()=>{
+    test("(5c)", () => {
 
-        const users:Client[] = [
+        const users: Client[] = [
             {
-                name:"Tiago",
+                name: "Tiago",
                 nacionality: NACIONALITY.AMERICAN,
                 age: 19
             },
@@ -228,8 +228,8 @@ describe.skip("Exercise 5", ()=>{
                 age: 19
             }
         ]
-    
-        const casino1:Casino = {
+
+        const casino1: Casino = {
             name: "Ceasar",
             location: LOCATION.USA
         }
@@ -242,11 +242,11 @@ describe.skip("Exercise 5", ()=>{
     })
 
 
-    test("(5d)", ()=>{
+    test("(5d)", () => {
 
-        const users:Client[] = [
+        const users: Client[] = [
             {
-                name:"Tiago",
+                name: "Tiago",
                 nacionality: NACIONALITY.AMERICAN,
                 age: 21
             },
@@ -267,7 +267,7 @@ describe.skip("Exercise 5", ()=>{
             }
         ]
 
-        const casino1:Casino = {
+        const casino1: Casino = {
             name: "Ceasar",
             location: LOCATION.USA
         }
@@ -283,29 +283,38 @@ describe.skip("Exercise 5", ()=>{
 
 })
 
-describe("Exercise 6", ()=>{
+describe("Exercise 6", () => {
 
-    afterAll(()=>{
-        class deleteInfo extends BaseDatabase {
-            
-            deletePostById = async (id:string) => {
-                await deleteInfo.connection("labook_posts")
-                .del().where("id", "like", id)
-            }
-
-            closeConnection = async () => {
-                await deleteInfo.connection.destroy()
-            }
-        }
-
-        const DeleteInfo = new deleteInfo()
-        DeleteInfo.deletePostById("testID")
-
+    beforeAll(done => {
+        done()
     })
 
-    test("(6a)", async ()=>{
+    afterAll(done => {
+        class DB extends BaseDatabase {
+            public closeConn = async () => {
+                await DB.connection.destroy()
+            }
 
-        const post1:post = {
+
+            // public deleteInfo = async (id:string) => {
+            //     await DB.connection("labook_posts")
+            //     .delete().where("id", "like", id)
+            // }
+        
+        }
+
+
+
+        const newDB = new DB()   
+        // newDB.deleteInfo("testID")
+        newDB.closeConn()
+        done()
+    })
+
+    test("(6a)", async () => {
+
+
+        const post1: post = {
             id: "testID",
             photo: "testURL",
             description: "testes-automatizados-ex6",
@@ -319,6 +328,7 @@ describe("Exercise 6", ()=>{
         const result = await post.getPostById("testID")
 
         expect(result.length).toBeGreaterThan(0)
+
 
     })
 })
