@@ -1,4 +1,6 @@
 import { Casino, Client, LOCATION, NACIONALITY, performPurchase, User, verifyAge } from "../src"
+import { BaseDatabase } from "../src/BaseDatabase"
+import { post, PostDatabase } from "../src/PostDatabase"
 
 describe.skip("Exercise 2", ()=> {
 
@@ -279,4 +281,44 @@ describe.skip("Exercise 5", ()=>{
     })
 
 
+})
+
+describe("Exercise 6", ()=>{
+
+    afterAll(()=>{
+        class deleteInfo extends BaseDatabase {
+            
+            deletePostById = async (id:string) => {
+                await deleteInfo.connection("labook_posts")
+                .del().where("id", "like", id)
+            }
+
+            closeConnection = async () => {
+                await deleteInfo.connection.destroy()
+            }
+        }
+
+        const DeleteInfo = new deleteInfo()
+        DeleteInfo.deletePostById("testID")
+
+    })
+
+    test("(6a)", async ()=>{
+
+        const post1:post = {
+            id: "testID",
+            photo: "testURL",
+            description: "testes-automatizados-ex6",
+            type: "NORMAL",
+            authorId: "0eb4c7bb-0646-4a6b-a4d6-dffae87fd6ce"
+        }
+
+        const post = new PostDatabase()
+
+        await post.insertPost(post1)
+        const result = await post.getPostById("testID")
+
+        expect(result.length).toBeGreaterThan(0)
+
+    })
 })
