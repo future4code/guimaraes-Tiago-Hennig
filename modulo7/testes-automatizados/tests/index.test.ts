@@ -294,19 +294,9 @@ describe("Exercise 6", () => {
             public closeConn = async () => {
                 await DB.connection.destroy()
             }
-
-
-            // public deleteInfo = async (id:string) => {
-            //     await DB.connection("labook_posts")
-            //     .delete().where("id", "like", id)
-            // }
-        
         }
 
-
-
         const newDB = new DB()   
-        // newDB.deleteInfo("testID")
         newDB.closeConn()
         done()
     })
