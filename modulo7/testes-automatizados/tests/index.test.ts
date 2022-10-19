@@ -283,7 +283,7 @@ describe.skip("Exercise 5", () => {
 
 })
 
-describe("Exercise 6", () => {
+describe.skip("Exercise 6", () => {
 
     beforeAll(done => {
         done()
@@ -321,4 +321,52 @@ describe("Exercise 6", () => {
 
 
     })
+})
+
+describe("Exercise 7", ()=> {
+
+    beforeAll(done => {
+        done()
+    })
+
+    afterAll(done => {
+        class DB extends BaseDatabase {
+            public closeConn = async () => {
+                await DB.connection.destroy()
+            }
+        }
+
+        const newDB = new DB()   
+        newDB.closeConn()
+        done()
+    })
+
+    test("(7)", async () => {
+
+        try {
+
+            const post1: post = {
+                id: "testID",
+                photo: "testURL",
+                description: "testes-automatizados-ex6",
+                type: "NORMAL",
+                authorId: "0eb4c7bb-0646-4a6b-a4d6-dffae87fd6ce"
+            }
+    
+            const post = new PostDatabase()
+    
+            await post.insertPost(post1)
+            await post.insertPost(post1)
+            const result = await post.getPostById("testID")
+            
+        } catch (error:any) {
+            console.log(error.message)
+            expect(error).toBeDefined()
+            expect(error.message).toBe("insert into `labook_posts` (`author_id`, `description`, `id`, `photo`, `type`) values ('0eb4c7bb-0646-4a6b-a4d6-dffae87fd6ce', 'testes-automatizados-ex6', 'testID', 'testURL', 'NORMAL') - ER_DUP_ENTRY: Duplicate entry 'testID' for key 'PRIMARY'")
+        }
+
+
+    })
+
+
 })
