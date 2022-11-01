@@ -83,7 +83,7 @@ font-size: 1.7rem;
 margin-bottom: 5px;
 align-items: center;
 width: 90vw;
-height: 50px;
+height: 120px;
 
 p:nth-child(1) {
     padding-left: 10px;

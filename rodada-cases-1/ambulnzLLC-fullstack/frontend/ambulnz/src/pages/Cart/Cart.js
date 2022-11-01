@@ -45,7 +45,7 @@ export const Cart = () => {
                     {cart?.map((pizza) => {
                         return(
                             <CartCard key={pizza.name}>
-                                <p>{pizza.quantity}x </p>
+                                <p>{pizza.amount}x </p>
                                 <p> {pizza.name}</p>
                             </CartCard>
                         )

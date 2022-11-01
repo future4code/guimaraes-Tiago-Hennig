@@ -25,12 +25,10 @@ export const SignUpPage = () => {
                 password
             }
             const res = await axios.post(`${BASE_URL}user/create`, body)
-            console.log(res.data.token)
             localStorage.setItem('token', res.data.token)
             goToHome(navigate)
             
         } catch (error) {
-            console.log(error.response.data)
             alert(error.response.data)
         }
     }

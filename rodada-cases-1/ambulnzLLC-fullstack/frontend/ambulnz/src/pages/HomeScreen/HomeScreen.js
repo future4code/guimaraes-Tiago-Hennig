@@ -30,7 +30,7 @@ export const HomeScreen = () => {
     const navigate = useNavigate()
 
     const { pizzas, openModalPizza, setOpenModalPizza, pizzaOfTheModal, setPizzaOfTheModal,
-        quantityFromModal, setQuantityFromModal, addCart, setCart } = useContext(GlobalStateContext)
+        quantityFromModal, setQuantityFromModal, addCart, setCart, cart, cartTotal } = useContext(GlobalStateContext)
 
     const logout = () => {
         localStorage.removeItem('token')
@@ -41,6 +41,7 @@ export const HomeScreen = () => {
 
 	const handleOpenModalPizza = () => setOpenModalPizza(true)
 	const handleCloseModalPizza = () => {setOpenModalPizza(false);setQuantityFromModal(0)}
+    const handleCloseModalPizzaAfterPizzaQuantity = () => {setOpenModalPizza(false)}
     const handleQuantityChange = (event) => {setQuantityFromModal(event.target.value)}
     const handleIncreaseQuantity = () => setQuantityFromModal(quantityFromModal + 1)
     const handleDecreaseQuantity = () => {
@@ -51,6 +52,9 @@ export const HomeScreen = () => {
         }
     }
         
+    console.log(cart)
+
+
 
     return (
 
@@ -70,7 +74,11 @@ export const HomeScreen = () => {
                             <button onClick={handleIncreaseQuantity}>+</button>
                         </HowManyPizzas>
 
-                        <button onClick={()=> addCart(pizzaOfTheModal, quantityFromModal)}> Add to cart</button>
+                        <button onClick={()=> 
+                        {
+                            addCart(pizzaOfTheModal, quantityFromModal); 
+                            handleCloseModalPizzaAfterPizzaQuantity()}}> Add to cart
+                        </button>
 
                     </ContainerHowManyAndAddButton>
                 </Box>
@@ -111,7 +119,7 @@ export const HomeScreen = () => {
 
                 <CartFooter>
                     
-                    <button onClick={() => goToCart(navigate)}> <p> $21.50 </p> Cart <img src={CartBag}></img> </button>
+                    <button onClick={() => goToCart(navigate)}> <p> $ {cartTotal} </p> Cart <img src={CartBag}></img> </button>
 
                 </CartFooter>
 

@@ -1,5 +1,3 @@
-import { red } from "@mui/material/colors"
-import { height } from "@mui/system"
 import styled from "styled-components"
 
 export const PageContainer = styled.div`
@@ -15,7 +13,7 @@ export const DivPage = styled.div`
 
 display: flex;
 flex-direction: column;
-width: 90vw;
+width: 94vw;
 align-items: center;
 margin-top: 0;
 
@@ -187,7 +185,7 @@ button {
     p:first-child {
     display: flex;
     color: #ffffff;
-    width: 10%;
+    width: 20%;
     flex-wrap: nowrap;
     }
 
@@ -208,12 +206,10 @@ button {
         height: 70%;
         max-width: 10%;
         filter: invert(100%);
+        padding-left: 10%;
     }
 
-    p:nth-child(2) {
-        place-self: center;
 
-    }
 
 }
 

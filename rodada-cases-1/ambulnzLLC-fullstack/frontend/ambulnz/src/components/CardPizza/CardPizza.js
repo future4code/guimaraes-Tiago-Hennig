@@ -1,5 +1,5 @@
 import React from "react";
-import { AddButtonAndPrice, CardContainer } from "./style";
+import { AddButtonAndPrice, CardContainer, PizzaName } from "./style";
 
 
 export const CardPizza = (props) => {
@@ -18,7 +18,7 @@ export const CardPizza = (props) => {
         <CardContainer>
 
             <img src={`${props.pizza.img_url}`} /> 
-            <p> {props.pizza.name}</p>
+            <PizzaName> {props.pizza.name}</PizzaName>
             <p> {props.pizza.ingredients} </p>
 
             <AddButtonAndPrice>
