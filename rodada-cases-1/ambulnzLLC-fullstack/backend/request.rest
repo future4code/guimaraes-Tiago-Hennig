@@ -1,0 +1,51 @@
+POST http://localhost:3003/pizza/create
+Content-Type: application/json
+
+{
+    "name": "Baked tomato",
+    "price": 5.8,
+    "ingredients": "tomato, mozzarella, oil, rucula, paris mushroom",
+    "img_url": "https://raw.githubusercontent.com/tiagohennig/PizzaPics/main/Baked%20Tomato.png"
+}
+
+###
+
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+    "name": "Labenu",
+    "email": "labenu@email.com",
+    "password": "123456"
+}
+
+###
+
+
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "labenu@email.com",
+    "password": "123456"
+}
+
+###
+
+POST http://localhost:3003/order
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5Y2Y3ZTViLWE4OGMtNGNmMS1iMzg0LTM3MDZhYWMwN2NmYiIsImlhdCI6MTY2NDA0ODAxMiwiZXhwIjoxNjY0MjIwODEyfQ.DHe_RY6yrvUZb-vSaGtbYup0llaZsrC57ylBN5uqCiw
+Content-Type: application/json
+
+{
+    "pizzaName": "Bufala",
+    "quantity": 4
+}
+
+###
+
+POST http://localhost:3003/order/myorders
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjU5Y2Y3ZTViLWE4OGMtNGNmMS1iMzg0LTM3MDZhYWMwN2NmYiIsImlhdCI6MTY2NDA0ODAxMiwiZXhwIjoxNjY0MjIwODEyfQ.DHe_RY6yrvUZb-vSaGtbYup0llaZsrC57ylBN5uqCiw
+
+###
+
+GET http://localhost:3003/pizza/all
